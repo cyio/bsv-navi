@@ -19,7 +19,7 @@ after_script:
 - cd dist
 - git add --all .
 - git commit --message "auto deploy"
-- git push "https://${GITHUB_TOKEN}@${GH_REF}" gh-pages:gh-pages
+- git push "https://cyio:${GITHUB_TOKEN}@${GH_REF}" gh-pages:gh-pages
 env:
   global:
   - GH_REF: github.com/cyio/bch123.org.git
