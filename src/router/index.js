@@ -36,8 +36,7 @@ export default new Router({
     {
       path: '/address/:id',
       name: 'Address',
-      component: Address,
-      meta: { keepAlive: true }
+      component: Address
     },
     { path: '*', redirect: '/' }
   ]

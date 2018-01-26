@@ -1,11 +1,11 @@
 <template lang="pug">
 .address-view
   .searchbar-input-container
-    input.searchbar-input(type='search' name='q' placeholder='地址、高度或哈希...' autocomplete='off' @keyup.enter="submit" v-model="addressId")
-  .address-detail(v-if="addressDetail")
-    .address-balance 
+    input.searchbar-input(type='search' name='q' placeholder='BCH 地址...' autocomplete='off' @keyup.enter="submit" v-model="addressId")
+  .address-detail
+    .address-balance(v-if="!showLoading && !showErrorMsg")
       .label 余额
-      span.value {{addressDetail.balance / 10 ** 8}}
+      span.value {{addressBalance}}
       span.unit BCH
     .address-tx(v-if="addressTxs && addressTxs.total_count")
       .tx-item(v-for="tx in addressTxs.list")
@@ -15,6 +15,8 @@
           .tx-time {{tx.created_at | timeFormat(locale)}}
         // .tx-address xxxxx
     .loading(v-if="showLoading") 载入中...
+    .error(v-if="showErrorMsg") 服务暂不可用
+      button(@click="setAddressData(addressId)") 点击重试
 </template>
 
 <script>
@@ -37,7 +39,8 @@ export default {
       addressId: null,
       addressDetail: null,
       addressTxs: null,
-      showLoading: true
+      showLoading: true,
+      showErrorMsg: false
     }
   },
   methods: {
@@ -45,15 +48,20 @@ export default {
       this.setAddressData(e.target.value)
     },
     setAddressData (id) {
-      // console.log(e.target.value)
-      this.getAddressDetail(id).then(data => {
-        this.addressDetail = data
-      })
+      this.addressDetail = this.addressTxs = null
+      this.$bar.start()
       this.showLoading = true
-      this.getAddressTxs(id).then(data => {
-        this.addressTxs = data
+      this.showErrorMsg = false
+      axios.all([this.getAddressDetail(id), this.getAddressTxs(id)]).then(axios.spread((detail, txs) => {
+        this.$bar.finish()
         this.showLoading = false
-      })
+        if (!Object.keys(txs).length || !Object.keys(detail).length) {
+          this.showErrorMsg = true
+          return
+        }
+        this.addressDetail = detail
+        this.addressTxs = txs
+      }))
     },
     getAddressDetail (address) {
       // return axios.get(`/api/address?${address}`).then(res => {
@@ -63,7 +71,7 @@ export default {
     },
     getAddressTxs (address) {
       // return axios.get(`/api/address-txs?${address}`).then(res => {
-      return axios.get(`https://bird.ioliu.cn/v1/?url=https://bch-chain.api.btc.com/v3/address/${address}/tx?pagesize=8&verbose=1`).then(res => {
+      return axios.get(`https://bird.ioliu.cn/v1/?url=https://bch-chain.api.btc.com/v3/address/${address}/tx?pagesize=10&verbose=1`).then(res => {
         return res.data.data
       }).catch(err => console.log(err))
     }
@@ -71,6 +79,9 @@ export default {
   computed: {
     locale () {
       return this.$root.$data.shared.isZh ? 'zh_CN' : 'en_US'
+    },
+    addressBalance () {
+      return this.addressDetail.balance / 10 ** 8
     }
   },
   filters: {
@@ -83,9 +94,7 @@ export default {
     }
   },
   created () {
-    console.log(this.$route.params.id)
     if (this.$route.params.id && this.addressId !== this.$route.params.id) {
-      console.log('get')
       this.addressId = this.$route.params.id
       this.setAddressData(this.addressId)
     }
@@ -108,7 +117,7 @@ export default {
     margin: 20px auto;
     padding: 10px;
     max-width: 500px;
-    width: 80%;
+    width: 90%;
     background-color: #fff;
     border: 1px solid #666666;
     border-radius: 5px;

@@ -1,0 +1,26 @@
+branches:
+  only:
+  - master
+language: node_js
+sudo: false
+node_js: stable
+cache:
+  directories:
+  - node_modules
+before_install:
+- git config --global user.name "cyio"
+- git config --global user.email "ibeceo@gmail.com"
+- git clone --branch gh-pages https://github.com/cyio/cyio.github.io.git dist
+install:
+- npm install
+script:
+- npm run build
+after_script:
+- cd dist
+- git add --all .
+- git commit --message "auto deploy"
+- git push "https://${GITHUB_TOKEN}@${GH_REF}" gh-pages:gh-pages
+env:
+  global:
+  - GH_REF: github.com/cyio/gh-pages.git
+  - secure: ciaUVmvIMEe++hGrY9niC7GtbMW2Q67p3e6cpgahAUjzDVHRYO72GG+PJW4/mMrxX1wBQbO49fp8B7xUPW3EjxTEK/drD2t2t4FU40FCaaoOg6nqLHYYZxL6ksiWVlFy/9uCaYGJ7e6svMdOA5DQhKDtgnkSCVOs5w2lNtG1oZoaucY7ecDkzR23vrlMLX1HJrhtHei89uuwuAf5KC5aoLVvSbdZsy7Q18+Fl43hK5m1w9tokDOWzOonRNZ5CGUYQz5VfzEFh6oautoqHQzia1GquWyXScFbLWvkXfGnuFPLnqSGNqZfvZH92OMW+7bjfQub3XfSh58V3P4d7syvOtyG4cZApGbcPJIvS23dnzA+ll1W8X+ogme3Ahc+Y/5ukIlKhuR5iqpHwd5nSSyZ8LMAfWkMX7te6XaBrWLrCqCYeDjUw2NNdxBielnomtLXUyZK5nD7wiSuEuCDl4jrPGQ6ojzJHjBSDGNbB+AgSEf8B1I1Kei9uLmX5Lw42BUST9JRRexSu82/tiXVG9qZeKrJULT4a+CmXUNBv2CP3p0n3/Yfh5TTncBVmrd022mmy6eGYeh8pXv3lYs+aeiS3mOwVHQ+3vfFELbQ3Polgk75B7LD1xijAeT3sVihk1QSpzS9N+1yOC4s5UR9k1mlEokcckdOz7duoQPoq7jZ3Tc=

@@ -1,7 +1,7 @@
 <template lang="pug">
 .home-view
   .searchbar-input-container
-    input.searchbar-input(type='search' name='q' placeholder='地址、高度或哈希...' autocomplete='off' @keyup.enter="submit")
+    input.searchbar-input(type='search' name='q' placeholder='BCH 地址...' autocomplete='off' @keyup.enter="submit")
 </template>
 
 <script>
@@ -53,7 +53,7 @@ export default {
     margin-right: auto;
     padding: 10px;
     max-width: 500px;
-    width: 80%;
+    width: 90%;
     background-color: #fff;
     border: 1px solid #666666;
     border-radius: 5px;
