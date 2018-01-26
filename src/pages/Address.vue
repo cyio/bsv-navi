@@ -12,7 +12,7 @@
         .tx-item-header
           .tx-item-title {{tx.balance_diff > 0 ? '接收' : '发送'}}
             span.tx-amount(v-bind:class="{ in: tx.balance_diff > 0, out: tx.balance_diff < 0 }") {{(tx.balance_diff > 0 && '+') + tx.balance_diff / 10 ** 8}}
-          .tx-time {{tx.created_at}}
+          .tx-time {{tx.created_at | timeFormat(locale)}}
         // .tx-address xxxxx
     .loading(v-if="showLoading") 载入中...
 </template>
@@ -23,6 +23,9 @@ import axios from 'axios'
 // import bchaddr from 'bchaddrjs'
 import Modal from '../components/Modal'
 // import QRCode from 'qrcode'
+import Timeago from 'timeago.js'
+import numeral from 'numeral'
+const timeAgo = new Timeago()
 export default {
   name: 'Address',
   mixins: [mixin],
@@ -53,19 +56,31 @@ export default {
       })
     },
     getAddressDetail (address) {
-      return axios.get(`/api/address?${address}`).then(res => {
+      // return axios.get(`/api/address?${address}`).then(res => {
+      return axios.get(`https://bird.ioliu.cn/v1/?url=https://bch-chain.api.btc.com/v3/address/${address}`).then(res => {
         return res.data.data
       }).catch(err => console.log(err))
     },
     getAddressTxs (address) {
-      return axios.get(`/api/address-txs?${address}`).then(res => {
+      // return axios.get(`/api/address-txs?${address}`).then(res => {
+      return axios.get(`https://bird.ioliu.cn/v1/?url=https://bch-chain.api.btc.com/v3/address/${address}/tx?pagesize=8&verbose=1`).then(res => {
         return res.data.data
       }).catch(err => console.log(err))
     }
   },
   computed: {
+    locale () {
+      return this.$root.$data.shared.isZh ? 'zh_CN' : 'en_US'
+    }
   },
   filters: {
+    format (value, unit) {
+      if (unit === 'btc') return numeral(value * 10 ** 6).format('0,000,000.00')
+      return numeral(value).format('0,0.00')
+    },
+    timeFormat (time, locale) {
+      return timeAgo.format(new Date(time * 1000), locale)
+    }
   },
   created () {
     console.log(this.$route.params.id)
@@ -114,6 +129,7 @@ export default {
   }
   .address-balance {
     text-align: center;
+		margin-bottom: .2rem;
   }
   .address-balance .label {
     color: #7d7d7d;
@@ -125,7 +141,7 @@ export default {
     margin-left: .05rem;
   }
   .tx-item {
-    width: 360px;
+    width: 2.8rem;
     border: 1px solid #eee;
     padding: .1rem;
   }
