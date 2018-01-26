@@ -1,7 +1,7 @@
 <template lang="pug">
 .address-view
   .searchbar-input-container
-    input.searchbar-input(type='search' name='q' placeholder='BCH 地址...' autocomplete='off' @keyup.enter="submit" v-model="addressId")
+    input.searchbar-input(type='search' name='q' placeholder='BCH 地址...' autocomplete='off' autofocus @keyup.enter="submit" v-model="addressId")
   .address-detail
     .address-balance(v-if="!showLoading && !showErrorMsg")
       .label 余额
@@ -16,7 +16,7 @@
         // .tx-address xxxxx
     .loading(v-if="showLoading") 载入中...
     .error(v-if="showErrorMsg") 服务暂不可用
-      button(@click="setAddressData(addressId)") 点击重试
+      button.btn(@click="setAddressData(addressId)") 点击重试
 </template>
 
 <script>
@@ -90,6 +90,11 @@ export default {
       return numeral(value).format('0,0.00')
     },
     timeFormat (time, locale) {
+      // console.log(+new Date() - time * 1000)
+      // let i = +new Date() - time * 1000
+      // let day = 1000 * 60 * 60 * 24
+      // console.log(i > day)
+      // if (i > day) return (new Date(time * 1000))
       return timeAgo.format(new Date(time * 1000), locale)
     }
   },

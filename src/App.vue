@@ -43,7 +43,7 @@ ul {
 }
 
 :root {
-	--theme: #32669a;
+	--theme: #f08b16;
 	--headerHeight: .44rem;
 }
 
@@ -173,5 +173,15 @@ img, embed, iframe {
     transform: scale(0.001, 0.001);
 		opacity: 1;
 	}
+}
+
+.btn {
+  font-size: .12rem;
+  background: #eee;
+  color: #333;
+  margin: .05rem;
+  padding: .05rem;
+  border: 1px solid #dedada;
+  color: var(--theme);
 }
 </style>

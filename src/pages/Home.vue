@@ -1,7 +1,7 @@
 <template lang="pug">
 .home-view
   .searchbar-input-container
-    input.searchbar-input(type='search' name='q' placeholder='BCH 地址...' autocomplete='off' @keyup.enter="submit")
+    input.searchbar-input(type='search' name='q' placeholder='BCH 地址...' autocomplete='off' autofocus @keyup.enter="submit")
 </template>
 
 <script>
