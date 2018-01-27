@@ -1,7 +1,7 @@
 <template lang="pug">
 .home-view
   .searchbar-input-container
-    input.searchbar-input(type='search' name='q' placeholder='BCH 地址...' autocomplete='off' autofocus @keyup.enter="submit")
+    input.searchbar-input(type='search' name='q' placeholder='BCH 地址...' autocomplete='off' autofocus v-model="addressId")
     .btn(@click="submit") 查看
 </template>
 
@@ -19,14 +19,12 @@ export default {
   },
   data () {
     return {
-      addressDetail: null,
-      addressTxs: null
+      addressId: null
     }
   },
   methods: {
-    async submit (e) {
-      console.log(e)
-      this.go({path: '/address/' + e.target.value})
+    async submit () {
+      this.go({path: '/address/' + this.addressId})
     }
   },
   computed: {
@@ -48,17 +46,17 @@ export default {
 		min-height: 500px;
   }
   .home-view .searchbar-input-container {
-    position: absolute;
-    top: 311px;
+		position: absolute;
+		top: 40%;
 		display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 10px;
-    max-width: 500px;
-    width: 90%;
-    background-color: #fff;
-    border: 1px solid #666666;
-    border-radius: 5px;
+		margin-left: auto;
+		margin-right: auto;
+		padding: .05rem;
+		max-width: 500px;
+		width: 90%;
+		background-color: #fff;
+		border: .01rem solid #666666;
+		border-radius: 5px;
   }
   .home-view .searchbar-input {
 		flex: 1;

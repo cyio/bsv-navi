@@ -21,8 +21,10 @@
 </template>
 
 <script>
-import mixin from '@/mixin.js'
+import mixin from '@/mixin'
+// import { sleep } from '../utils'
 import axios from 'axios'
+// import jsonp from 'jsonp-es6'
 // import bchaddr from 'bchaddrjs'
 import Modal from '../components/Modal'
 // import QRCode from 'qrcode'
@@ -48,32 +50,29 @@ export default {
     submit (e) {
       this.setAddressData(e.target.value)
     },
-    setAddressData (id) {
+    async setAddressData (id) {
       this.addressDetail = this.addressTxs = null
       this.$bar.start()
       this.showLoading = true
       this.showErrorMsg = false
-      axios.all([this.getAddressDetail(id), this.getAddressTxs(id)]).then(axios.spread((detail, txs) => {
-        this.$bar.finish()
-        this.showLoading = false
-        if (!Object.keys(txs).length || !Object.keys(detail).length) {
-          this.showErrorMsg = true
-          return
-        }
-        this.addressDetail = detail
-        this.addressTxs = txs
-      }))
+      this.addressDetail = await this.getAddressDetail(id)
+      this.addressTxs = await this.getAddressTxs(id)
+      this.$bar.finish()
+      this.showLoading = false
+      if (!Object.keys(this.addressDetail).length || !Object.keys(this.addressTxs).length) {
+        this.showErrorMsg = true
+      }
     },
     getAddressDetail (address) {
       // return axios.get(`/api/address?${address}`).then(res => {
       return axios.get(`https://bird.ioliu.cn/v1/?url=https://bch-chain.api.btc.com/v3/address/${address}`).then(res => {
-        return res.data.data
+        return res.headers ? res.data.data : res.data
       }).catch(err => console.log(err))
     },
-    getAddressTxs (address) {
+    async getAddressTxs (address) {
       // return axios.get(`/api/address-txs?${address}`).then(res => {
       return axios.get(`https://bird.ioliu.cn/v1/?url=https://bch-chain.api.btc.com/v3/address/${address}/tx?pagesize=10&verbose=1`).then(res => {
-        return res.data.data
+        return res.headers ? res.data.data : res.data
       }).catch(err => console.log(err))
     }
   },

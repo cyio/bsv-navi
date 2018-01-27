@@ -5,7 +5,7 @@
   "author": "cyio <icaner@qq.com>",
   "private": true,
   "scripts": {
-    "dev": "nodemon --inspect --watch server server/index.js",
+    "dev": "nodemon --watch server server/index.js",
     "dev:web": "node build/dev-server.js",
     "start": "node server",
     "build": "node build/build.js",
@@ -15,6 +15,7 @@
     "axios": "^0.17.1",
     "bchaddrjs": "^0.1.4",
     "bitcoincashjs": "^0.1.9",
+    "jsonp-es6": "^1.0.0",
     "koa": "^2.3.0",
     "koa-router": "^7.3.0",
     "koa-static": "^4.0.2",

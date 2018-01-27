@@ -16,7 +16,6 @@ const ws = new Router()
 
 const getAddressDetail = (address) => {
 	return axios.get(`https://bch-chain.api.btc.com/v3/address/${address}`).then(res => {
-	  console.log(res.data.data)
 		return res.data.data
 	}).catch(err => console.log(err))
 }
