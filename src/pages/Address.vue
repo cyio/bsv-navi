@@ -1,7 +1,8 @@
 <template lang="pug">
 .address-view
   .searchbar-input-container
-    input.searchbar-input(type='search' name='q' placeholder='BCH 地址...' autocomplete='off' autofocus @keyup.enter="submit" v-model="addressId")
+    input.searchbar-input(type='search' name='q' placeholder='BCH 地址...' autocomplete='off' autofocus v-model="addressId")
+    .btn(@click="submit") 查看
   .address-detail
     .address-balance(v-if="!showLoading && !showErrorMsg")
       .label 余额

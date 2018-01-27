@@ -2,6 +2,7 @@
 .home-view
   .searchbar-input-container
     input.searchbar-input(type='search' name='q' placeholder='BCH 地址...' autocomplete='off' autofocus @keyup.enter="submit")
+    .btn(@click="submit") 查看
 </template>
 
 <script>
@@ -24,6 +25,7 @@ export default {
   },
   methods: {
     async submit (e) {
+      console.log(e)
       this.go({path: '/address/' + e.target.value})
     }
   },
