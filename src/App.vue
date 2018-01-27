@@ -53,7 +53,7 @@ body {
 }
 
 #app {
-  // padding-top: var(--headerHeight);
+  padding-top: var(--headerHeight);
 }
 
 

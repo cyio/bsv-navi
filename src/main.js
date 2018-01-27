@@ -4,9 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VueI18n from 'vue-i18n'
+import 'vue-awesome/icons/search'
+import Icon from 'vue-awesome/components/Icon'
 
 Vue.config.productionTip = false
 Vue.use(VueI18n)
+Vue.component('icon', Icon)
 
 const shared = {
   isZh: /zh/.test(window.navigator.language)

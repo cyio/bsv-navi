@@ -1,8 +1,6 @@
 <template lang="pug">
 .address-view
-  .searchbar-input-container
-    input.searchbar-input(type='search' name='q' placeholder='BCH 地址...' autocomplete='off' autofocus v-model="addressId")
-    .btn(@click="submit") 查看
+  search-box(:keywords='addressId' :errors='addressErrors' :submit='submit')
   .address-detail
     .address-balance(v-if="!showLoading && !showErrorMsg")
       .label 余额
@@ -25,8 +23,9 @@ import mixin from '@/mixin'
 // import { sleep } from '../utils'
 import axios from 'axios'
 // import jsonp from 'jsonp-es6'
-// import bchaddr from 'bchaddrjs'
 import Modal from '../components/Modal'
+import SearchBox from '../components/SearchBox'
+import bchaddr from 'bchaddrjs'
 // import QRCode from 'qrcode'
 import Timeago from 'timeago.js'
 import numeral from 'numeral'
@@ -35,7 +34,8 @@ export default {
   name: 'Address',
   mixins: [mixin],
   components: {
-    Modal
+    Modal,
+    SearchBox
   },
   data () {
     return {
@@ -43,15 +43,28 @@ export default {
       addressDetail: null,
       addressTxs: null,
       showLoading: true,
-      showErrorMsg: false
+      showErrorMsg: false,
+      addressErrors: null
     }
   },
   methods: {
-    submit (e) {
-      this.setAddressData(e.target.value)
+    submit (address) {
+      try {
+        if (bchaddr.isLegacyAddress(address)) {
+          this.setAddressData(address)
+        } else if (bchaddr.isCashAddress(address)) {
+          this.setAddressData(bchaddr.toLegacyAddress(address))
+        }
+      } catch (e) {
+        this.addressErrors = '地址格式不正确'
+        this.addressDetail = this.addressTxs = null
+        this.showLoading = true
+        console.log('address err', e)
+      }
     },
     async setAddressData (id) {
-      this.addressDetail = this.addressTxs = null
+      console.log(id)
+      this.addressDetail = this.addressTxs = this.addressErrors = null
       this.$bar.start()
       this.showLoading = true
       this.showErrorMsg = false
@@ -101,7 +114,7 @@ export default {
   created () {
     if (this.$route.params.id && this.addressId !== this.$route.params.id) {
       this.addressId = this.$route.params.id
-      this.setAddressData(this.addressId)
+      this.submit(this.addressId)
     }
   },
   mounted () {
@@ -115,25 +128,6 @@ export default {
 		width: 100%;
 		min-height: 500px;
 		flex-direction: column;
-		padding-top: 100px;
-  }
-  .searchbar-input-container {
-		display: flex;
-    margin: 20px auto;
-    padding: 10px;
-    max-width: 500px;
-    width: 90%;
-    background-color: #fff;
-    border: 1px solid #666666;
-    border-radius: 5px;
-  }
-  .searchbar-input {
-		flex: 1;
-    min-width: 150px;
-    padding: 0;
-    border: 0;
-    transition: border .2s ease;
-		font-size: .13rem;
   }
   .address-detail {
     display: flex;

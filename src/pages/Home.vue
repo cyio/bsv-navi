@@ -1,8 +1,6 @@
 <template lang="pug">
 .home-view
-  .searchbar-input-container
-    input.searchbar-input(type='search' name='q' placeholder='BCH 地址...' autocomplete='off' autofocus v-model="addressId")
-    .btn(@click="submit") 查看
+  search-box(:submit='submit')
 </template>
 
 <script>
@@ -10,21 +8,22 @@ import mixin from '@/mixin.js'
 // import axios from 'axios'
 // import bchaddr from 'bchaddrjs'
 import Modal from '../components/Modal'
+import SearchBox from '../components/SearchBox'
 // import QRCode from 'qrcode'
 export default {
   name: 'Home',
   mixins: [mixin],
   components: {
-    Modal
+    Modal,
+    SearchBox
   },
   data () {
     return {
-      addressId: null
     }
   },
   methods: {
-    async submit () {
-      this.go({path: '/address/' + this.addressId})
+    async submit (keywords) {
+      this.go({path: '/address/' + keywords})
     }
   },
   computed: {
@@ -48,22 +47,5 @@ export default {
   .home-view .searchbar-input-container {
 		position: absolute;
 		top: 40%;
-		display: flex;
-		margin-left: auto;
-		margin-right: auto;
-		padding: .05rem;
-		max-width: 500px;
-		width: 90%;
-		background-color: #fff;
-		border: .01rem solid #666666;
-		border-radius: 5px;
-  }
-  .home-view .searchbar-input {
-		flex: 1;
-    min-width: 150px;
-    padding: 0;
-    border: 0;
-    transition: border .2s ease;
-		font-size: .13rem;
   }
 </style>

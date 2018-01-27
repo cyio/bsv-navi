@@ -1,0 +1,81 @@
+<template lang="pug">
+  .searchbar-input-container
+    input.searchbar-input(type='search' name='q' placeholder='BCH 地址，支持新旧格式...' autocomplete='off' spellcheck="false" autofocus v-model="words" @keyup.enter="_submit" @change="errMsg = null")
+    icon.search-icon(name="search" scale="1.5" @click.native="_submit")
+    .err-msg(v-if="displayErrMsg") {{displayErrMsg}}
+    // .err-msg 'tst'
+</template>
+<script>
+export default {
+  name: 'search-box',
+  props: {
+    keywords: {
+      type: String,
+      default: ''
+    },
+    errors: {
+      type: String,
+      default: ''
+    },
+    submit: {
+      type: Function
+    }
+  },
+  data () {
+    return {
+      words: this.keywords,
+      errMsg: this.errors
+    }
+  },
+  computed: {
+    displayErrMsg () {
+      return this.errors || this.errMsg
+    }
+  },
+  methods: {
+    _submit () {
+      let address = this.words.trim()
+      if (!address) {
+        this.errMsg = '不得为空'
+        return
+      }
+      this.submit(address)
+    }
+  },
+  mounted () {
+  }
+}
+</script>
+<style>
+  .searchbar-input-container {
+    position: relative;
+		display: flex;
+    margin: 20px auto;
+    padding: 0 .03rem;
+    max-width: 500px;
+    width: 90%;
+    background-color: #fff;
+    border: 1px solid var(--theme);
+    border-radius: 5px;
+  }
+  .searchbar-input {
+		flex: 1;
+		min-width: 150px;
+		padding: .03rem;
+		border: 0;
+		transition: border .2s ease;
+		font-size: .13rem;
+		line-height: .18rem;
+  }
+  .search-icon {
+    color: var(--theme);
+    padding: 5px 5px 5px 10px;
+		align-self: center;
+  }
+  .err-msg { 
+    position: absolute;
+    bottom: -.25rem;
+    color: red;
+    font-size: .11rem;
+  }
+  </style>
