@@ -4,6 +4,8 @@
     img(src="../assets/bch-logo-512.png")
   search-box(:submit='submit')
   a(href="/address/1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa") {{$t('home.genesisAddr')}}
+  .row.justify-content-center.mt-4
+    websites
   modal(:show='showModal', @close='showModal = false')
     .donate-modal(slot='content')
       .qrcode(v-if='qrUrls.donateAddr')
@@ -16,7 +18,7 @@
       div
         | {{$t('home.sourceCode')}}：
         a(href='https://github.com/cyio/bch123.org', target='_blank') cyio/bch123.org
-  .about(@click='showModal = true') {{$t('home.about')}}
+  // .about(@click='showModal = true') {{$t('home.about')}}
 </template>
 
 <script>
@@ -25,13 +27,15 @@ import mixin from '@/mixin.js'
 // import bchaddr from 'bchaddrjs'
 import Modal from '../components/Modal'
 import SearchBox from '../components/SearchBox'
+import Websites from '../components/Websites'
 import QRCode from 'qrcode'
 export default {
   name: 'Home',
   mixins: [mixin],
   components: {
     Modal,
-    SearchBox
+    SearchBox,
+    Websites
   },
   data () {
     return {
@@ -81,11 +85,11 @@ export default {
     bacground-repeat: no-repeat;
   }
   .logo-wrap {
-		margin-top: .6rem;
+		margin-top: 3rem;
     margin-bottom: .1rem;
   }
   .logo-wrap img {
-    width: 1rem;
+    width: 8rem;
   }
   a {
     color: var(--theme);
@@ -96,31 +100,27 @@ export default {
     align-items: center;
   }
   .qrcode img {
-    width: 1.5rem;
   }
   .donate-modal {
     padding-bottom: .1rem;
   }
   .about {
-    position: fixed;
-    bottom: .2rem;
-    left: .2rem;
-    // background: rgba(238, 238, 238, .7);
-    width: .4rem;
+		position: fixed;
+    top: .5rem;
+    right: 1rem;
+    width: 4rem;
     padding: .05rem;
-    // border-radius: .1rem;
-    // border: .01rem solid #d8d7d7;
-    color: var(--light);
+    color: gray;
+    z-index: 1000;
   }
   .modal-container {
     text-align: center;
   }
 	textarea {
-			width: 86%;
-			resize: none;
-			font-size: .13rem;
-			padding: .05rem 0;
-			text-align: center;
-			border: none;
+    width: 86%;
+    resize: none;
+    padding: .05rem 0;
+    text-align: center;
+    border: none;
 	}
 </style>

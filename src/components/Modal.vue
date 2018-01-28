@@ -2,7 +2,7 @@
 	<div class="modal-mask" v-show="show" transition="modal">
 		<div class="modal-wrapper" @click.self="close">
 			<div class="modal-container">
-				<div class="modal-header">
+				<div class="_modal-header">
 					<div class="modal-title" slot="header">{{title || $t('home.aboutTitle')}}</div>
 					<div class="modal-close" @click="close">
 						<span></span>
@@ -72,16 +72,14 @@ export default {
 	transition: all .12s ease-in;
 	max-width: 800px;
 }
-.modal-header {
+._modal-header {
 	position: relative;
-	height: .3rem;
-	line-height: .3rem;
+	height: 2rem;
 	background: theme;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 }
 .modal-title {
-	font-size: .13rem;
 	text-align: center;
 }
 .modal-full {

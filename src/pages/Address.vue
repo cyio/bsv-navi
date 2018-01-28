@@ -143,15 +143,15 @@ export default {
     color: #7d7d7d;
   }
   .address-balance .value {
-		font-size: .3rem;
+		font-size: 1.5rem;
   }
   .address-balance .unit {
-    margin-left: .05rem;
+    margin-left: .3rem;
   }
   .tx-item {
-    width: 2.8rem;
+    width: 22rem;
     border: 1px solid #eee;
-    padding: .1rem;
+    padding: .6rem;
   }
   .tx-item-header {
     display: flex;
@@ -160,7 +160,7 @@ export default {
   }
   .tx-amount {
     font-weight: bold;
-		margin-left: .1rem;
+		margin-left: .5rem;
   }
   .in {
     color: green;
@@ -172,10 +172,10 @@ export default {
     margin-top: 50px;
   }
   .address-tx .desp {
-    text-align: right;
-    line-height: .25rem;
-    color: #adadad;
-    font-size: .11rem;
-    margin-right: .12rem;
+		text-align: right;
+		line-height: 2rem;
+		color: #adadad;
+		font-size: .9rem;
+		margin-right: .12rem;
   }
   </style>

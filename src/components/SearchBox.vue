@@ -1,7 +1,7 @@
 <template lang="pug">
   .searchbar-input-container
     input.searchbar-input(type='search' name='q' v-bind:placeholder="$t('home.searchPlaceholder')" autocomplete='off' spellcheck="false" autofocus v-model="words" @keyup.enter="_submit" @change="errMsg = null")
-    icon.search-icon(name="search" scale="1.5" @click.native="_submit")
+    icon.search-icon(name="search" @click.native="_submit")
     .err-msg(v-if="displayErrMsg") {{displayErrMsg}}
     // .err-msg 'tst'
 </template>
@@ -64,16 +64,17 @@ export default {
   .searchbar-input {
 		flex: 1;
 		min-width: 150px;
-		padding: .03rem;
+		padding: .3rem;
 		border: 0;
 		transition: border .2s ease;
-		font-size: .12rem;
-		line-height: .18rem;
+		font-size: .8rem;
   }
   .search-icon {
     color: var(--theme);
     padding: 5px 5px 5px 10px;
 		align-self: center;
+		width: 40px;
+		height: 40px;
   }
   .err-msg { 
     position: absolute;

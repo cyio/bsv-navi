@@ -6,7 +6,7 @@
         <span class="sub"></span>
     </div>
   </header>
-  <div class="main">
+  <div class="main container">
     <keep-alive>
       <router-view v-if="$route.meta.keepAlive" />
     </keep-alive>
@@ -44,19 +44,18 @@ ul {
 
 :root {
 	--theme: #f08b16;
-	--headerHeight: .44rem;
-	--light: #908d8d;
+	--headerHeight: 3rem;
+	// --light: #908d8d;
 }
 
 body {
   margin: 0;
-  font-size: .13rem;
+  // font-size: .13rem;
 }
 
 #app {
   padding-top: var(--headerHeight);
 }
-
 
 p {
   line-height: .22rem;
@@ -64,7 +63,7 @@ p {
 
 .main {
   // padding: .1rem;
-	margin-top: .03rem;
+	margin-top: 2rem;
   // border-top: 1px solid #eee;
   // border-bottom: 1px solid #eee;
   min-height: 550px;
@@ -82,13 +81,13 @@ header {
   // border-bottom: 1px solid #b2b2b2;
 	background-color: #fff;
 	color: var(--theme);
-  // box-shadow: 0 0 4px #657786;
+  box-shadow: 0 0 4px #657786;
 }
 
 header .title {
   // width: 2rem;
-  font-size: .24rem;
-	margin-left: .10rem;
+  font-size: 2rem;
+	margin-left: 1.5rem;
 }
 
 header .title .sub {
