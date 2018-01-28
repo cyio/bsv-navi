@@ -6,7 +6,7 @@
         <span class="sub"></span>
     </div>
   </header>
-  <div class="main container">
+  <div class="container">
     <keep-alive>
       <router-view v-if="$route.meta.keepAlive" />
     </keep-alive>
@@ -29,6 +29,8 @@ export default {
 <style>
 a {
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
+	text-decoration-line: none;
+    color: var(--theme);
 }
 
 input,textarea{
@@ -61,7 +63,7 @@ p {
   line-height: .22rem;
 }
 
-.main {
+.container {
   // padding: .1rem;
 	margin-top: 2rem;
   // border-top: 1px solid #eee;

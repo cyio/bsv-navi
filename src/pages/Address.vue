@@ -149,7 +149,7 @@ export default {
     margin-left: .3rem;
   }
   .tx-item {
-    width: 22rem;
+    width: 20rem;
     border: 1px solid #eee;
     padding: .6rem;
   }

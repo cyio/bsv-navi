@@ -4,8 +4,7 @@
     img(src="../assets/bch-logo-512.png")
   search-box(:submit='submit')
   a(href="/address/1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa") {{$t('home.genesisAddr')}}
-  .row.justify-content-center.mt-4
-    websites
+  websites
   modal(:show='showModal', @close='showModal = false')
     .donate-modal(slot='content')
       .qrcode(v-if='qrUrls.donateAddr')
@@ -90,9 +89,6 @@ export default {
   }
   .logo-wrap img {
     width: 8rem;
-  }
-  a {
-    color: var(--theme);
   }
   .qrcode {
     display: flex;

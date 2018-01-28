@@ -73,8 +73,8 @@ export default {
     color: var(--theme);
     padding: 5px 5px 5px 10px;
 		align-self: center;
-		width: 40px;
-		height: 40px;
+		width: 22px;
+		height: 22px;
   }
   .err-msg { 
     position: absolute;

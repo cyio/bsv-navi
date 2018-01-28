@@ -1,10 +1,11 @@
 <template lang="pug">
-table.table.table-responsive
-  tbody
-    tr(v-for="(cateName, index) in Object.keys(sites)")
-      th(scope='row') {{cateName}}
-      td(v-for="(site, index) in sites[cateName]")
-        a(:href='site.url', target='_blank') {{site.title}}
+.websites-view
+  table.table.table-responsive
+    tbody
+      tr(v-for="(cateName, index) in Object.keys(sites)")
+        th(scope='row') {{cateName}}
+        td(v-for="(site, index) in sites[cateName]")
+          a(:href='site.url', target='_blank') {{site.title}}
 </template>
 <script>
 export default {
@@ -35,8 +36,8 @@ export default {
           {title: '巴比特论坛', url: 'http://8btc.com/forum-147-1.html'}
         ],
         '人物': [
-          {title: 'Craig S Wright', url: 'https://twitter.com/ProfFaustus'},
           {title: 'Roger Ver', url: 'https://twitter.com/rogerkver'},
+          {title: 'Craig S Wright', url: 'https://twitter.com/ProfFaustus'},
           {title: 'Rick Falkvinge', url: 'https://twitter.com/Falkvinge'}
           // {title: '吴忌寒', url: 'https://weibo.com/bitcoinqqagent'},
           // {title: '江卓尔', url: 'https://weibo.com/ltc1btc'}
@@ -52,5 +53,17 @@ export default {
   }
 }
 </script>
-<style>
+<style lang="stylus">
+  .websites-view {
+    .table {
+      line-height: 1.6rem;
+      margin: 1rem auto;
+    }
+    .table th {
+      width: 15%;
+    }
+    .table td {
+      padding-right: .5rem;
+    }
+  }
 </style>
