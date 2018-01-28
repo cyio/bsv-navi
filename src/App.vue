@@ -45,6 +45,7 @@ ul {
 :root {
 	--theme: #f08b16;
 	--headerHeight: .44rem;
+	--light: #908d8d;
 }
 
 body {
@@ -64,7 +65,7 @@ p {
 .main {
   // padding: .1rem;
 	margin-top: .03rem;
-  border-top: 1px solid #eee;
+  // border-top: 1px solid #eee;
   // border-bottom: 1px solid #eee;
   min-height: 550px;
 }
@@ -78,10 +79,10 @@ header {
   top: 0;
   width: 100%;
   z-index: 1000;
-  border-bottom: 1px solid #b2b2b2;
+  // border-bottom: 1px solid #b2b2b2;
 	background-color: #fff;
 	color: var(--theme);
-  box-shadow: 0 0 4px #657786;
+  // box-shadow: 0 0 4px #657786;
 }
 
 header .title {
@@ -130,7 +131,9 @@ img, embed, iframe {
 		width: 750px;
 		// border: 1px solid #efefef;
   }
-  #app .main,
+  #app .main {
+    margin: 0 auto;
+  }
   #app header .title {
 		margin-left: 150px;
   }

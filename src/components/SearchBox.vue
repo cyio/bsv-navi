@@ -1,6 +1,6 @@
 <template lang="pug">
   .searchbar-input-container
-    input.searchbar-input(type='search' name='q' placeholder='BCH 地址，支持新旧格式...' autocomplete='off' spellcheck="false" autofocus v-model="words" @keyup.enter="_submit" @change="errMsg = null")
+    input.searchbar-input(type='search' name='q' v-bind:placeholder="$t('home.searchPlaceholder')" autocomplete='off' spellcheck="false" autofocus v-model="words" @keyup.enter="_submit" @change="errMsg = null")
     icon.search-icon(name="search" scale="1.5" @click.native="_submit")
     .err-msg(v-if="displayErrMsg") {{displayErrMsg}}
     // .err-msg 'tst'
@@ -54,9 +54,12 @@ export default {
     padding: 0 .03rem;
     max-width: 500px;
     width: 90%;
-    background-color: #fff;
-    border: 1px solid var(--theme);
-    border-radius: 5px;
+		background-color: #fff;
+    height: 44px;
+    vertical-align: top;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
   }
   .searchbar-input {
 		flex: 1;
@@ -64,7 +67,7 @@ export default {
 		padding: .03rem;
 		border: 0;
 		transition: border .2s ease;
-		font-size: .13rem;
+		font-size: .12rem;
 		line-height: .18rem;
   }
   .search-icon {

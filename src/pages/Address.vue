@@ -3,19 +3,20 @@
   search-box(:keywords='addressId' :errors='addressErrors' :submit='submit')
   .address-detail
     .address-balance(v-if="!showLoading && !showErrorMsg")
-      .label 余额
+      .label {{$t('address.balance')}}
       span.value {{addressBalance}}
       span.unit BCH
     .address-tx(v-if="addressTxs && addressTxs.total_count")
+      .desp {{$t('address.latestTxs')}}
       .tx-item(v-for="tx in addressTxs.list")
         .tx-item-header
-          .tx-item-title {{tx.balance_diff > 0 ? '接收' : '发送'}}
+          .tx-item-title {{tx.balance_diff > 0 ? $t('address.received') : $t('address.sent')}}
             span.tx-amount(v-bind:class="{ in: tx.balance_diff > 0, out: tx.balance_diff < 0 }") {{(tx.balance_diff > 0 && '+') + tx.balance_diff / 10 ** 8}}
           .tx-time {{tx.created_at | timeFormat(locale)}}
         // .tx-address xxxxx
-    .loading(v-if="showLoading") 载入中...
-    .error(v-if="showErrorMsg") 服务暂不可用
-      button.btn(@click="setAddressData(addressId)") 点击重试
+    .loading(v-if="showLoading") {{$t('address.loading')}}
+    .error(v-if="showErrorMsg") {{$t('address.serviceUnavailable')}}
+      button.btn(@click="setAddressData(addressId)") {{$t('address.retry')}}
 </template>
 
 <script>
@@ -59,7 +60,7 @@ export default {
         this.addressErrors = '地址格式不正确'
         this.addressDetail = this.addressTxs = null
         this.showLoading = true
-        console.log('address err', e)
+        // console.log('address err', e)
       }
     },
     async setAddressData (id) {
@@ -137,7 +138,6 @@ export default {
   }
   .address-balance {
     text-align: center;
-		margin-bottom: .2rem;
   }
   .address-balance .label {
     color: #7d7d7d;
@@ -170,5 +170,12 @@ export default {
   }
   .loading {
     margin-top: 50px;
+  }
+  .address-tx .desp {
+    text-align: right;
+    line-height: .25rem;
+    color: #adadad;
+    font-size: .11rem;
+    margin-right: .12rem;
   }
   </style>
