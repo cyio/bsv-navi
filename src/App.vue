@@ -27,10 +27,16 @@ export default {
 </script>
 
 <style>
+body {
+  font-size: initial;
+}
 a {
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
 	text-decoration-line: none;
     color: var(--theme);
+}
+a:active, a:hover {
+  color: #d06f00;
 }
 
 input,textarea{

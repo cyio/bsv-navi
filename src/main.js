@@ -6,6 +6,7 @@ import router from './router'
 import VueI18n from 'vue-i18n'
 import 'vue-awesome/icons/search'
 import Icon from 'vue-awesome/components/Icon'
+import 'iview/dist/styles/iview.css'
 
 Vue.config.productionTip = false
 Vue.use(VueI18n)

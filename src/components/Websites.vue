@@ -15,16 +15,16 @@ export default {
   data () {
     return {
       sites: {
-        '行情': [
-          {title: '非小号', url: 'https://www.feixiaohao.com'},
-          {title: 'AICoin', url: 'https://www.aicoin.net.cn/'},
-          {title: '币值轻快版', url: 'http://coin.leanapp.cn/'}
-        ],
         '工具': [
           {title: 'BTC.com', url: 'http://bch.btc.com'},
           {title: 'Blockchair', url: 'https://blockchair.com/'},
           // {title: '支付测试', url: 'http://bch-echo.leanapp.cn'},
           {title: '最简钱包', url: 'https://tsbw.io/bcc/'}
+        ],
+        '行情': [
+          {title: '非小号', url: 'https://www.feixiaohao.com'},
+          {title: 'AICoin', url: 'https://www.aicoin.net.cn/'},
+          {title: '币值轻快版', url: 'http://coin.leanapp.cn/'}
         ],
         '数据': [
           {title: 'fork.lol', url: 'https://fork.lol/'},
@@ -64,6 +64,9 @@ export default {
     }
     .table td {
       padding-right: .5rem;
+    }
+    .table tr {
+      height: 2.2rem;
     }
   }
 </style>
