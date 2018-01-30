@@ -1,47 +1,62 @@
 <template lang="pug">
 .websites-view
-  table.table.table-responsive
-    tbody
-      tr(v-for="(cateName, index) in Object.keys(sites)")
-        th(scope='row') {{cateName}}
-        td(v-for="(site, index) in sites[cateName]")
+  table
+    tr(v-for="cateName in Object.keys(sites)")
+      th(@click="sites[cateName].expand = !sites[cateName].expand") {{cateName}}
+      .t-content
+        td(v-for="(site, index) in sites[cateName].content")
           a(:href='site.url', target='_blank') {{site.title}}
 </template>
 <script>
 export default {
-  name: 'search-box',
+  name: 'websites',
   props: {
   },
   data () {
     return {
       sites: {
-        '工具': [
-          {title: 'BTC.com', url: 'http://bch.btc.com'},
-          {title: 'Blockchair', url: 'https://blockchair.com/'},
-          // {title: '支付测试', url: 'http://bch-echo.leanapp.cn'},
-          {title: '最简钱包', url: 'https://tsbw.io/bcc/'}
-        ],
-        '行情': [
-          {title: '非小号', url: 'https://www.feixiaohao.com'},
-          {title: 'AICoin', url: 'https://www.aicoin.net.cn/'},
-          {title: '币值轻快版', url: 'http://coin.leanapp.cn/'}
-        ],
-        '数据': [
-          {title: 'fork.lol', url: 'https://fork.lol/'},
-          {title: 'Cash vs Core', url: 'https://cashvscore.com/'},
-          {title: 'Hashrates', url: 'https://bitinfocharts.com/comparison/hashrate-btc-bch.html#6m'}
-        ],
-        '社区': [
-          {title: 'Reddit', url: 'https://www.reddit.com/r/btc/'},
-          {title: '巴比特论坛', url: 'http://8btc.com/forum-147-1.html'}
-        ],
-        '人物': [
-          {title: 'Roger Ver', url: 'https://twitter.com/rogerkver'},
-          {title: 'Craig S Wright', url: 'https://twitter.com/ProfFaustus'},
-          {title: 'Rick Falkvinge', url: 'https://twitter.com/Falkvinge'}
-          // {title: '吴忌寒', url: 'https://weibo.com/bitcoinqqagent'},
-          // {title: '江卓尔', url: 'https://weibo.com/ltc1btc'}
-        ]
+        '工具': {
+          expand: false,
+          content: [
+            {title: 'BTC.com', url: 'https://bch.btc.com'},
+            {title: 'Blockchair', url: 'https://blockchair.com/'},
+            {title: '最简钱包', url: 'https://tsbw.io/bcc/'},
+            {title: '支付测试', url: 'http://bch-echo.leanapp.cn'}
+          ]
+        },
+        '行情': {
+          expand: false,
+          content: [
+            {title: '非小号', url: 'https://www.feixiaohao.com'},
+            {title: 'AICoin', url: 'https://www.aicoin.net.cn/'},
+            {title: '币值轻快版', url: 'http://coin.leanapp.cn/'}
+          ]
+        },
+        '数据': {
+          expand: false,
+          content: [
+            {title: 'fork.lol', url: 'https://fork.lol/'},
+            {title: 'Cash vs Core', url: 'https://cashvscore.com/'},
+            {title: 'Hashrates', url: 'https://bitinfocharts.com/comparison/hashrate-btc-bch.html#6m'}
+          ]
+        },
+        '社区': {
+          expand: false,
+          content: [
+            {title: 'Reddit', url: 'https://www.reddit.com/r/btc/'},
+            {title: '巴比特论坛', url: 'http://8btc.com/forum-147-1.html'}
+          ]
+        },
+        '人物': {
+          expand: false,
+          content: [
+            {title: 'Roger Ver', url: 'https://twitter.com/rogerkver'},
+            {title: 'Craig S Wright', url: 'https://twitter.com/ProfFaustus'},
+            {title: 'Rick Falkvinge', url: 'https://twitter.com/Falkvinge'},
+            {title: '吴忌寒', url: 'https://weibo.com/bitcoinqqagent'},
+            {title: '江卓尔', url: 'https://weibo.com/ltc1btc'}
+          ]
+        }
       }
     }
   },
@@ -55,18 +70,50 @@ export default {
 </script>
 <style lang="stylus">
   .websites-view {
-    .table {
-      line-height: 1.6rem;
-      margin: 1rem auto;
+    width: 100%;
+    margin: .5rem;
+    padding: .5rem;
+    max-width: 55rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    table {
+      max-width: 100%;
+      margin: 0 auto;
     }
-    .table th {
-      width: 15%;
+    .t-head {
+      width: 10%;
+      font-weight: bold;
+      &:hover {
+        color: var(--theme);
+      }
     }
-    .table td {
-      padding-right: .5rem;
+    .t-content {
+      // display: flex;
+      // justify-content: space-around;
+      // width: 100%;
+      // position: relative;
+			margin-left: .5rem;
     }
-    .table tr {
+    td {
       height: 2.2rem;
+      line-height: @height;
+      padding: 0 .5rem;
+    }
+    .t-expand-row {
+      position: absolute;
+      top: 100%;
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+    }
+    .t-data {
+      height: 2.2rem;
+      padding: 0 .5rem;
+    }
+    .t-row {
+      display: flex;
+      justify-content: space-around;
+      line-height: @height;
     }
   }
-</style>
+  </style>

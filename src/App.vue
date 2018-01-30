@@ -27,13 +27,25 @@ export default {
 </script>
 
 <style>
+::-webkit-scrollbar {
+  width: 0.3em;
+  height: 0.3em;
+}
+::-webkit-scrollbar-thumb {
+  background: #AAAAAB;
+}
+::-webkit-scrollbar-track {
+  background: #F1F1F1;
+}
 body {
   font-size: initial;
+  scrollbar-face-color: #AAAAAB;
+  scrollbar-track-color: #F1F1F1;
 }
 a {
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
 	text-decoration-line: none;
-    color: var(--theme);
+  color: var(--theme);
 }
 a:active, a:hover {
   color: #d06f00;

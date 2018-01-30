@@ -89,6 +89,8 @@ export default {
   }
   .logo-wrap img {
     width: 8rem;
+    background: var(--theme);
+    border-radius: 50%;
   }
   .qrcode {
     display: flex;
