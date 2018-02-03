@@ -2,6 +2,7 @@ export default {
   '工具': {
     content: [
       {title: 'BTC.com', url: 'https://bch.btc.com'},
+      {title: 'Bitcoin.com', url: 'https://explorer.bitcoin.com/bch'},
       {title: 'Blockchair', url: 'https://blockchair.com/'},
       {title: '钱包生成', url: 'https://cashaddress.org/'},
       {title: '最简钱包', url: 'https://tsbw.io/bcc/'},
