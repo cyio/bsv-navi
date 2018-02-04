@@ -3,7 +3,9 @@
   <header>
     <div class="title link" @click="go({path: '/'})">
         {{$t('home.title')}}
-        <span class="sub"></span>
+    </div>
+    <div class="link" @click="go({path: '/safe-guides'})">
+        安全指南
     </div>
   </header>
   <div class="container">
@@ -22,11 +24,20 @@
 import mixin from '@/mixin.js'
 export default {
   mixins: [mixin],
-  name: 'app'
+  name: 'app',
+  data () {
+    return {
+      metaInfo: {
+        title: 'Default Title',
+        titleTemplate: '%s | My Awesome Webapp'
+      }
+    }
+  }
 }
 </script>
 
-<style>
+<style lang="stylus">
+@import "assets/github-markdown.css"
 ::-webkit-scrollbar {
   width: 0.3em;
   height: 0.3em;
@@ -58,8 +69,8 @@ input,textarea{
 }
 
 ul {
-	list-style: none;
-	padding: 0;
+	// list-style: none;
+	// padding: 0;
 }
 
 :root {
@@ -70,44 +81,33 @@ ul {
 
 body {
   margin: 0;
-  // font-size: .13rem;
 }
 
 #app {
-  padding-top: var(--headerHeight);
-}
-
-p {
-  line-height: .22rem;
+	min-height: 100%;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	grid-template-columns: 100%;
 }
 
 .container {
-  // padding: .1rem;
-	margin-top: 2rem;
-  // border-top: 1px solid #eee;
-  // border-bottom: 1px solid #eee;
-  min-height: 550px;
 }
 
 header {
-  margin: 0;
-  height: var(--headerHeight);
-  line-height: var(--headerHeight);
-  padding: 0 .05rem;
-  position: fixed;
-  top: 0;
-  width: 100%;
   z-index: 1000;
-  // border-bottom: 1px solid #b2b2b2;
 	background-color: #fff;
 	color: var(--theme);
   box-shadow: 0 0 4px #657786;
+	display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
 }
 
 header .title {
-  // width: 2rem;
   font-size: 2rem;
 	margin-left: 1.5rem;
+  width: 8rem;
 }
 
 header .title .sub {
@@ -118,7 +118,6 @@ footer {
   text-align: center;
   padding: 15px 0 10px;
   color: #ccc;
-	// border-bottom: .1rem solid var(--theme);
 }
 
 footer a {
@@ -161,7 +160,7 @@ img, embed, iframe {
 .link {
 	position: relative;
 	cursor: pointer;
-	transition: all 0.4s ease-in;
+  transition: all 0.2s ease-in;
 }
 .link:before {
 	content: '';
@@ -207,3 +206,5 @@ img, embed, iframe {
   color: var(--theme);
 }
 </style>
+
+

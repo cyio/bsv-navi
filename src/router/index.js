@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/pages/Home'
 import Address from '@/pages/Address'
+import SafeGuides from '@/pages/SafeGuides'
 import ProgressBar from '@/components/ProgressBar'
 
 // global progress bar
@@ -37,6 +38,11 @@ export default new Router({
       path: '/address/:id',
       name: 'Address',
       component: Address
+    },
+    {
+      path: '/safe-guides',
+      name: 'SafeGuides',
+      component: SafeGuides
     },
     { path: '*', redirect: '/' }
   ]
