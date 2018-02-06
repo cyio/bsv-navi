@@ -6,20 +6,20 @@ export default {
       {title: 'Blockchair', url: 'https://blockchair.com/'},
       {title: '钱包生成', url: 'https://cashaddress.org/'},
       {title: '最简钱包', url: 'https://tsbw.io/bcc/'},
-      {title: '支付测试', url: 'http://bch-echo.leanapp.cn'}
+      {title: '支付测试', url: 'https://bch-echo.leanapp.cn'}
     ]
   },
   '行情': {
     content: [
+      {title: '币值轻快版', url: 'https://coin.leanapp.cn/'},
       {title: '非小号', url: 'http://feixiaohao.com'},
       {title: 'AICoin', url: 'https://www.aicoin.net.cn/'},
-      {title: 'CoinMarketCap', url: 'https://coinmarketcap.com/'},
-      {title: '币值轻快版', url: 'http://coin.leanapp.cn/'}
+      {title: 'CoinMarketCap', url: 'https://coinmarketcap.com/'}
     ]
   },
   '资讯': {
     content: [
-      {title: '币世界', url: 'http://www.bishijie.com/kuaixun'},
+      {title: '币世界', url: 'https://www.bishijie.com/kuaixun'},
       {title: 'Bitcoin.com', url: 'https://news.bitcoin.com/'},
       {title: 'CoinGeek', url: 'https://coingeek.com/'}
     ]
@@ -34,8 +34,8 @@ export default {
   },
   '社区': {
     content: [
-      {title: 'Reddit', url: 'https://www.reddit.com/r/btc/'},
-      {title: '巴比特论坛', url: 'http://8btc.com/forum-147-1.html'}
+      {title: '巴比特论坛', url: 'http://8btc.com/forum-147-1.html'},
+      {title: 'Reddit', url: 'https://www.reddit.com/r/btc/'}
     ]
   },
   '入门': {
