@@ -1,12 +1,8 @@
-<template>
+<template lang="pug">
 <div id="app">
   <header>
-    <div class="title link" @click="go({path: '/'})">
-        {{$t('home.title')}}
-    </div>
-    <div class="link" @click="go({path: '/safe-guides'})">
-        安全指南
-    </div>
+    <div class="title link" @click="go({path: '/'})">{{$t('home.title')}}</div>
+    <div class="link" @click="go({path: '/safe-guides'})">安全指南</div>
   </header>
   <div class="container">
     <keep-alive>
@@ -27,10 +23,6 @@ export default {
   name: 'app',
   data () {
     return {
-      metaInfo: {
-        title: 'Default Title',
-        titleTemplate: '%s | My Awesome Webapp'
-      }
     }
   }
 }
@@ -54,8 +46,8 @@ body {
   scrollbar-track-color: #F1F1F1;
 }
 a {
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
-	text-decoration-line: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  text-decoration-line: none;
   color: var(--theme);
 }
 a:active, a:hover {
@@ -63,20 +55,20 @@ a:active, a:hover {
 }
 
 input,textarea{
-	outline:0;
-	-webkit-tap-highlight-color:transparent;
-	-webkit-user-modify:read-write-plaintext-only
+  outline:0;
+  -webkit-tap-highlight-color:transparent;
+  -webkit-user-modify:read-write-plaintext-only
 }
 
 ul {
-	// list-style: none;
-	// padding: 0;
+  // list-style: none;
+  // padding: 0;
 }
 
 :root {
-	--theme: #f08b16;
-	--headerHeight: 3rem;
-	// --light: #908d8d;
+  --theme: #f08b16;
+  --headerHeight: 3rem;
+  // --light: #908d8d;
 }
 
 body {
@@ -84,10 +76,10 @@ body {
 }
 
 #app {
-	min-height: 100%;
-	display: grid;
-	grid-template-rows: auto 1fr auto;
-	grid-template-columns: 100%;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
 }
 
 .container {
@@ -95,10 +87,10 @@ body {
 
 header {
   z-index: 1000;
-	background-color: #fff;
-	color: var(--theme);
+  background-color: #fff;
+  color: var(--theme);
   box-shadow: 0 0 4px #657786;
-	display: flex;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 1.5rem;
@@ -106,8 +98,7 @@ header {
 
 header .title {
   font-size: 2rem;
-	margin-left: 1.5rem;
-  width: 8rem;
+  margin-left: 1.5rem;
 }
 
 header .title .sub {
@@ -146,54 +137,55 @@ img, embed, iframe {
 
 @media only screen and (min-width: 900px) {
   #app .main {
-		width: 750px;
-		// border: 1px solid #efefef;
+    width: 750px;
+    // border: 1px solid #efefef;
   }
   #app .main {
     margin: 0 auto;
   }
   #app header .title {
-		margin-left: 150px;
+    margin-left: 150px;
   }
 }
 
 .link {
-	position: relative;
-	cursor: pointer;
+  position: relative;
+  cursor: pointer;
   transition: all 0.2s ease-in;
+  -webkit-user-select: none;
 }
 .link:before {
-	content: '';
-	background-color: aliceblue;
-	border-radius: 50%;
-	display: block;
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
+  content: '';
+  background-color: aliceblue;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   transform: scale(0.001, 0.001);
 }
 .link:focus {
-	outline: 0;
-	color: #fff;
+  outline: 0;
+  color: #fff;
 }
 .link:focus:before {
   animation: effect_dylan 0.8s ease-out;
 }
 @keyframes effect_dylan {
-	50% {
+  50% {
     transform: scale(1.5, 1.5);
-		opacity: 0;
-	}
-	99% {
+    opacity: 0;
+  }
+  99% {
     transform: scale(0.001, 0.001);
-		opacity: 0;
-	}
-	100% {
+    opacity: 0;
+  }
+  100% {
     transform: scale(0.001, 0.001);
-		opacity: 1;
-	}
+    opacity: 1;
+  }
 }
 
 .btn {

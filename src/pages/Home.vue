@@ -1,7 +1,6 @@
 <template lang="pug">
 .home-view
   .logo-wrap
-    img(src="../assets/bch-logo-512.png")
   search-box(:submit='submit')
   a(href="/address/1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa") {{$t('home.genesisAddr')}}
   websites
@@ -71,7 +70,7 @@ export default {
 
 <style>
   .home-view {
-		display: flex;
+    display: flex;
     width: 100%;
     min-height: 500px;
     flex-direction: column;
@@ -79,19 +78,13 @@ export default {
   }
   .home-view .searchbar-input-container {
   }
-  .logo {
-    background-image: url('../assets/bch-logo-512.png');
-    bacground-repeat: no-repeat;
-  }
   .logo-wrap {
-		margin-top: 3rem;
+    padding: 4rem;
+    margin-top: 2.2rem;
     margin-bottom: .1rem;
-  }
-  .logo-wrap img {
-    width: 8rem;
-    height: 8rem;
-    background: var(--theme);
-    border-radius: 50%;
+    background: url('../assets/logo-bitcoincash-dark.part.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
   }
   .qrcode {
     display: flex;
@@ -104,7 +97,7 @@ export default {
     padding-bottom: .1rem;
   }
   .about {
-		position: fixed;
+    position: fixed;
     top: .5rem;
     right: 1rem;
     width: 4rem;
@@ -115,11 +108,11 @@ export default {
   .modal-container {
     text-align: center;
   }
-	textarea {
+  textarea {
     width: 86%;
     resize: none;
     padding: .05rem 0;
     text-align: center;
     border: none;
-	}
+  }
 </style>
