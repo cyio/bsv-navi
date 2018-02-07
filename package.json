@@ -25,6 +25,7 @@
     "leancloud-storage": "^3.4.2",
     "leanengine": "^3.0.2",
     "marked": "^0.3.12",
+    "normalize.css": "^7.0.0",
     "numeral": "^2.0.6",
     "qrcode": "^1.2.0",
     "timeago.js": "^3.0.2",
