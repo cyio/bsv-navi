@@ -1,17 +1,22 @@
 export default {
-  '工具': {
+  '浏览器': {
     content: [
       {title: 'BTC.com', url: 'https://bch.btc.com'},
       {title: 'Bitcoin.com', url: 'https://explorer.bitcoin.com/bch'},
-      {title: 'Blockchair', url: 'https://blockchair.com/'},
+      {title: 'Blockchair', url: 'https://blockchair.com/'}
+    ]
+  },
+  '工具': {
+    content: [
+      {title: '地址格式转换', url: 'https://bch.btc.com/tools/address-converter'},
+      {title: 'Coinb.in', url: 'https://cyio.github.io/coinbin'},
       {title: '钱包生成', url: 'https://cashaddress.org/'},
-      {title: '最简钱包', url: 'https://tsbw.io/bcc/'},
       {title: '支付测试', url: 'https://bch-echo.leanapp.cn'}
     ]
   },
   '行情': {
     content: [
-      {title: '币值轻快版', url: 'https://coin.leanapp.cn/'},
+      {title: '币值轻快版', url: 'https://coin.bch123.org/'},
       {title: '非小号', url: 'http://feixiaohao.com'},
       {title: 'AICoin', url: 'https://www.aicoin.net.cn/'},
       {title: 'CoinMarketCap', url: 'https://coinmarketcap.com/'}

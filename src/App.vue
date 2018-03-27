@@ -98,7 +98,6 @@ header {
 
 header .title {
   font-size: 2rem;
-  margin-left: 1.5rem;
 }
 
 header .title .sub {

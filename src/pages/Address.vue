@@ -2,10 +2,14 @@
 .address-view
   search-box(:keywords='addressId' :errors='addressErrors' :submit='submit')
   .address-detail
-    .address-balance(v-if="!showLoading && !showErrorMsg")
-      .label {{$t('address.balance')}}
-      span.value {{addressBalance}}
-      span.unit BCH
+    .row
+      .address-balance(v-if="!showLoading && !showErrorMsg")
+        .label {{$t('address.balance')}}
+        span.value {{addressBalance}}
+        span.unit BCH
+      .qr-wrap
+        .qrcode(v-if="qrUrl")
+          img(:src="qrUrl")
     .address-tx(v-if="addressTxs && addressTxs.total_count")
       .desp {{$t('address.latestTxs')}}
       .tx-item(v-for="tx in addressTxs.list")
@@ -27,7 +31,7 @@ import axios from 'axios'
 import Modal from '../components/Modal'
 import SearchBox from '../components/SearchBox'
 import bchaddr from 'bchaddrjs'
-// import QRCode from 'qrcode'
+import QRCode from 'qrcode'
 import Timeago from 'timeago.js'
 import numeral from 'numeral'
 const timeAgo = new Timeago()
@@ -45,14 +49,19 @@ export default {
       addressTxs: null,
       showLoading: true,
       showErrorMsg: false,
-      addressErrors: null
+      addressErrors: null,
+      qrUrl: null
     }
   },
   methods: {
     submit (address) {
       try {
         if (bchaddr.isLegacyAddress(address)) {
-          this.setAddressData(address)
+          const cashAddr = bchaddr.toCashAddress(address)
+          this.$router.replace({path: '/address/' + cashAddr}, () => {
+            this.setAddressData(address)
+            this.addressId = cashAddr
+          })
         } else if (bchaddr.isCashAddress(address)) {
           this.setAddressData(bchaddr.toLegacyAddress(address))
         }
@@ -71,6 +80,7 @@ export default {
       this.showErrorMsg = false
       this.addressDetail = await this.getAddressDetail(id)
       this.addressTxs = await this.getAddressTxs(id)
+      this.qrUrl = await this.generateQR(bchaddr.toCashAddress(id))
       this.$bar.finish()
       this.showLoading = false
       if (!Object.keys(this.addressDetail).length || !Object.keys(this.addressTxs).length) {
@@ -88,6 +98,10 @@ export default {
       return axios.get(`https://bird.ioliu.cn/v1/?url=https://bch-chain.api.btc.com/v3/address/${address}/tx?pagesize=10&verbose=1`).then(res => {
         return res.headers ? res.data.data : res.data
       }).catch(err => console.log(err))
+    },
+    async generateQR (text) {
+      const url = await QRCode.toDataURL(text.toUpperCase(), { mode: 'alphanumeric' })
+      return url
     }
   },
   computed: {
@@ -104,11 +118,6 @@ export default {
       return numeral(value).format('0,0.00')
     },
     timeFormat (time, locale) {
-      // console.log(+new Date() - time * 1000)
-      // let i = +new Date() - time * 1000
-      // let day = 1000 * 60 * 60 * 24
-      // console.log(i > day)
-      // if (i > day) return (new Date(time * 1000))
       return timeAgo.format(new Date(time * 1000), locale)
     }
   },
@@ -135,6 +144,20 @@ export default {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+  }
+  .address-detail .row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .qrcode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .qrcode img {
+    width: 6rem;
   }
   .address-balance {
     text-align: center;
