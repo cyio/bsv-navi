@@ -146,21 +146,21 @@ export default {
     align-items: center;
   }
   .address-detail .row {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    box-shadow: 0 0 black;
+    width: 20rem;
+  }
+  .qr-wrap {
+    text-align: right;
   }
   .qrcode {
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
   .qrcode img {
     width: 6rem;
   }
   .address-balance {
-    text-align: center;
+		padding: 10px;
   }
   .address-balance .label {
     color: #7d7d7d;
