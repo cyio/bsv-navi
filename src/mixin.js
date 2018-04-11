@@ -1,17 +1,23 @@
+import MobileDetect from 'mobile-detect'
+let md = new MobileDetect(window.navigator.userAgent)
 export default {
   methods: {
     debug (msg) {
       console.log('debug', msg)
     },
     go (path) {
-      // console.log(path)
-      if (path.name === 'Post') {
-        this.$bar.start()
-      }
       this.$router.push(path)
     },
     goBack () {
       this.$router.go(-1)
+    }
+  },
+  computed: {
+    isMobile () {
+      return md.mobile()
+    },
+    isSupportWebShare () {
+      return md.is('AndroidOS') && md.version('Chrome') >= 61
     }
   }
 }

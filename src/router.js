@@ -12,7 +12,7 @@ document.body.appendChild(bar.$el)
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+  mode: 'hash',
   scrollBehavior (to, from, savedPosition) {
     // console.log('scroll', to.path, from.path, savedPosition)
     if (savedPosition) {

@@ -19,8 +19,6 @@
 
 <script>
 import mixin from '@/mixin.js'
-import MobileDetect from 'mobile-detect'
-let md = new MobileDetect(window.navigator.userAgent)
 export default {
   mixins: [mixin],
   name: 'app',
@@ -32,18 +30,13 @@ export default {
     share () {
       if (navigator.share) {
         navigator.share({
-          title: 'BCH123',
-          text: 'Bitcoin Cash',
+          title: 'BCH123.org',
+          text: '',
           url: window.location.href
         })
           .then(() => console.log('Successful share'))
           .catch((error) => console.log('Error sharing', error))
       }
-    }
-  },
-  computed: {
-    isSupportWebShare () {
-      return md.is('AndroidOS') && md.version('Chrome') >= 61
     }
   }
 }

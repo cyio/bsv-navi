@@ -2,56 +2,28 @@
 .home-view
   .logo-wrap
   search-box(:submit='submit')
-  a(href="/address/1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa") {{$t('home.genesisAddr')}}
+  a(@click='go("/address/bitcoincash:qp3wjpa3tjlj042z2wv7hahsldgwhwy0rq9sywjpyy")') {{$t('home.genesisAddr')}}
   websites
-  modal(:show='showModal', @close='showModal = false')
-    .donate-modal(slot='content')
-      .qrcode(v-if='qrUrls.donateAddr')
-        img(:src='qrUrls.donateAddr')
-      textarea(readonly="readonly") {{donateAddr}}
-      div
-        | {{$t('home.mobile')}}：13621208032 
-        br
-        | {{$t('home.email')}}：ibeceo@gmail.com
-      div
-        | {{$t('home.sourceCode')}}：
-        a(href='https://github.com/cyio/bch123.org', target='_blank') cyio/bch123.org
-  // .about(@click='showModal = true') {{$t('home.about')}}
 </template>
 
 <script>
 import mixin from '@/mixin.js'
-// import axios from 'axios'
-// import bchaddr from 'bchaddrjs'
-import Modal from '../components/Modal'
 import SearchBox from '../components/SearchBox'
 import Websites from '../components/Websites'
-import QRCode from 'qrcode'
 export default {
   name: 'Home',
   mixins: [mixin],
   components: {
-    Modal,
     SearchBox,
     Websites
   },
   data () {
     return {
-      donateAddr: '1M1FYu4zuVaxRPWLZG5CnP8qQrZaqu6c2L',
-      useCashAddr: false,
-      showModal: false,
-      qrUrls: {
-        donateAddr: null
-      }
     }
   },
   methods: {
     async submit (keywords) {
       this.go({path: '/address/' + keywords})
-    },
-    async generateQR (text) {
-      const url = await QRCode.toDataURL(this.useCashAddr ? text.toUpperCase() : text, { mode: 'alphanumeric' })
-      return url
     }
   },
   computed: {
@@ -59,9 +31,6 @@ export default {
   filters: {
   },
   created () {
-    this.generateQR(this.donateAddr).then(data => {
-      this.qrUrls.donateAddr = data
-    })
   },
   mounted () {
   }
