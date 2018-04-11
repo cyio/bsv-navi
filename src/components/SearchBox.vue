@@ -1,12 +1,14 @@
 <template lang="pug">
   .searchbar-input-container
-    input.searchbar-input(type='search' name='q' v-bind:placeholder="$t('home.searchPlaceholder')" autocomplete='off' spellcheck="false" autofocus v-model="words" @keyup.enter="_submit" @change="errMsg = null")
+    input.searchbar-input(type='search' name='q' v-bind:placeholder="$t('home.searchPlaceholder')" autocomplete='off' spellcheck="false" :autofocus="isMobile ? 'autofocus' : ''" v-model="words" @keyup.enter="_submit" @change="errMsg = null")
     icon.search-icon(name="search" @click.native="_submit")
     .err-msg(v-if="displayErrMsg") {{displayErrMsg}}
 </template>
 <script>
+import mixin from '@/mixin.js'
 export default {
   name: 'search-box',
+  mixins: [mixin],
   props: {
     keywords: {
       type: String,
