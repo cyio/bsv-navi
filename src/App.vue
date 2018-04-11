@@ -3,6 +3,7 @@
   <header>
     <div class="title link" @click="go({path: '/'})">{{$t('home.title')}}</div>
     <div class="link" @click="go({path: '/safe-guides'})">安全指南</div>
+    <div v-if="isSupportWebShare" class="link" @click="share">分享</div>
   </header>
   <div class="container">
     <keep-alive>
@@ -18,11 +19,31 @@
 
 <script>
 import mixin from '@/mixin.js'
+import MobileDetect from 'mobile-detect'
+let md = new MobileDetect(window.navigator.userAgent)
 export default {
   mixins: [mixin],
   name: 'app',
   data () {
     return {
+    }
+  },
+  methods: {
+    share () {
+      if (navigator.share) {
+        navigator.share({
+          title: 'BCH123',
+          text: 'Bitcoin Cash',
+          url: window.location.href
+        })
+          .then(() => console.log('Successful share'))
+          .catch((error) => console.log('Error sharing', error))
+      }
+    }
+  },
+  computed: {
+    isSupportWebShare () {
+      return md.is('AndroidOS') && md.version('Chrome') >= 61
     }
   }
 }

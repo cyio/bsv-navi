@@ -3,7 +3,6 @@
     input.searchbar-input(type='search' name='q' v-bind:placeholder="$t('home.searchPlaceholder')" autocomplete='off' spellcheck="false" autofocus v-model="words" @keyup.enter="_submit" @change="errMsg = null")
     icon.search-icon(name="search" @click.native="_submit")
     .err-msg(v-if="displayErrMsg") {{displayErrMsg}}
-    // .err-msg 'tst'
 </template>
 <script>
 export default {

@@ -25,6 +25,7 @@
     "leancloud-storage": "^3.4.2",
     "leanengine": "^3.0.2",
     "marked": "^0.3.12",
+    "mobile-detect": "^1.4.1",
     "normalize.css": "^7.0.0",
     "numeral": "^2.0.6",
     "qrcode": "^1.2.0",

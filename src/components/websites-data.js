@@ -34,7 +34,8 @@ export default {
       {title: 'fork.lol', url: 'https://fork.lol/'},
       {title: 'Cash vs Core', url: 'https://cashvscore.com/'},
       {title: 'Hashrates', url: 'https://bitinfocharts.com/comparison/hashrate-btc-bch.html#6m'},
-      {title: 'CoinDance', url: 'https://cash.coin.dance/'}
+      {title: 'CoinDance', url: 'https://cash.coin.dance/'},
+      {title: 'Cashnodes', url: 'https://cashnodes.bitcoinunlimited.info/'}
     ]
   },
   '社区': {
