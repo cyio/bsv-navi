@@ -27,7 +27,8 @@ const translations = {
       email: '邮箱',
       sourceCode: '开放源码',
       searchPlaceholder: 'BCH 地址，支持新旧格式...',
-      genesisAddr: '创世地址'
+      genesisAddr: '创世地址',
+      genesisTx: '创世交易'
     },
     address: {
       balance: '余额',
@@ -48,7 +49,8 @@ const translations = {
       email: 'Email',
       sourceCode: 'Source Code',
       searchPlaceholder: 'BCH address, support legacy / cashAddress',
-      genesisAddr: 'Genesis Address'
+      genesisAddr: 'Genesis Address',
+      genesisTx: 'Genesis Transaction'
     },
     address: {
       balance: 'Balance',

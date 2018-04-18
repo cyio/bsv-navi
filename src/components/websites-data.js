@@ -9,7 +9,6 @@ export default {
   '工具': {
     content: [
       {title: '地址格式转换', url: 'https://bch.btc.com/tools/address-converter'},
-      {title: 'Coinb.in', url: 'https://cyio.github.io/coinbin'},
       {title: '钱包生成', url: 'https://cashaddress.org/'},
       {title: '支付测试', url: 'https://bch-echo.leanapp.cn'}
     ]
@@ -34,6 +33,7 @@ export default {
       {title: 'fork.lol', url: 'https://fork.lol/'},
       {title: 'Cash vs Core', url: 'https://cashvscore.com/'},
       {title: 'Hashrates', url: 'https://bitinfocharts.com/comparison/hashrate-btc-bch.html#6m'},
+      {title: 'TX Highway', desc: 'Live Bitcoin Cash vs Bitcoin Core Transaction Visualizer ', url: 'https://txhighway.com/'},
       {title: 'CoinDance', url: 'https://cash.coin.dance/'},
       {title: 'Cashnodes', url: 'https://cashnodes.bitcoinunlimited.info/'}
     ]
@@ -67,6 +67,12 @@ export default {
       {title: 'OKEx', url: 'https://www.okex.com/'},
       {title: '火币', url: 'https://www.huobi.com/'},
       {title: 'CoinEx', url: 'https://www.coinex.com/'}
+    ]
+  },
+  '开发': {
+    content: [
+      {title: 'Coinb.in', url: 'https://cyio.github.io/coinbin'},
+      {title: 'Devs.Cash', desc: 'Bitcoin Cash Web & App Dev Projects', url: 'http://devs.cash/'}
     ]
   },
   '人物': {

@@ -5,7 +5,7 @@
       th(@click="sites[cateName].expand = !sites[cateName].expand") {{cateName}}
       .tr-inner
         td(v-for="(site, index) in sites[cateName].content")
-          a(:href='site.url', target='_blank') {{site.title}}
+          a(:href='site.url', :title='site.desc', target='_blank') {{site.title}}
 </template>
 <script>
 import sites from './websites-data.js'
