@@ -18,6 +18,7 @@ export default {
       {title: '币值轻快版', url: 'https://coin.bch123.org/'},
       {title: '非小号', url: 'http://feixiaohao.com'},
       {title: 'AICoin', url: 'https://www.aicoin.net.cn/'},
+      {title: 'Satoshi Pulse', url: ' https://markets.bitcoin.com/'},
       {title: 'CoinMarketCap', url: 'https://coinmarketcap.com/'}
     ]
   },

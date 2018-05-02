@@ -35,6 +35,8 @@ import QRCode from 'qrcode'
 import Timeago from 'timeago.js'
 import numeral from 'numeral'
 const timeAgo = new Timeago()
+const proxyHost = 'https://bird.ioliu.cn/v1'
+// const proxyHost = 'http://api.oaker.bid/proxy'
 export default {
   name: 'Address',
   mixins: [mixin],
@@ -89,13 +91,13 @@ export default {
     },
     getAddressDetail (address) {
       // return axios.get(`/api/address?${address}`).then(res => {
-      return axios.get(`https://bird.ioliu.cn/v1/?url=https://bch-chain.api.btc.com/v3/address/${address}`).then(res => {
+      return axios.get(`${proxyHost}/?url=https://bch-chain.api.btc.com/v3/address/${address}`).then(res => {
         return res.headers ? res.data.data : res.data
       }).catch(err => console.log(err))
     },
     async getAddressTxs (address) {
       // return axios.get(`/api/address-txs?${address}`).then(res => {
-      return axios.get(`https://bird.ioliu.cn/v1/?url=https://bch-chain.api.btc.com/v3/address/${address}/tx?pagesize=10&verbose=1`).then(res => {
+      return axios.get(`${proxyHost}/?url=https://bch-chain.api.btc.com/v3/address/${address}/tx?pagesize=10&verbose=1`).then(res => {
         return res.headers ? res.data.data : res.data
       }).catch(err => console.log(err))
     },
