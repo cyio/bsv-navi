@@ -133,14 +133,14 @@ export default {
     async setAddressData (id) {
       // console.log(id)
       this.addressDetail = this.addressTxs = this.addressErrors = null
-      this.$bar.start()
+      // this.$bar.start()
       this.showLoading = true
       this.showErrorMsg = false
       this.addressDetail = await this.getAddressDetail(id)
       // this.addressTxs = await this.getAddressTxs(id)
       this.getTableData()
       this.qrUrl = await this.generateQR(bchaddr.toCashAddress(id))
-      this.$bar.finish()
+      // this.$bar.finish()
       this.showLoading = false
       // if (!Object.keys(this.addressDetail).length || !Object.keys(this.addressTxs).length) {
       // this.showErrorMsg = true

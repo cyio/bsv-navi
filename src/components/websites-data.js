@@ -1,4 +1,11 @@
 export default {
+  '社交': {
+    content: [
+      {title: 'Memo', desc: '去中心化微博', url: 'https://memo.cash/'},
+      {title: 'BlockPress', desc: '去中心化微博', url: 'https://www.blockpress.com/ '},
+      {title: 'Yours', desc: '能赚BCH的写作平台', url: 'https://www.yours.org/'},
+    ]
+  },
   '浏览器': {
     content: [
       {title: 'BTC.com', url: 'https://bch.btc.com'},
@@ -10,7 +17,6 @@ export default {
     content: [
       {title: '地址格式转换', url: 'https://bch.btc.com/tools/address-converter'},
       {title: '钱包生成', url: 'https://cashaddress.org/'},
-      {title: '支付测试', url: 'https://bch-echo.leanapp.cn'}
     ]
   },
   '行情': {
@@ -72,8 +78,15 @@ export default {
   },
   '开发': {
     content: [
-      {title: 'Coinb.in', url: 'https://cyio.github.io/coinbin'},
+      {title: 'BITBOX', desc: 'Supercharge your Bitcoin Cash workflow', url: 'https://www.bitbox.earth/'},
+      {title: 'Coinb.in', desc: 'Support Bitcoin Cash setting', url: 'https://cyio.github.io/coinbin'},
       {title: 'Devs.Cash', desc: 'Bitcoin Cash Web & App Dev Projects', url: 'http://devs.cash/'}
+    ]
+  },
+  '考古': {
+    content: [
+      {title: '创世地址', url: '/address/bitcoincash:qp3wjpa3tjlj042z2wv7hahsldgwhwy0rq9sywjpyy'},
+      {title: '创世交易', desc: 'The Times 03/Jan/2009 Chancellor on brink of second bailout for banks', url: 'https://www.viabtc.com/bch/tx/4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b'}
     ]
   },
   '人物': {

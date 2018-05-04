@@ -1,27 +1,47 @@
 <template lang="pug">
-<div id="app">
-  <header>
-    <div class="title link" @click="go({path: '/'})">{{$t('home.title')}}</div>
-    <div class="link" @click="go({path: '/safe-guides'})">安全指南</div>
-    <div v-if="isSupportWebShare" class="link" @click="share">分享</div>
-  </header>
-  <div class="container">
-    <keep-alive>
-      <router-view v-if="$route.meta.keepAlive" />
-    </keep-alive>
-    <transition name="fade"  v-if="!$route.meta.keepAlive">
-      <router-view />
-    </transition>
-  </div>
-  <footer></footer>
+#app
+  Layout
+    Header
+      Menu(mode='', active-name='1')
+        .layout-logo
+          .link(@click="go({path: '/'})") {{$t('home.title')}}
+        .layout-nav
+          // MenuItem(name='1')
+            // Icon(type='ios-navigate')
+          // Button(type="default")
+            // .link(@click="go({path: '/safe-guides'})") 安全指南
+        .link(v-if='isSupportWebShare', @click='share') 分享
+    Content
+      keep-alive
+        router-view(v-if='$route.meta.keepAlive')
+      transition(name='fade', v-if='!$route.meta.keepAlive')
+        router-view
+      Footer.layout-footer-center @2018 © Oaker
+// header
+  // .title.link(@click="go({path: '/'})") {{$t('home.title')}}
+  // .link(@click="go({path: '/safe-guides'})") 安全指南
+  // .link(v-if='isSupportWebShare', @click='share') 分享
 </div>
 </template>
 
 <script>
 import mixin from '@/mixin.js'
+import { Layout, Header, Menu, MenuItem, Breadcrumb, BreadcrumbItem, Card, Footer, Icon, Button } from 'iview'
 export default {
   mixins: [mixin],
   name: 'app',
+  components: {
+    Layout,
+    Header,
+    Menu,
+    MenuItem,
+    Breadcrumb,
+    BreadcrumbItem,
+    Card,
+    Footer,
+    Icon,
+    Button,
+  },
   data () {
     return {
     }
@@ -96,9 +116,6 @@ body {
   grid-template-columns: 100%;
 }
 
-.container {
-}
-
 header {
   z-index: 1000;
   background-color: #fff;
@@ -146,19 +163,6 @@ img, embed, iframe {
 }
 .fade-enter, .fade-leave-active {
   opacity: 0;
-}
-
-@media only screen and (min-width: 900px) {
-  #app .main {
-    width: 750px;
-    // border: 1px solid #efefef;
-  }
-  #app .main {
-    margin: 0 auto;
-  }
-  #app header .title {
-    margin-left: 150px;
-  }
 }
 
 .link {
@@ -210,6 +214,48 @@ img, embed, iframe {
   border: 1px solid #dedada;
   color: var(--theme);
 }
-</style>
-
+  .layout-logo{
+    border-radius: 3px;
+    float: left;
+    position: relative;
+    left: 20px;
+    font-size: 1.5rem;
+    padding: 0 20px;
+    background: var(--theme);
+    color: #fff;
+  }
+  .layout-nav{
+    width: 420px;
+    margin: 0 auto;
+    margin-right: 20px;
+  }
+  .layout-footer-center{
+    text-align: center;
+  }
+  .ivu-layout,
+  .ivu-layout-footer {
+    background: none;
+  }
+  .ivu-layout-header {
+    background: #fff;
+    boxShadow: 0 2px 3px 2px rgba(0,0,0,.1);
+  }
+  .ivu-layout-header {
+    padding: 0;
+  }
+  @media only screen and (min-width: 900px) {
+    .ivu-layout {
+      width: 750px;
+      margin: 0 auto;
+      // border: 1px solid #efefef;
+    }
+  }
+  @media only screen and (max-width: 450px) {
+    .layout-logo {
+      left: 0;
+      font-size: 1.2rem;
+      padding: 0 10px;
+    }
+  }
+  </style>
 

@@ -20,15 +20,13 @@ const shared = {
 const translations = {
   zh: {
     home: {
-      title: 'BCH123',
+      title: '比特币现金导航',
       about: '关于',
       aboutTitle: '联系/捐赠开发者(BCH)',
       mobile: '电话&微信',
       email: '邮箱',
       sourceCode: '开放源码',
-      searchPlaceholder: 'BCH 地址，支持新旧格式...',
-      genesisAddr: '创世地址',
-      genesisTx: '创世交易'
+      searchPlaceholder: 'BCH 帐户查看器，支持新旧地址格式...',
     },
     address: {
       balance: '余额',
@@ -49,8 +47,6 @@ const translations = {
       email: 'Email',
       sourceCode: 'Source Code',
       searchPlaceholder: 'BCH address, support legacy / cashAddress',
-      genesisAddr: 'Genesis Address',
-      genesisTx: 'Genesis Transaction'
     },
     address: {
       balance: 'Balance',

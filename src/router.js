@@ -3,11 +3,6 @@ import Router from 'vue-router'
 import Home from '@/pages/Home'
 import Address from '@/pages/Address'
 import SafeGuides from '@/pages/SafeGuides'
-import ProgressBar from '@/components/ProgressBar'
-
-// global progress bar
-const bar = Vue.prototype.$bar = new Vue(ProgressBar).$mount()
-document.body.appendChild(bar.$el)
 
 Vue.use(Router)
 

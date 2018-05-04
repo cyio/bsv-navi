@@ -5,12 +5,15 @@
       th(@click="sites[cateName].expand = !sites[cateName].expand") {{cateName}}
       .tr-inner
         td(v-for="(site, index) in sites[cateName].content")
-          a(:href='site.url', :title='site.desc', target='_blank') {{site.title}}
+          a(v-if="site.url.includes('http')" :href='site.url', :title='site.desc', target='_blank') {{site.title}}
+          a.link(v-else @click="go({path: site.url})") {{site.title}}
 </template>
 <script>
+import mixin from '@/mixin.js'
 import sites from './websites-data.js'
 export default {
   name: 'websites',
+  mixins: [mixin],
   props: {
   },
   data () {

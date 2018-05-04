@@ -16,7 +16,7 @@
     "bchaddrjs": "^0.1.4",
     "bitcoincashjs": "^0.1.9",
     "date-fns": "^1.29.0",
-    "iview": "^2.9.0",
+    "iview": "^2.13.1",
     "jsonp-es6": "^1.0.0",
     "koa": "^2.3.0",
     "koa-router": "^7.3.0",

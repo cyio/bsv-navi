@@ -2,9 +2,6 @@
 .home-view
   .logo-wrap
   search-box(:submit='submit')
-  .links
-    a(@click='go("/address/bitcoincash:qp3wjpa3tjlj042z2wv7hahsldgwhwy0rq9sywjpyy")') {{$t('home.genesisAddr')}}
-    a(href="https://www.viabtc.com/bch/tx/4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b" target="_blank") {{$t('home.genesisTx')}}
   websites
 </template>
 
@@ -12,12 +9,22 @@
 import mixin from '@/mixin.js'
 import SearchBox from '../components/SearchBox'
 import Websites from '../components/Websites'
+import { Layout, Header, Menu, MenuItem, Breadcrumb, BreadcrumbItem, Card, Footer, Icon } from 'iview'
 export default {
   name: 'Home',
   mixins: [mixin],
   components: {
     SearchBox,
-    Websites
+    Websites,
+    Layout,
+    Header,
+    Menu,
+    MenuItem,
+    Breadcrumb,
+    BreadcrumbItem,
+    Card,
+    Footer,
+    Icon
   },
   data () {
     return {
