@@ -246,6 +246,7 @@ export default {
 		width: 100%;
 		min-height: 500px;
 		flex-direction: column;
+		padding: 0 10px;
   }
   .address-detail {
     display: flex;

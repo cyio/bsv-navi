@@ -33,7 +33,6 @@ export default {
   .websites-view {
     width: 100%;
     margin: .5rem;
-    padding: .5rem;
     max-width: 55rem;
     overflow-x: auto;
     white-space: nowrap;

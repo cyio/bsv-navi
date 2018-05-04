@@ -51,11 +51,11 @@ export default {
   .searchbar-input-container {
     position: relative;
 		display: flex;
-    margin: 20px auto;
+    margin: 20px 0;
     padding: 0 .03rem;
     max-width: 500px;
-    width: 90%;
-		background-color: #fff;
+    width: 100%;
+    background-color: #fff;
     height: 44px;
     vertical-align: top;
     border-radius: 2px;

@@ -53,10 +53,11 @@ export default {
     min-height: 500px;
     flex-direction: column;
     align-items: center;
+    padding: 0 10px;
   }
   .home-view .searchbar-input-container {
   }
-  .logo-wrap {
+  .home-view .logo-wrap {
     padding: 4rem;
     margin-top: 2.2rem;
     margin-bottom: .1rem;

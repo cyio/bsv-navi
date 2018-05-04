@@ -2,15 +2,16 @@
 #app
   Layout
     Header
-      Menu(mode='', active-name='1')
-        .layout-logo
-          .link(@click="go({path: '/'})") {{$t('home.title')}}
-        .layout-nav
+      .layout-logo.link(@click="go({path: '/'})")
+        .logo-wrap(v-if="$route.name !== 'Home'")
+        span() {{$t('home.title')}}
+      .layout-nav
+        .link(v-if="$route.name === 'Home'" @click="go({path: '/safe-guides'})") 安全指南
+        .link(v-if='isSupportWebShare', @click='share') 分享
+      // Menu(active-name='1')
           // MenuItem(name='1')
             // Icon(type='ios-navigate')
           // Button(type="default")
-            // .link(@click="go({path: '/safe-guides'})") 安全指南
-        .link(v-if='isSupportWebShare', @click='share') 分享
     Content
       keep-alive
         router-view(v-if='$route.meta.keepAlive')
@@ -58,6 +59,9 @@ export default {
           .catch((error) => console.log('Error sharing', error))
       }
     }
+  },
+  mounted() {
+    console.log(this.$route)
   }
 }
 </script>
@@ -215,19 +219,22 @@ img, embed, iframe {
   color: var(--theme);
 }
   .layout-logo{
+    display: flex;
     border-radius: 3px;
     float: left;
     position: relative;
-    left: 20px;
-    font-size: 1.5rem;
-    padding: 0 20px;
-    background: var(--theme);
-    color: #fff;
+    font-size: 1.2rem;
+    padding: 0 10px;
+    // background: var(--theme);
+    color: var(--theme);
   }
   .layout-nav{
-    width: 420px;
-    margin: 0 auto;
-    margin-right: 20px;
+		margin-right: 20px;
+		float: right;
+    display: flex;
+  }
+  .layout-nav .link {
+    margin-left: 10px;
   }
   .layout-footer-center{
     text-align: center;
@@ -239,15 +246,29 @@ img, embed, iframe {
   .ivu-layout-header {
     background: #fff;
     boxShadow: 0 2px 3px 2px rgba(0,0,0,.1);
-  }
-  .ivu-layout-header {
     padding: 0;
+    margin-top: 10px;
+    height: 44px;
+    line-height: @height;
+  }
+  .logo-wrap {
+    width: 44px;
+    height: @width;
+    margin-right: 10px;
+    background: url('./assets/logo-bitcoincash-dark.part.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
   }
   @media only screen and (min-width: 900px) {
     .ivu-layout {
       width: 750px;
       margin: 0 auto;
       // border: 1px solid #efefef;
+    }
+  }
+  @media only screen and (min-width: 450px) {
+    .address-detail {
+      align-items: start;
     }
   }
   @media only screen and (max-width: 450px) {

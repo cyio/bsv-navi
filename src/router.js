@@ -17,9 +17,7 @@ export default new Router({
         // return savedPosition
       }, 200)
     } else {
-      if (to.name === 'Post') {
-        return { x: 0, y: 0 }
-      }
+      return { x: 0, y: 0 }
     }
   },
   routes: [
