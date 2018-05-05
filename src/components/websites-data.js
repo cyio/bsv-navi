@@ -3,20 +3,7 @@ export default {
     content: [
       {title: 'Memo', desc: '去中心化微博', url: 'https://memo.cash/'},
       {title: 'BlockPress', desc: '去中心化微博', url: 'https://www.blockpress.com/ '},
-      {title: 'Yours', desc: '能赚BCH的写作平台', url: 'https://www.yours.org/'},
-    ]
-  },
-  '浏览器': {
-    content: [
-      {title: 'BTC.com', url: 'https://bch.btc.com'},
-      {title: 'Bitcoin.com', url: 'https://explorer.bitcoin.com/bch'},
-      {title: 'Blockchair', url: 'https://blockchair.com/'}
-    ]
-  },
-  '工具': {
-    content: [
-      {title: '地址格式转换', url: 'https://bch.btc.com/tools/address-converter'},
-      {title: '钱包生成', url: 'https://cashaddress.org/'},
+      {title: 'Yours', desc: '能赚 BCH 的内容创作平台', url: 'https://www.yours.org/'},
     ]
   },
   '行情': {
@@ -35,11 +22,26 @@ export default {
       {title: 'CoinGeek', url: 'https://coingeek.com/'}
     ]
   },
+  '浏览器': {
+    content: [
+      {title: 'BTC.com', url: 'https://bch.btc.com'},
+      {title: 'Bitcoin.com', url: 'https://explorer.bitcoin.com/bch'},
+      {title: 'Blockchair', url: 'https://blockchair.com/'}
+    ]
+  },
+  '工具': {
+    content: [
+      {title: '地址格式转换', url: 'https://bch.btc.com/tools/address-converter'},
+      {title: '钱包生成', url: 'https://cashaddress.org/'},
+      {title: 'Coinmix', desc: 'BCH 上第一个混币服务', url: 'https://coinmix.to/'},
+    ]
+  },
   '数据': {
     content: [
       {title: 'fork.lol', url: 'https://fork.lol/'},
       {title: 'Cash vs Core', url: 'https://cashvscore.com/'},
-      {title: 'Hashrates', url: 'https://bitinfocharts.com/comparison/hashrate-btc-bch.html#6m'},
+      {title: 'Transactions', desc: 'BCH,BTC 每日交易数对比', url: 'https://bitinfocharts.com/comparison/transactions-btc-bch-sma30.html#log&6m'},
+      {title: 'Hashrates', desc: 'BCH,BTC 每日算力对比', url: 'https://bitinfocharts.com/comparison/hashrate-btc-bch.html#6m'},
       {title: 'TX Highway', desc: 'Live Bitcoin Cash vs Bitcoin Core Transaction Visualizer ', url: 'https://txhighway.com/'},
       {title: 'CoinDance', url: 'https://cash.coin.dance/'},
       {title: 'Cashnodes', url: 'https://cashnodes.bitcoinunlimited.info/'}
@@ -83,10 +85,17 @@ export default {
       {title: 'Devs.Cash', desc: 'Bitcoin Cash Web & App Dev Projects', url: 'http://devs.cash/'}
     ]
   },
+  '支付商': {
+    content: [
+      {title: 'BitPay', desc: 'Get Started with Bitcoin Payments', url: 'https://bitpay.com/'},
+      {title: 'Atlantis', desc: 'Accept Bitcoin Cash Payments instantly', url: 'https://www.atlantislabs.co/'},
+    ]
+  },
   '考古': {
     content: [
       {title: '创世地址', url: '/address/bitcoincash:qp3wjpa3tjlj042z2wv7hahsldgwhwy0rq9sywjpyy'},
-      {title: '创世交易', desc: 'The Times 03/Jan/2009 Chancellor on brink of second bailout for banks', url: 'https://www.viabtc.com/bch/tx/4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b'}
+      {title: '创世交易', desc: 'The Times 03/Jan/2009 Chancellor on brink of second bailout for banks', url: 'https://www.viabtc.com/bch/tx/4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b'},
+      {title: '创币史', desc: 'Bitcoin Cash BCH History', url: 'https://datnoid.com/bitcoin-cash/history'}
     ]
   },
   '人物': {
