@@ -16,7 +16,7 @@
         is-vertical-resize='',
         :vertical-resize-offset='60',
         is-horizontal-resize='',
-        style='width:100%',
+        style='width:310px',
         :multiple-sort='false',
         :min-height='399',
         even-bg-color='#f2f2f2',
@@ -35,9 +35,10 @@
         @page-size-change='pageSizeChange',
         :total='addressTxs.total_count',
         :page-size='pageSize',
-        :layout="['total', 'prev', 'pager', 'next', 'sizer', 'jumper']"
+        :layout="['total', 'prev', 'pager', 'next', 'jumper']"
       )
     .loading(v-if="showLoading") {{$t('address.loading')}}
+    // Spin(size="large" fix v-if="!showLoading") 
     .error(v-if="showErrorMsg") {{$t('address.serviceUnavailable')}}
       button.btn(@click="setAddressData(cashAddress)") {{$t('address.retry')}}
 </template>
@@ -55,7 +56,7 @@ import { format } from 'date-fns'
 // import Timeago from 'timeago.js'
 import numeral from 'numeral'
 import 'vue-easytable/libs/themes-base/index.css'
-import { VTable, VPagination } from 'vue-easytable'
+import { VTable, VPagination, Spin } from 'vue-easytable'
 // const timeAgo = new Timeago()
 const proxyHost = 'https://bird.ioliu.cn/v1'
 // const proxyHost = 'http://api.oaker.bid/proxy'
@@ -66,7 +67,8 @@ export default {
     Modal,
     SearchBox,
     VTable,
-    VPagination
+    VPagination,
+    Spin
   },
   data () {
     return {
@@ -240,19 +242,19 @@ export default {
 }
 </script>
 
-<style>
+<style lang="stylus">
   .address-view {
     display: flex;
-		width: 100%;
-		min-height: 500px;
-		flex-direction: column;
-		padding: 0 10px;
+    width: 100%;
+    min-height: 500px;
+    flex-direction: column;
+    padding: 0 10px;
   }
   .address-detail {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
   }
   .address-detail .row {
     display: grid;
@@ -269,13 +271,13 @@ export default {
     width: 6rem;
   }
   .address-balance {
-		padding: 10px;
+    padding: 10px;
   }
   .address-balance .label {
     color: #7d7d7d;
   }
   .address-balance .value {
-		font-size: 1.5rem;
+    font-size: 1.5rem;
   }
   .address-balance .unit {
     margin-left: .3rem;
@@ -292,7 +294,7 @@ export default {
   }
   .tx-amount {
     font-weight: bold;
-		margin-left: .5rem;
+    margin-left: .5rem;
   }
   .in {
     color: green;
@@ -304,17 +306,30 @@ export default {
     margin-top: 50px;
   }
   .address-tx .desp {
-		text-align: right;
-		line-height: 2rem;
-		color: #adadad;
-		font-size: .9rem;
-		margin-right: .12rem;
+    text-align: right;
+    line-height: 2rem;
+    color: #adadad;
+    font-size: .9rem;
+    margin-right: .12rem;
   }
   .v-table-views {
-    min-height: 399px;
+    min-height: 442px;
   }
   .address-tx {
-    max-width: 310px;
     font-size: 0.9rem;
+  }
+  .v-page-li-active {
+    border-color: var(--theme);
+    background-color: @border-color;
+  }
+  .v-page-li-active:hover {
+    border-color: darken(#f08b16, 10);
+    background-color: @border-color;
+  }
+  .v-page-li:hover {
+    border-color: darken(#f08b16, 10);
+  }
+  .v-page-li:hover a {
+    color: var(--theme);
   }
   </style>

@@ -266,16 +266,14 @@ img, embed, iframe {
       // border: 1px solid #efefef;
     }
   }
-  @media only screen and (min-width: 450px) {
-    .address-detail {
-      align-items: start;
-    }
-  }
   @media only screen and (max-width: 450px) {
     .layout-logo {
       left: 0;
       font-size: 1.2rem;
       padding: 0 10px;
+    }
+    .address-detail {
+      align-items: center;
     }
   }
   </style>
