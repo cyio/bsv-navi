@@ -33,7 +33,6 @@ const translations = {
       latestTxs: '近 10 笔',
       sent: '发送',
       received: '接收',
-      loading: '载入中...',
       serviceUnavailable: '服务暂不可用',
       retry: '重试'
     }
@@ -53,7 +52,6 @@ const translations = {
       latestTxs: 'Latest 10 Transactions',
       sent: 'Sent发送',
       received: 'Received',
-      loading: 'loading...',
       serviceUnavailable: 'Service Unavailable',
       retry: 'Retry'
     }

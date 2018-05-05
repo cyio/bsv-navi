@@ -18,10 +18,6 @@
       transition(name='fade', v-if='!$route.meta.keepAlive')
         router-view
       Footer.layout-footer-center @2018 © Oaker
-// header
-  // .title.link(@click="go({path: '/'})") {{$t('home.title')}}
-  // .link(@click="go({path: '/safe-guides'})") 安全指南
-  // .link(v-if='isSupportWebShare', @click='share') 分享
 </div>
 </template>
 
@@ -61,7 +57,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$route)
   }
 }
 </script>
@@ -105,8 +100,6 @@ ul {
 
 :root {
   --theme: #f08b16;
-  --headerHeight: 3rem;
-  // --light: #908d8d;
 }
 
 body {
@@ -118,25 +111,6 @@ body {
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 100%;
-}
-
-header {
-  z-index: 1000;
-  background-color: #fff;
-  color: var(--theme);
-  box-shadow: 0 0 4px #657786;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1.5rem;
-}
-
-header .title {
-  font-size: 2rem;
-}
-
-header .title .sub {
-  color: #eee;
 }
 
 footer {
@@ -232,9 +206,11 @@ img, embed, iframe {
 		margin-right: 20px;
 		float: right;
     display: flex;
+		font-size: .9rem;
   }
   .layout-nav .link {
     margin-left: 10px;
+    font-size: .9rem;
   }
   .layout-footer-center{
     text-align: center;

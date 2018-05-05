@@ -3,10 +3,13 @@
   search-box(:keywords='cashAddress' :errors='addressErrors' :submit='submit')
   .address-detail
     .row
-      .address-balance(v-if="addressDetail")
-        .label {{$t('address.balance')}}
-        span.value {{addressBalance}}
-        span.unit BCH
+      .address-balance(v-if="!showLoading")
+        div(v-if="addressDetail")
+          .label {{$t('address.balance')}}
+          span.value {{addressBalance}}
+          span.unit BCH
+        div(v-if="addressDetail === null")
+          span 账户暂无数据<br>未使用过的地址
       .qr-wrap
         .qrcode(v-if="qrUrl")
           img(:src="qrUrl")
@@ -37,8 +40,7 @@
         :page-size='pageSize',
         :layout="['total', 'prev', 'pager', 'next', 'jumper']"
       )
-    .loading(v-if="showLoading") {{$t('address.loading')}}
-    // Spin(size="large" fix v-if="!showLoading") 
+    Spin(size="large" v-if="showLoading")
     .error(v-if="showErrorMsg") {{$t('address.serviceUnavailable')}}
       button.btn(@click="setAddressData(cashAddress)") {{$t('address.retry')}}
 </template>
@@ -56,7 +58,8 @@ import { format } from 'date-fns'
 // import Timeago from 'timeago.js'
 import numeral from 'numeral'
 import 'vue-easytable/libs/themes-base/index.css'
-import { VTable, VPagination, Spin } from 'vue-easytable'
+import { VTable, VPagination } from 'vue-easytable'
+import { Spin } from 'iview'
 // const timeAgo = new Timeago()
 const proxyHost = 'https://bird.ioliu.cn/v1'
 // const proxyHost = 'http://api.oaker.bid/proxy'
@@ -135,14 +138,11 @@ export default {
     async setAddressData (id) {
       // console.log(id)
       this.addressDetail = this.addressTxs = this.addressErrors = null
-      // this.$bar.start()
       this.showLoading = true
       this.showErrorMsg = false
       this.addressDetail = await this.getAddressDetail(id)
-      // this.addressTxs = await this.getAddressTxs(id)
       this.getTableData()
       this.qrUrl = await this.generateQR(bchaddr.toCashAddress(id))
-      // this.$bar.finish()
       this.showLoading = false
       // if (!Object.keys(this.addressDetail).length || !Object.keys(this.addressTxs).length) {
       // this.showErrorMsg = true
@@ -331,5 +331,10 @@ export default {
   }
   .v-page-li:hover a {
     color: var(--theme);
+  }
+  .ivu-spin {
+    position: absolute;
+    top: 295px;
+    left: 45%;
   }
   </style>
