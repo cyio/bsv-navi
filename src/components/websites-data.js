@@ -33,7 +33,16 @@ export default {
     content: [
       {title: '地址格式转换', url: 'https://bch.btc.com/tools/address-converter'},
       {title: '钱包生成', url: 'https://cashaddress.org/'},
+      {title: 'CoinText', desc: '通过短信来收发 BCH', url: 'https://cointext.io/'},
       {title: 'Coinmix', desc: 'BCH 上第一个混币服务', url: 'https://coinmix.to/'},
+      {title: 'BitCloak Mixer', desc: 'Bitcoin Cash Mixer', url: 'https://bitcloak43blmhmn.com/bch/'},
+    ]
+  },
+  '娱乐': {
+    content: [
+      {title: 'SatoshiDICE', desc: 'The classic game now for Bitcoin Cash', url: 'https://satoshidice.com/'},
+      {title: 'Blockchain Poker', url: 'https://blockchain.poker/'},
+      {title: 'Joystream', desc: '一个新的BT下载软件，提供种子源可以赚 BCH', url: 'https://joystream.co/'},
     ]
   },
   '数据': {
@@ -87,12 +96,13 @@ export default {
   },
   '支付商': {
     content: [
-      {title: 'BitPay', desc: 'Get Started with Bitcoin Payments', url: 'https://bitpay.com/'},
+      {title: 'BitPay', desc: 'Get Started with Bitcoin and Bitcoin Cash Payments', url: 'https://bitpay.com/'},
       {title: 'Atlantis', desc: 'Accept Bitcoin Cash Payments instantly', url: 'https://www.atlantislabs.co/'},
     ]
   },
   '考古': {
     content: [
+      // {title: '创世地址', url: `${location.protocol}//${location.host}/#/address/bitcoincash:qp3wjpa3tjlj042z2wv7hahsldgwhwy0rq9sywjpyy`},
       {title: '创世地址', url: '/address/bitcoincash:qp3wjpa3tjlj042z2wv7hahsldgwhwy0rq9sywjpyy'},
       {title: '创世交易', desc: 'The Times 03/Jan/2009 Chancellor on brink of second bailout for banks', url: 'https://www.viabtc.com/bch/tx/4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b'},
       {title: '创币史', desc: 'Bitcoin Cash BCH History', url: 'https://datnoid.com/bitcoin-cash/history'}

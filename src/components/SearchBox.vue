@@ -79,8 +79,7 @@ export default {
   }
   .err-msg { 
     position: absolute;
-    bottom: -.25rem;
+    top: 4rem;
     color: red;
-    font-size: .11rem;
   }
   </style>

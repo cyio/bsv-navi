@@ -2,8 +2,8 @@
 .address-view
   search-box(:keywords='cashAddress' :errors='addressErrors' :submit='submit')
   .address-detail
-    .row
-      .address-balance(v-if="!showLoading")
+    .row(v-if="!showLoading")
+      .address-balance
         div(v-if="addressDetail")
           .label {{$t('address.balance')}}
           span.value {{addressBalance}}
@@ -19,7 +19,7 @@
         is-vertical-resize='',
         :vertical-resize-offset='60',
         is-horizontal-resize='',
-        style='width:310px',
+        style='width:350px',
         :multiple-sort='false',
         :min-height='399',
         even-bg-color='#f2f2f2',
@@ -48,8 +48,6 @@
 <script>
 import mixin from '@/mixin'
 // import { sleep } from '../utils'
-import axios from 'axios'
-// import jsonp from 'jsonp-es6'
 import Modal from '../components/Modal'
 import SearchBox from '../components/SearchBox'
 import bchaddr from 'bchaddrjs'
@@ -61,8 +59,8 @@ import 'vue-easytable/libs/themes-base/index.css'
 import { VTable, VPagination } from 'vue-easytable'
 import { Spin } from 'iview'
 // const timeAgo = new Timeago()
-const proxyHost = 'https://bird.ioliu.cn/v1'
 // const proxyHost = 'http://api.oaker.bid/proxy'
+const proxyHost = 'https://bird.ioliu.cn/v1'
 export default {
   name: 'Address',
   mixins: [mixin],
@@ -89,7 +87,7 @@ export default {
         multipleSort: false,
         tableData: [],
         columns: [
-          {field: 'title', width: 50, columnAlign: 'center', isFrozen: true},
+          {field: 'title', width: 70, columnAlign: 'center', isFrozen: true},
           {
             field: 'amount',
             width: 110,
@@ -99,7 +97,7 @@ export default {
               return `<span class="tx-amount ${Number(rowData.amount) >= 0 ? 'in' : 'out'}">${rowData.amount}</span>`
             }
           },
-          {field: 'time', width: 150, columnAlign: 'center', isFrozen: true},
+          {field: 'time', width: 170, columnAlign: 'center', isFrozen: true},
         ],
         titleRows: [
           [
@@ -130,9 +128,8 @@ export default {
         }
       } catch (e) {
         this.addressErrors = '地址格式不正确'
-        this.addressDetail = this.addressTxs = null
+        this.addressDetail = this.addressTxs = this.qrUrl = null
         this.showLoading = true
-        // console.log('address err', e)
       }
     },
     async setAddressData (id) {
@@ -149,16 +146,18 @@ export default {
       // }
     },
     getAddressDetail (address) {
-      // return axios.get(`/api/address?${address}`).then(res => {
-      return axios.get(`${proxyHost}/?url=https://bch-chain.api.btc.com/v3/address/${address}`).then(res => {
+      // const url = `/api/address?${address}`
+      const url = `${proxyHost}/?url=https://bch-chain.api.btc.com/v3/address/${address}`
+      return fetch(url).then(res => res.json().then(res => {
         return res.headers ? res.data.data : res.data
-      }).catch(err => console.log(err))
+      }).catch(err => console.error(err)))
     },
     async getAddressTxs (address, page = this.pageIndex, pageSize = this.pageSize) {
-      // return axios.get(`/api/address-txs?${address}`).then(res => {
-      return axios.get(`${proxyHost}/?url=https://bch-chain.api.btc.com/v3/address/${address}/tx?page=${page}&pagesize=${pageSize}&verbose=1`).then(res => {
+      // const url = `/api/address-txs?${address}`
+      const url = `${proxyHost}/?url=https://bch-chain.api.btc.com/v3/address/${address}/tx?page=${page}&pagesize=${pageSize}&verbose=1`
+      return fetch(url).then(res => res.json().then(res => {
         return res.headers ? res.data.data : res.data
-      }).catch(err => console.log(err))
+      }).catch(err => console.error(err)))
     },
     async generateQR (text) {
       const url = await QRCode.toDataURL(text.toUpperCase(), { mode: 'alphanumeric' })

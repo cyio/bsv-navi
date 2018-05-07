@@ -18,7 +18,7 @@ const routes = [
     name: 'Address',
     component: Address,
     meta: {
-      title: '比特币现金帐户查看器_BCH123',
+      title: 'BCH 帐户查看器',
       metaTags: [
         // {
         // name: 'description',
@@ -36,7 +36,7 @@ const routes = [
     name: 'SafeGuides',
     component: SafeGuides,
     meta: {
-      title: '数字货币安全保管使用指南_BCH123',
+      title: '安全指南',
     }
   },
   { path: '*', redirect: '/' }

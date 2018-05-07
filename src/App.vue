@@ -5,36 +5,28 @@
       .layout-logo.link(@click="go({path: '/'})")
         .logo-wrap(v-if="$route.name !== 'Home'")
         span() {{$t('home.title')}}
+      .sub-page-title(v-if="$route.name !== 'Home' && $route.meta.title") > {{$route.meta.title}}
       .layout-nav
         .link(v-if="$route.name === 'Home'" @click="go({path: '/safe-guides'})") 安全指南
         .link(v-if='isSupportWebShare', @click='share') 分享
-      // Menu(active-name='1')
-          // MenuItem(name='1')
-            // Icon(type='ios-navigate')
-          // Button(type="default")
     Content
       keep-alive
         router-view(v-if='$route.meta.keepAlive')
       transition(name='fade', v-if='!$route.meta.keepAlive')
         router-view
-      Footer.layout-footer-center @2018 © Oaker
+      Footer.layout-footer-center @{{(new Date().getFullYear())}} © BCH123.org
 </div>
 </template>
 
 <script>
 import mixin from '@/mixin.js'
-import { Layout, Header, Menu, MenuItem, Breadcrumb, BreadcrumbItem, Card, Footer, Icon, Button } from 'iview'
+import { Layout, Header, Footer, Icon, Button } from 'iview'
 export default {
   mixins: [mixin],
   name: 'app',
   components: {
     Layout,
     Header,
-    Menu,
-    MenuItem,
-    Breadcrumb,
-    BreadcrumbItem,
-    Card,
     Footer,
     Icon,
     Button,
@@ -86,7 +78,11 @@ a {
 a:active, a:hover {
   color: #d06f00;
 }
-
+a:focus {
+  color: green;
+  font-weight: bold;
+  border-bottom: 1px solid;
+}
 input,textarea{
   outline:0;
   -webkit-tap-highlight-color:transparent;
@@ -162,8 +158,8 @@ img, embed, iframe {
   transform: scale(0.001, 0.001);
 }
 .link:focus {
-  outline: 0;
-  color: #fff;
+  // outline: 0;
+  // color: #fff;
 }
 .link:focus:before {
   animation: effect_dylan 0.8s ease-out;
