@@ -53,7 +53,8 @@ export default {
       {title: 'Hashrates', desc: 'BCH,BTC 每日算力对比', url: 'https://bitinfocharts.com/comparison/hashrate-btc-bch.html#6m'},
       {title: 'TX Highway', desc: 'Live Bitcoin Cash vs Bitcoin Core Transaction Visualizer ', url: 'https://txhighway.com/'},
       {title: 'CoinDance', url: 'https://cash.coin.dance/'},
-      {title: 'Cashnodes', url: 'https://cashnodes.bitcoinunlimited.info/'}
+      {title: 'Cashnodes', url: 'https://cashnodes.bitcoinunlimited.info/'},
+      {title: 'Bitcoin Price Prediction Tracker', url: 'https://bircoin.top/'}
     ]
   },
   '社区': {
