@@ -6,13 +6,17 @@
       .address-balance
         div(v-if="addressDetail")
           .label {{$t('address.balance')}}
-          span.value {{addressBalance}}
-          span.unit BCH
+          .fiat-row
+            div(v-show="prices.usd")
+              span.value {{addressBalance * prices[fiat] | format}}
+              span.unit {{fiat.toUpperCase()}}
+          .balance-row
+            span.value {{addressBalance}}
+            span.unit BCH
         div(v-if="addressDetail === null")
           span 账户暂无数据<br>未使用过的地址
-      .qr-wrap
-        .qrcode(v-if="qrUrl")
-          img(:src="qrUrl")
+      .qr-wrap(v-if="qrUrl")
+        img(:src="qrUrl")
     .address-tx(v-if="addressTxs && addressTxs.total_count")
       // .desp {{$t('address.latestTxs')}}
       v-table(
@@ -81,6 +85,7 @@ export default {
       showErrorMsg: false,
       addressErrors: null,
       qrUrl: null,
+      prices: { cny: null, usd: null },
       pageIndex: 1,
       pageSize: 10,
       tableConfig: {
@@ -159,6 +164,12 @@ export default {
         return res.headers ? res.data.data : res.data
       }).catch(err => console.error(err)))
     },
+    getPrices () {
+      const url = `${proxyHost}/?url=https://api.coinmarketcap.com/v2/ticker/1831/?convert=CNY`
+      return fetch(url).then(res => res.json().then(res => {
+        return res.headers ? res.data.data : res.data
+      }).catch(err => console.error(err)))
+    },
     async generateQR (text) {
       const url = await QRCode.toDataURL(text.toUpperCase(), { mode: 'alphanumeric' })
       return url
@@ -208,6 +219,9 @@ export default {
     locale () {
       return this.$root.$data.shared.isZh ? 'zh_CN' : 'en_US'
     },
+    fiat () {
+      return this.$root.$data.shared.isZh ? 'cny' : 'usd'
+    },
     addressBalance () {
       return this.addressDetail.balance / 10 ** 8
     },
@@ -239,6 +253,10 @@ export default {
     }
   },
   mounted () {
+    this.getPrices().then(data => {
+      this.prices.cny = data.quotes.CNY.price
+      this.prices.usd = data.quotes.USD.price
+    })
   }
 }
 </script>
@@ -266,22 +284,26 @@ export default {
   .qr-wrap {
     text-align: right;
   }
-  .qrcode {
-  }
-  .qrcode img {
-    width: 6rem;
-  }
   .address-balance {
     padding: 10px;
   }
   .address-balance .label {
     color: #7d7d7d;
+    margin-bottom: 10px;
+    font-size: .8rem;
   }
-  .address-balance .value {
+  .address-balance .balance-row .value {
     font-size: 1.5rem;
   }
   .address-balance .unit {
     margin-left: .3rem;
+    color: #7c7a7a;
+  }
+  .address-balance .fiat-row {
+    height: 20px;
+  }
+  .address-balance .unit, .fiat-row {
+		font-size: .9rem;
   }
   .tx-item {
     width: 20rem;

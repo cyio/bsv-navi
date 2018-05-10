@@ -13,7 +13,7 @@ Vue.use(VueI18n)
 Vue.component('icon', Icon)
 
 const shared = {
-  isZh: /zh/.test(window.navigator.language)
+  isZh: /zh/.test(window.navigator.language || window.navigator.userLanguage)
 }
 
 const translations = {

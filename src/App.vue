@@ -3,9 +3,9 @@
   Layout
     Header
       .layout-logo.link(@click="go({path: '/'})")
-        .logo-wrap(v-if="$route.name !== 'Home'")
-        span() {{$t('home.title')}}
-      .sub-page-title(v-if="$route.name !== 'Home' && $route.meta.title") > {{$route.meta.title}}
+        span(v-if="$route.name === 'Home'") {{$t('home.title')}}
+        .logo-wrap(v-else)
+      span.sub-page-title(v-if="$route.name !== 'Home' && $route.meta.title") > {{$route.meta.title}}
       .layout-nav
         .link(v-if="$route.name === 'Home'" @click="go({path: '/safe-guides'})") 安全指南
         .link(v-if='isSupportWebShare', @click='share') 分享
@@ -194,7 +194,7 @@ img, embed, iframe {
     float: left;
     position: relative;
     font-size: 1.2rem;
-    padding: 0 10px;
+    padding-left: 10px;
     // background: var(--theme);
     color: var(--theme);
   }
@@ -242,7 +242,6 @@ img, embed, iframe {
     .layout-logo {
       left: 0;
       font-size: 1.2rem;
-      padding: 0 10px;
     }
     .address-detail {
       align-items: center;

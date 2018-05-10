@@ -6,6 +6,8 @@ import SafeGuides from '@/pages/SafeGuides'
 
 Vue.use(Router)
 
+const isZh = /zh/.test(window.navigator.language || window.navigator.userLanguage)
+
 const routes = [
   {
     path: '/',
@@ -18,7 +20,7 @@ const routes = [
     name: 'Address',
     component: Address,
     meta: {
-      title: 'BCH 帐户查看器',
+      title: isZh ? 'BCH 帐户查看器' : 'BCH Account Viewer',
       metaTags: [
         // {
         // name: 'description',
