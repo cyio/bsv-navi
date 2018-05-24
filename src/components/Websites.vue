@@ -36,6 +36,9 @@ export default {
     max-width: 55rem;
     overflow-x: auto;
     white-space: nowrap;
+    border: 2px solid #F1F1F1;
+    border-radius: 5px;
+    padding: 10px;
     table {
       max-width: 100%;
       margin: 0 auto;

@@ -76,12 +76,12 @@ a {
   color: var(--theme);
 }
 a:active, a:hover {
-  color: #d06f00;
+  // color: green;
 }
 a:focus {
-  color: green;
-  font-weight: bold;
-  border-bottom: 1px solid;
+  // color: green;
+  // font-weight: bold;
+  // border-bottom: 1px solid;
 }
 input,textarea{
   outline:0;

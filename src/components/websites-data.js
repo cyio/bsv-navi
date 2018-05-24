@@ -9,10 +9,8 @@ export default {
   '行情': {
     content: [
       {title: '币值轻快版', url: 'https://coin.bch123.org/'},
-      {title: '非小号', url: 'http://feixiaohao.com'},
-      {title: 'AICoin', url: 'https://www.aicoin.net.cn/'},
-      {title: 'Satoshi Pulse', url: ' https://markets.bitcoin.com/'},
-      {title: 'CoinMarketCap', url: 'https://coinmarketcap.com/'}
+      {title: '加密货币市值', desc: 'Cryptocurrency Market Capitalizations | CoinMarketCap', url: 'https://coinmarketcap.com/zh/'},
+      {title: 'Bitcoin Price Prediction Tracker', url: 'https://bircoin.top/'}
     ]
   },
   '资讯': {
@@ -54,7 +52,6 @@ export default {
       {title: 'TX Highway', desc: 'Live Bitcoin Cash vs Bitcoin Core Transaction Visualizer ', url: 'https://txhighway.com/'},
       {title: 'CoinDance', url: 'https://cash.coin.dance/'},
       {title: 'Cashnodes', url: 'https://cashnodes.bitcoinunlimited.info/'},
-      {title: 'Bitcoin Price Prediction Tracker', url: 'https://bircoin.top/'}
     ]
   },
   '社区': {
@@ -65,19 +62,21 @@ export default {
   },
   '入门': {
     content: [
-      {title: '官网', url: 'https://www.bitcoincash.org/'},
+      {title: '官网', desc: '比特币现金 - 点对点数字现金', url: 'https://www.bitcoincash.org/'},
       {title: '常见问题', url: 'https://www.bitcoincash.org/#faq'},
       {title: '白皮书中文', url: 'http://www.8btc.com/wiki/bitcoin-a-peer-to-peer-electronic-cash-system'},
-      {title: '比特币是什么-江卓尔', url: 'https://www.zhihu.com/question/22076666/answer/69638270'}
+      {title: '比特币是什么-江卓尔', url: 'https://www.zhihu.com/question/22076666/answer/69638270'},
+      {title: 'Nakamoto Studies', url: 'http://nakamotostudies.org/'}
     ]
   },
   '钱包': {
     content: [
-      {title: '比特派', url: 'http://bitpie.com/'},
-      {title: 'Bread', url: 'https://breadapp.com/'},
-      {title: 'Coinomi', url: 'https://coinomi.com/'},
+      {title: 'BTC.com', url: 'https://wallet.btc.com/'},
       {title: 'Bitcoin.com', url: 'https://www.bitcoin.com/'},
-      {title: 'BTC.com', url: 'https://wallet.btc.com/'}
+      {title: 'Bread', url: 'https://breadapp.com/'},
+      {title: '比特派', url: 'http://bitpie.com/'},
+      {title: 'Coinomi', url: 'https://coinomi.com/'},
+      {title: 'Jaxx', url: 'https://jaxx.io/'},
     ]
   },
   '交易所': {
