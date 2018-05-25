@@ -36,6 +36,14 @@ export default {
       {title: 'BitCloak Mixer', desc: 'Bitcoin Cash Mixer', url: 'https://bitcloak43blmhmn.com/bch/'},
     ]
   },
+  '打赏': {
+    content: [
+      {title: '币赞', desc: '微博', url: 'https://media.weibo.cn/article?object_id=1022%3A2309404219418744887227&luicode=10000011&lfid=1076036468174724&id=2309404219418744887227&ep=G89ayvzef%252C6468174724%252CG89ayvzef%252C6468174724'},
+      {title: 'tippr', desc: 'Twitter / Reddit', url: 'https://www.reddit.com/r/tippr/wiki/index'},
+      {title: 'ChainTip', desc: 'Reddit / Github', url: 'https://www.chaintip.org'},
+      {title: 'Tipmebch', desc: 'Telegram', url: 'https://t.me/tipmebchbot'},
+    ]
+  },
   '娱乐': {
     content: [
       {title: 'SatoshiDICE', desc: 'The classic game now for Bitcoin Cash', url: 'https://satoshidice.com/'},

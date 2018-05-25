@@ -1,5 +1,6 @@
 <template lang="pug">
 .home-view
+  statistics
   .logo-wrap
   search-box(:submit='submit')
   websites
@@ -9,6 +10,7 @@
 import mixin from '@/mixin.js'
 import SearchBox from '../components/SearchBox'
 import Websites from '../components/Websites'
+import Statistics from '../components/Statistics'
 import { Layout, Header, Menu, MenuItem, Breadcrumb, BreadcrumbItem, Card, Footer, Icon } from 'iview'
 export default {
   name: 'Home',
@@ -16,6 +18,7 @@ export default {
   components: {
     SearchBox,
     Websites,
+    Statistics,
     Layout,
     Header,
     Menu,
@@ -59,7 +62,7 @@ export default {
   }
   .home-view .logo-wrap {
     padding: 4rem;
-    margin-top: 2.2rem;
+    margin-top: 1.2rem;
     margin-bottom: .1rem;
     background: url('../assets/logo-bitcoincash-dark.part.svg');
     background-repeat: no-repeat;
