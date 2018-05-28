@@ -1,7 +1,7 @@
 <template lang="pug">
 .home-view
   statistics
-  .logo-wrap
+  // .logo-wrap
   search-box(:submit='submit')
   websites
 </template>
@@ -57,8 +57,6 @@ export default {
     flex-direction: column;
     align-items: center;
     padding: 0 10px;
-  }
-  .home-view .searchbar-input-container {
   }
   .home-view .logo-wrap {
     padding: 4rem;

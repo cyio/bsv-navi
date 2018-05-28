@@ -49,6 +49,7 @@ export default {
 </script>
 <style>
   .searchbar-input-container {
+    align-self: flex-start;
     position: relative;
 		display: flex;
     margin: 20px 0;

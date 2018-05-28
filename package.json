@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "nodemon --watch server server/index.js",
+    "maintain": "nodemon --watch server server/maintain.js",
     "dev:web": "node build/dev-server.js",
     "start": "node server",
     "build": "node build/build.js",
