@@ -1,6 +1,6 @@
 const config = require('../private-config.json')
 const axios = require('axios')
-const nodes = require('./nodes.js')
+const dataApi = require('./data.js')
 const querystring = require('querystring')
 const fs = require('fs')
 
@@ -13,14 +13,20 @@ let fileContent = {
 // axios.all([axios.get('https://api.coinmarketcap.com/v2/ticker/1831/?convert=CNY'), axios.get('https://api.fork.lol/exchangerat')]).then(axios.spread((cmc, forkLol) => {
   // console.log(cmc.data, forkLol.data)
 // }))
+Promise.almost = r => Promise.all(r.map(p => p.catch ? p.catch(e => e) : p));
 const buildFileContent = async () => {
-  fileContent.data.nodes = await nodes.getNodes()
-  console.log(fileContent.data)
-  updateGist(fileContent)
+  Promise.almost([dataApi.getNodes(), dataApi.getMarket()]).then(values => {
+    // console.log(values)
+    fileContent.data = {...fileContent.data, nodes: values[0], ...values[1]}
+
+    console.log(fileContent.data)
+    updateGist()
+  })
 }
-const updateGist = (content) => {
-  // 写入到 gist
+let tryTimes = 0
+const updateGist = (content = fileContent) => {
   let gistId = 'ba375uensivprto2c08xq70'
+  console.log('update token: ', config.gitee.access_token)
   let gistData = {
     "access_token": config.gitee.access_token,
     "description": "the description for this gist",
@@ -33,16 +39,17 @@ const updateGist = (content) => {
   }
   let url = `https://gitee.com/api/v5/gists/${gistId}`
   axios.patch(url, gistData).then(res => {
-    if (res.status !== 200) {
-      if (res.status === 403) {
-        getGiteeToken().then(data => {
-          console.log(data)
-        })
-      } else {
-        console.log(res.status, res.data)
-      }
-    } else {
-      console.log('update gist success')
+    console.log('update gist success')
+  }).catch(e => {
+    console.log(e.response.status, e.response.statusText, e.response.config)
+    tryTimes++
+    if (tryTimes >= 2) {
+      throw 'give up update'
+    }
+    if (e.response.status === 401) {
+      getGiteeToken().then(data => {
+        updateGist()
+      })
     }
   })
 }
@@ -58,17 +65,14 @@ const getGiteeToken = () => {
     'scope':'user_info gists',
   }
   return axios.post(url, querystring.stringify(postData)).then(res => {
-    if (res.status !== 200) {
-      console.log(res.status, res.data)
-      return null
-    } else {
-      config.gitee.access_token = res.data['access_token']
-      fs.writeFile('./private-config.json', JSON.stringify(config, null, 2), (err) => {
-        if(err) throw err
-      })
-      return res.data.access_token
-    }
-  })
+    console.log('refresh gitee token success')
+    config.gitee.access_token = res.data['access_token']
+    fs.writeFileSync('./private-config.json', JSON.stringify(config, null, 2))
+    return res.data.access_token
+  }).catch(e => console.log(e.response.status, e.response.statusText, e.response.config))
 }
 
 buildFileContent()
+let task = setInterval(() => {
+  buildFileContent()
+}, 1000 * 60 * 5)
