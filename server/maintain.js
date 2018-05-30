@@ -1,32 +1,29 @@
 const config = require('../private-config.json')
 const axios = require('axios')
+const request = require('superagent')
 const dataApi = require('./data.js')
 const querystring = require('querystring')
 const fs = require('fs')
+Promise.almost = r => Promise.all(r.map(p => p.catch ? p.catch(e => e) : p));
 
-// 抓取内容
 let fileContent = {
   data: {
   },
   update_time: Number(new Date())
 }
-// axios.all([axios.get('https://api.coinmarketcap.com/v2/ticker/1831/?convert=CNY'), axios.get('https://api.fork.lol/exchangerat')]).then(axios.spread((cmc, forkLol) => {
-  // console.log(cmc.data, forkLol.data)
-// }))
-Promise.almost = r => Promise.all(r.map(p => p.catch ? p.catch(e => e) : p));
 const buildFileContent = async () => {
   Promise.almost([dataApi.getNodes(), dataApi.getMarket()]).then(values => {
     // console.log(values)
     fileContent.data = {...fileContent.data, nodes: values[0], ...values[1]}
 
-    console.log(fileContent.data)
+    // console.log(fileContent.data)
     updateGist()
   })
 }
 let tryTimes = 0
 const updateGist = (content = fileContent) => {
+  console.log('begin update gist')
   let gistId = 'ba375uensivprto2c08xq70'
-  console.log('update token: ', config.gitee.access_token)
   let gistData = {
     "access_token": config.gitee.access_token,
     "description": "the description for this gist",
@@ -41,15 +38,15 @@ const updateGist = (content = fileContent) => {
   axios.patch(url, gistData).then(res => {
     console.log('update gist success')
   }).catch(e => {
-    console.log(e.response.status, e.response.statusText, e.response.config)
     tryTimes++
-    if (tryTimes >= 2) {
-      throw 'give up update'
+    if (tryTimes >= 3) {
+      clearInterval(task)
+      throw 'Error: give up update gist'
     }
     if (e.response.status === 401) {
-      getGiteeToken().then(data => {
-        updateGist()
-      })
+      getGiteeToken()
+    } else {
+      console.log(e.response.status, e.response.statusText, e.response.config)
     }
   })
 }
@@ -64,15 +61,24 @@ const getGiteeToken = () => {
     'client_secret':config.gitee.client_secret,
     'scope':'user_info gists',
   }
-  return axios.post(url, querystring.stringify(postData)).then(res => {
-    console.log('refresh gitee token success')
-    config.gitee.access_token = res.data['access_token']
-    fs.writeFileSync('./private-config.json', JSON.stringify(config, null, 2))
-    return res.data.access_token
-  }).catch(e => console.log(e.response.status, e.response.statusText, e.response.config))
+  return request
+    .post(url)
+    .set('Host', 'gitee.com')
+    .send(querystring.stringify(postData))
+    .end((err, res) => {
+      if (err) {
+        throw err.status
+      }
+      console.log('refresh gitee token success')
+      config.gitee.access_token = res.body['access_token']
+      fs.writeFileSync('./private-config.json', JSON.stringify(config, null, 2))
+      updateGist() // 无法再用 then 调用，暂时放在这里
+      // return res.body
+    })
 }
 
+// getGiteeToken()
 buildFileContent()
 let task = setInterval(() => {
   buildFileContent()
-}, 1000 * 60 * 5)
+}, 1000 * 60 * 3)

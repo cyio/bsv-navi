@@ -114,7 +114,7 @@ const getMarket = () =>  {
 		maxSupply: null,
   }
   return axios.all([axios.get('https://api.coinmarketcap.com/v2/ticker/1831/?convert=CNY'), axios.get('https://api.fork.lol/exchangerate')]).then(axios.spread((cmc, forkLol) => {
-    console.log(cmc.data, forkLol.data)
+    // console.log(cmc.data, forkLol.data)
     market.cnyPrice = cmc.data.data.quotes.CNY.price 
     market.circulatingSupply = cmc.data.data.circulating_supply
     market.maxSupply = cmc.data.data.max_supply

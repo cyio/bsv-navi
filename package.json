@@ -29,6 +29,7 @@
     "mobile-detect": "^1.4.1",
     "numeral": "^2.0.6",
     "qrcode": "^1.2.0",
+    "superagent": "^3.8.3",
     "timeago.js": "^3.0.2",
     "vue": "^2.5.2",
     "vue-awesome": "^2.3.4",

@@ -26,7 +26,8 @@ export default {
     getMarket() {
       fetch('https://api.coinmarketcap.com/v2/ticker/1831/?convert=CNY'
       ).then(res => res.json()).then(result => {
-        this.market.price = `¥ ${Math.round(result.data.quotes.CNY.price)}`
+        let basePrice = result.data.quotes.CNY.price
+        this.market.price = `￥${Math.round(basePrice)}`
         this.market.supply = numeral(result.data.circulating_supply / (10 ** 4)).format('0,000') + '万' + ' / ' + this.formatPercentage(result.data.circulating_supply, result.data.max_supply)
       })
       fetch('https://api.fork.lol/exchangerate').then(res => res.json().then(result => {
@@ -49,7 +50,7 @@ export default {
         { label: '最新价', value: market.price },
         { label: 'BCH/BTC', value: market['bch/btc'] },
         { label: '已供应', value: market.supply },
-        { label: '共识节点', value: market.nodes },
+        { label: '遵循最新共识节点数', value: market.nodes },
       ]
     }
   },
