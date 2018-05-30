@@ -44,40 +44,34 @@ const updateGist = (content = fileContent) => {
       throw 'Error: give up update gist'
     }
     if (e.response.status === 401) {
-      getGiteeToken()
+      refreshGiteeToken()
     } else {
       console.log(e.response.status, e.response.statusText, e.response.config)
     }
   })
 }
 
-const getGiteeToken = () => {
-  let url = 'https://gitee.com/oauth/token'
-  let postData = {
-    'grant_type':'password',
-    'username':config.gitee.username,
-    'password':config.gitee.password,
-    'client_id':config.gitee.client_id,
-    'client_secret':config.gitee.client_secret,
-    'scope':'user_info gists',
+const refreshGiteeToken = () => {
+  if (!config.gitee.refresh_token) {
+    throw 'can not find gitee refresh_token in private-config.json'
   }
+  let refreshUrl = `https://gitee.com/oauth/token?grant_type=refresh_token&refresh_token=${config.gitee.refresh_token}`
   return request
-    .post(url)
-    .set('Host', 'gitee.com')
-    .send(querystring.stringify(postData))
+    .post(refreshUrl)
     .end((err, res) => {
       if (err) {
         throw err.status
       }
       console.log('refresh gitee token success')
       config.gitee.access_token = res.body['access_token']
+      config.gitee.refresh_token = res.body['refresh_token']
       fs.writeFileSync('./private-config.json', JSON.stringify(config, null, 2))
       updateGist() // 无法再用 then 调用，暂时放在这里
       // return res.body
     })
 }
 
-// getGiteeToken()
+// refreshGiteeToken()
 buildFileContent()
 let task = setInterval(() => {
   buildFileContent()

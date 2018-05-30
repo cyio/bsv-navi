@@ -1,9 +1,6 @@
 {
   "gitee": {
     "access_token": "",
-    "username": "",
-    "password": "",
-    "cliend_id": "",
-    "cliend_secret": ""
+    "refresh_token": ""
   }
 }
