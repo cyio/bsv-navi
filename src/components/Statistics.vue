@@ -27,16 +27,16 @@ export default {
       let url = 'https://gitee.com/api/v5/gists/ba375uensivprto2c08xq70'
       fetch(url).then(res => res.json().then(result => {
         let fileContent = JSON.parse(result.files['main.json'].content)
-        let delayMinute = (Number(new Date()) - fileContent.update_time) / 1000 / 60
+        let delayMinute = (Number(new Date()) - Number(new Date(result.updated_at))) / 1000 / 60
         if (delayMinute > 5) {
           console.warn('delayMinute: ', delayMinute)
         }
         let data = fileContent.data
         let nodes = data.nodes
         this.market.nodes = `${nodes.follow} / ${this.formatPercentage(nodes.follow, nodes.total)}`
-        this.market.price = `￥${Math.round(data.cnyPrice)}`
-        this.market.supply = numeral(data.circulatingSupply / (10 ** 4)).format('0,000') + '万' + ' / ' + this.formatPercentage(data.circulatingSupply, data.maxSupply)
-        this.market['bch/btc'] = data['bch/btc'].toFixed(3)
+        this.market.price = `￥${Math.round(data.price)}`
+        this.market.supply = numeral(data.circulating_supply / (10 ** 4)).format('0,000') + '万' + ' / ' + this.formatPercentage(data.circulating_supply, data.max_supply)
+        this.market['bch/btc'] = data.bch_against_btc.toFixed(3)
       }))
     }
   },
@@ -52,7 +52,6 @@ export default {
     }
   },
   beforeMount () {
-    // this.getMarket()
     this.getMaintainData()
     task = setInterval(() => {
       this.getMaintainData()

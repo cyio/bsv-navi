@@ -109,16 +109,17 @@ const getNodes = () => {
 }
 const getMarket = () =>  {
   let market = {
-    cnyPrice: null,
-		circulatingSupply: null,
-		maxSupply: null,
+    price: null,
+    circulating_supply: null,
+    max_supply: null,
+    bch_against_btc: null
   }
   return axios.all([axios.get('https://api.coinmarketcap.com/v2/ticker/1831/?convert=CNY'), axios.get('https://api.fork.lol/exchangerate')]).then(axios.spread((cmc, forkLol) => {
     // console.log(cmc.data, forkLol.data)
-    market.cnyPrice = cmc.data.data.quotes.CNY.price 
-    market.circulatingSupply = cmc.data.data.circulating_supply
-    market.maxSupply = cmc.data.data.max_supply
-    market['bch/btc'] = forkLol.data['bch/btc']
+    market.price = cmc.data.data.quotes.CNY.price
+    market.circulating_supply = cmc.data.data.circulating_supply
+    market.max_supply = cmc.data.data.max_supply
+    market.bch_against_btc = forkLol.data['bch/btc']
     return market
   })).catch(e => {
     console.log(e.response.status, e.response.config)

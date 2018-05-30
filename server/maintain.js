@@ -8,8 +8,7 @@ Promise.almost = r => Promise.all(r.map(p => p.catch ? p.catch(e => e) : p));
 
 let fileContent = {
   data: {
-  },
-  update_time: Number(new Date())
+  }
 }
 const buildFileContent = async () => {
   Promise.almost([dataApi.getNodes(), dataApi.getMarket()]).then(values => {
