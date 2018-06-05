@@ -1,129 +1,234 @@
 export default {
-  '社交': {
+  社交: {
     content: [
-      {title: 'Memo', desc: '去中心化微博', url: 'https://memo.cash/'},
-      {title: 'BlockPress', desc: '去中心化微博', url: 'https://www.blockpress.com/ '},
-      {title: 'Yours', desc: '能赚 BCH 的内容创作平台', url: 'https://www.yours.org/'},
-    ]
+      { title: 'BCH.club', url: 'http://bch.club/' },
+      { title: '巴比特论坛', url: 'http://8btc.com/forum-147-1.html' },
+      { title: 'Reddit', url: 'https://www.reddit.com/r/btc/' },
+      { title: 'Memo', desc: '去中心化微博', url: 'https://memo.cash/' },
+      {
+        title: 'BlockPress',
+        desc: '去中心化微博',
+        url: 'https://www.blockpress.com/ ',
+      },
+      {
+        title: 'Yours',
+        desc: '能赚 BCH 的内容创作平台',
+        url: 'https://www.yours.org/',
+      },
+    ],
   },
-  '行情': {
+  行情: {
     content: [
-      {title: '币值轻快版', url: 'https://coin.bch123.org/'},
-      {title: '加密货币市值', desc: 'Cryptocurrency Market Capitalizations | CoinMarketCap', url: 'https://coinmarketcap.com/zh/'},
-      {title: 'Bitcoin Price Prediction Tracker', url: 'https://bircoin.top/'}
-    ]
+      { title: '币值轻快版', url: 'https://coin.bch123.org/' },
+      {
+        title: '加密货币市值',
+        desc: 'Cryptocurrency Market Capitalizations | CoinMarketCap',
+        url: 'https://coinmarketcap.com/zh/',
+      },
+      {
+        title: 'Bitcoin Price Prediction Tracker',
+        url: 'https://bircoin.top/',
+      },
+    ],
   },
-  '资讯': {
+  资讯: {
     content: [
-      {title: '币世界', url: 'https://www.bishijie.com/kuaixun'},
-      {title: 'Bitcoin.com', url: 'https://news.bitcoin.com/'},
-      {title: 'CoinGeek', url: 'https://coingeek.com/'}
-    ]
+      { title: '币世界', url: 'https://www.bishijie.com/kuaixun' },
+      { title: 'Bitcoin.com', url: 'https://news.bitcoin.com/' },
+      { title: 'CoinGeek', url: 'https://coingeek.com/' },
+    ],
   },
-  '浏览器': {
+  浏览器: {
     content: [
-      {title: 'BTC.com', url: 'https://bch.btc.com'},
-      {title: 'Bitcoin.com', url: 'https://explorer.bitcoin.com/bch'},
-      {title: 'Blockchair', url: 'https://blockchair.com/'}
-    ]
+      { title: 'BTC.com', url: 'https://bch.btc.com' },
+      { title: 'Bitcoin.com', url: 'https://explorer.bitcoin.com/bch' },
+      { title: 'Blockchair', url: 'https://blockchair.com/' },
+    ],
   },
-  '工具': {
+  工具: {
     content: [
-      {title: '地址格式转换', url: 'https://bch.btc.com/tools/address-converter'},
-      {title: '钱包生成', url: 'https://cashaddress.org/'},
-      {title: 'CoinText', desc: '通过短信来收发 BCH', url: 'https://cointext.io/'},
-      {title: 'Coinmix', desc: 'BCH 上第一个混币服务', url: 'https://coinmix.to/'},
-      {title: 'BitCloak Mixer', desc: 'Bitcoin Cash Mixer', url: 'https://bitcloak43blmhmn.com/bch/'},
-    ]
+      {
+        title: '地址格式转换',
+        url: 'https://bch.btc.com/tools/address-converter',
+      },
+      { title: '钱包生成', url: 'https://cashaddress.org/' },
+      {
+        title: 'CoinText',
+        desc: '通过短信来收发 BCH',
+        url: 'https://cointext.io/',
+      },
+      {
+        title: 'Coinmix',
+        desc: 'BCH 上第一个混币服务',
+        url: 'https://coinmix.to/',
+      },
+      {
+        title: 'BitCloak Mixer',
+        desc: 'Bitcoin Cash Mixer',
+        url: 'https://bitcloak43blmhmn.com/bch/',
+      },
+    ],
   },
-  '打赏': {
+  打赏: {
     content: [
-      {title: '币赞', desc: '微博', url: 'https://media.weibo.cn/article?object_id=1022%3A2309404219418744887227&luicode=10000011&lfid=1076036468174724&id=2309404219418744887227&ep=G89ayvzef%252C6468174724%252CG89ayvzef%252C6468174724'},
-      {title: 'tippr', desc: 'Twitter / Reddit', url: 'https://www.reddit.com/r/tippr/wiki/index'},
-      {title: 'ChainTip', desc: 'Reddit / Github', url: 'https://www.chaintip.org'},
-      {title: 'Tipmebch', desc: 'Telegram', url: 'https://t.me/tipmebchbot'},
-    ]
+      {
+        title: '币赞',
+        desc: '微博',
+        url:
+          'https://media.weibo.cn/article?object_id=1022%3A2309404219418744887227&luicode=10000011&lfid=1076036468174724&id=2309404219418744887227&ep=G89ayvzef%252C6468174724%252CG89ayvzef%252C6468174724',
+      },
+      {
+        title: 'tippr',
+        desc: 'Twitter / Reddit',
+        url: 'https://www.reddit.com/r/tippr/wiki/index',
+      },
+      {
+        title: 'ChainTip',
+        desc: 'Reddit / Github',
+        url: 'https://www.chaintip.org',
+      },
+      { title: 'Tipmebch', desc: 'Telegram', url: 'https://t.me/tipmebchbot' },
+    ],
   },
-  '娱乐': {
+  娱乐: {
     content: [
-      {title: 'SatoshiDICE', desc: 'The classic game now for Bitcoin Cash', url: 'https://satoshidice.com/'},
-      {title: 'Blockchain Poker', url: 'https://blockchain.poker/'},
-      {title: 'Joystream', desc: '一个新的BT下载软件，提供种子源可以赚 BCH', url: 'https://joystream.co/'},
-    ]
+      {
+        title: 'SatoshiDICE',
+        desc: 'The classic game now for Bitcoin Cash',
+        url: 'https://satoshidice.com/',
+      },
+      { title: 'Blockchain Poker', url: 'https://blockchain.poker/' },
+      {
+        title: 'Joystream',
+        desc: '一个新的BT下载软件，提供种子源可以赚 BCH',
+        url: 'https://joystream.co/',
+      },
+    ],
   },
-  '数据': {
+  数据: {
     content: [
-      {title: 'fork.lol', url: 'https://fork.lol/'},
-      {title: 'Cash vs Core', url: 'https://cashvscore.com/'},
-      {title: 'Transactions', desc: 'BCH,BTC 每日交易数对比', url: 'https://bitinfocharts.com/comparison/transactions-btc-bch-sma30.html#log&6m'},
-      {title: 'Hashrates', desc: 'BCH,BTC 每日算力对比', url: 'https://bitinfocharts.com/comparison/hashrate-btc-bch.html#6m'},
-      {title: 'TX Highway', desc: 'Live Bitcoin Cash vs Bitcoin Core Transaction Visualizer ', url: 'https://txhighway.com/'},
-      {title: 'CoinDance', url: 'https://cash.coin.dance/'},
-      {title: 'Cashnodes', url: 'https://cashnodes.bitcoinunlimited.info/'},
-    ]
+      { title: 'fork.lol', url: 'https://fork.lol/' },
+      { title: 'Cash vs Core', url: 'https://cashvscore.com/' },
+      {
+        title: 'Transactions',
+        desc: 'BCH,BTC 每日交易数对比',
+        url:
+          'https://bitinfocharts.com/comparison/transactions-btc-bch-sma30.html#log&6m',
+      },
+      {
+        title: 'Hashrates',
+        desc: 'BCH,BTC 每日算力对比',
+        url: 'https://bitinfocharts.com/comparison/hashrate-btc-bch.html#6m',
+      },
+      {
+        title: 'TX Highway',
+        desc: 'Live Bitcoin Cash vs Bitcoin Core Transaction Visualizer ',
+        url: 'https://txhighway.com/',
+      },
+      { title: 'CoinDance', url: 'https://cash.coin.dance/' },
+      { title: 'Cashnodes', url: 'https://cashnodes.bitcoinunlimited.info/' },
+    ],
   },
-  '社区': {
+  入门: {
     content: [
-      {title: '巴比特论坛', url: 'http://8btc.com/forum-147-1.html'},
-      {title: 'Reddit', url: 'https://www.reddit.com/r/btc/'}
-    ]
+      {
+        title: '官网',
+        desc: '比特币现金 - 点对点数字现金',
+        url: 'https://www.bitcoincash.org/',
+      },
+      { title: '常见问题', url: 'https://www.bitcoincash.org/#faq' },
+      {
+        title: '白皮书中文',
+        url:
+          'http://www.8btc.com/wiki/bitcoin-a-peer-to-peer-electronic-cash-system',
+      },
+      {
+        title: '比特币是什么-江卓尔',
+        url: 'https://www.zhihu.com/question/22076666/answer/69638270',
+      },
+      { title: 'Nakamoto Studies', url: 'http://nakamotostudies.org/' },
+    ],
   },
-  '入门': {
+  钱包: {
     content: [
-      {title: '官网', desc: '比特币现金 - 点对点数字现金', url: 'https://www.bitcoincash.org/'},
-      {title: '常见问题', url: 'https://www.bitcoincash.org/#faq'},
-      {title: '白皮书中文', url: 'http://www.8btc.com/wiki/bitcoin-a-peer-to-peer-electronic-cash-system'},
-      {title: '比特币是什么-江卓尔', url: 'https://www.zhihu.com/question/22076666/answer/69638270'},
-      {title: 'Nakamoto Studies', url: 'http://nakamotostudies.org/'}
-    ]
+      { title: 'BTC.com', url: 'https://wallet.btc.com/' },
+      { title: 'Bitcoin.com', url: 'https://www.bitcoin.com/' },
+      { title: 'Bread', url: 'https://breadapp.com/' },
+      { title: '比特派', url: 'http://bitpie.com/' },
+      { title: 'Coinomi', url: 'https://coinomi.com/' },
+      { title: 'Jaxx', url: 'https://jaxx.io/' },
+    ],
   },
-  '钱包': {
+  交易所: {
     content: [
-      {title: 'BTC.com', url: 'https://wallet.btc.com/'},
-      {title: 'Bitcoin.com', url: 'https://www.bitcoin.com/'},
-      {title: 'Bread', url: 'https://breadapp.com/'},
-      {title: '比特派', url: 'http://bitpie.com/'},
-      {title: 'Coinomi', url: 'https://coinomi.com/'},
-      {title: 'Jaxx', url: 'https://jaxx.io/'},
-    ]
+      { title: '币安', url: 'https://www.binance.com/' },
+      { title: 'OKEx', url: 'https://www.okex.com/' },
+      { title: '火币', url: 'https://www.huobi.com/' },
+      { title: 'CoinEx', url: 'https://www.coinex.com/' },
+    ],
   },
-  '交易所': {
+  开发: {
     content: [
-      {title: '币安', url: 'https://www.binance.com/'},
-      {title: 'OKEx', url: 'https://www.okex.com/'},
-      {title: '火币', url: 'https://www.huobi.com/'},
-      {title: 'CoinEx', url: 'https://www.coinex.com/'}
-    ]
+      {
+        title: 'BITBOX',
+        desc: 'Supercharge your Bitcoin Cash workflow',
+        url: 'https://www.bitbox.earth/',
+      },
+      {
+        title: 'Coinb.in',
+        desc: 'Support Bitcoin Cash setting',
+        url: 'https://cyio.github.io/coinbin',
+      },
+      {
+        title: 'Devs.Cash',
+        desc: 'Bitcoin Cash Web & App Dev Projects',
+        url: 'http://devs.cash/',
+      },
+    ],
   },
-  '开发': {
+  支付商: {
     content: [
-      {title: 'BITBOX', desc: 'Supercharge your Bitcoin Cash workflow', url: 'https://www.bitbox.earth/'},
-      {title: 'Coinb.in', desc: 'Support Bitcoin Cash setting', url: 'https://cyio.github.io/coinbin'},
-      {title: 'Devs.Cash', desc: 'Bitcoin Cash Web & App Dev Projects', url: 'http://devs.cash/'}
-    ]
+      {
+        title: 'BitPay',
+        desc: 'Get Started with Bitcoin and Bitcoin Cash Payments',
+        url: 'https://bitpay.com/',
+      },
+      {
+        title: 'Atlantis',
+        desc: 'Accept Bitcoin Cash Payments instantly',
+        url: 'https://www.atlantislabs.co/',
+      },
+    ],
   },
-  '支付商': {
-    content: [
-      {title: 'BitPay', desc: 'Get Started with Bitcoin and Bitcoin Cash Payments', url: 'https://bitpay.com/'},
-      {title: 'Atlantis', desc: 'Accept Bitcoin Cash Payments instantly', url: 'https://www.atlantislabs.co/'},
-    ]
-  },
-  '考古': {
+  考古: {
     content: [
       // {title: '创世地址', url: `${location.protocol}//${location.host}/#/address/bitcoincash:qp3wjpa3tjlj042z2wv7hahsldgwhwy0rq9sywjpyy`},
-      {title: '创世地址', url: '/address/bitcoincash:qp3wjpa3tjlj042z2wv7hahsldgwhwy0rq9sywjpyy'},
-      {title: '创世交易', desc: 'The Times 03/Jan/2009 Chancellor on brink of second bailout for banks', url: 'https://www.viabtc.com/bch/tx/4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b'},
-      {title: '创币史', desc: 'Bitcoin Cash BCH History', url: 'https://datnoid.com/bitcoin-cash/history'}
-    ]
+      {
+        title: '创世地址',
+        url: '/address/bitcoincash:qp3wjpa3tjlj042z2wv7hahsldgwhwy0rq9sywjpyy',
+      },
+      {
+        title: '创世交易',
+        desc:
+          'The Times 03/Jan/2009 Chancellor on brink of second bailout for banks',
+        url:
+          'https://www.viabtc.com/bch/tx/4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b',
+      },
+      {
+        title: '创币史',
+        desc: 'Bitcoin Cash BCH History',
+        url: 'https://datnoid.com/bitcoin-cash/history',
+      },
+    ],
   },
-  '人物': {
+  人物: {
     content: [
-      {title: 'Roger Ver', url: 'https://twitter.com/rogerkver'},
-      {title: 'Craig S Wright', url: 'https://twitter.com/ProfFaustus'},
-      {title: 'Rick Falkvinge', url: 'https://twitter.com/Falkvinge'},
-      {title: '吴忌寒', url: 'https://weibo.com/bitcoinqqagent'},
-      {title: '江卓尔', url: 'https://weibo.com/ltc1btc'},
-      {title: '杨海坡', url: 'https://weibo.com/yhaiyang'}
-    ]
-  }
+      { title: 'Roger Ver', url: 'https://twitter.com/rogerkver' },
+      { title: 'Craig S Wright', url: 'https://twitter.com/ProfFaustus' },
+      { title: 'Rick Falkvinge', url: 'https://twitter.com/Falkvinge' },
+      { title: '吴忌寒', url: 'https://weibo.com/bitcoinqqagent' },
+      { title: '江卓尔', url: 'https://weibo.com/ltc1btc' },
+      { title: '杨海坡', url: 'https://weibo.com/yhaiyang' },
+    ],
+  },
 }

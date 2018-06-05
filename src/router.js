@@ -6,14 +6,16 @@ import SafeGuides from '@/pages/SafeGuides'
 
 Vue.use(Router)
 
-const isZh = /zh/.test(window.navigator.language || window.navigator.userLanguage)
+const isZh = /zh/.test(
+  window.navigator.language || window.navigator.userLanguage,
+)
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home,
-    meta: { keepAlive: true, title: 'BCH123_比特币现金导航' }
+    meta: { keepAlive: true, title: 'BCH123_比特币现金导航' },
   },
   {
     path: '/address/:id',
@@ -30,8 +32,8 @@ const routes = [
         // property: 'og:description',
         // content: 'The home page of our example app.'
         // }
-      ]
-    }
+      ],
+    },
   },
   {
     path: '/safe-guides',
@@ -39,15 +41,15 @@ const routes = [
     component: SafeGuides,
     meta: {
       title: '安全指南',
-    }
+    },
   },
-  { path: '*', redirect: '/' }
+  { path: '*', redirect: '/' },
 ]
 
 const router = new Router({
   mode: 'hash',
   routes,
-  scrollBehavior (to, from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
     // console.log('scroll', to.path, from.path, savedPosition)
     if (savedPosition) {
       setTimeout(() => {
@@ -62,20 +64,29 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  const nearestWithTitle = to.matched.slice().reverse().find(r => r.meta && r.meta.title)
-  const nearestWithMeta = to.matched.slice().reverse().find(r => r.meta && r.meta.metaTags)
+  const nearestWithTitle = to.matched
+    .slice()
+    .reverse()
+    .find(r => r.meta && r.meta.title)
+  const nearestWithMeta = to.matched
+    .slice()
+    .reverse()
+    .find(r => r.meta && r.meta.metaTags)
   // const previousNearestWithMeta = from.matched.slice().reverse().find(r => r.meta && r.meta.metaTags)
   if (nearestWithTitle) document.title = nearestWithTitle.meta.title
-  Array.from(document.querySelectorAll('[data-vue-router-controlled]')).map(el => el.parentNode.removeChild(el))
+  Array.from(document.querySelectorAll('[data-vue-router-controlled]')).map(
+    el => el.parentNode.removeChild(el),
+  )
   if (!nearestWithMeta) return next()
-  nearestWithMeta.meta.metaTags.map(tagDef => {
-    const tag = document.createElement('meta')
-    Object.keys(tagDef).forEach(key => {
-      tag.setAttribute(key, tagDef[key])
+  nearestWithMeta.meta.metaTags
+    .map(tagDef => {
+      const tag = document.createElement('meta')
+      Object.keys(tagDef).forEach(key => {
+        tag.setAttribute(key, tagDef[key])
+      })
+      tag.setAttribute('data-vue-router-controlled', '')
+      return tag
     })
-    tag.setAttribute('data-vue-router-controlled', '')
-    return tag
-  })
     .forEach(tag => document.head.appendChild(tag))
 
   next()
