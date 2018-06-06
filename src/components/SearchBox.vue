@@ -1,6 +1,7 @@
 <template lang="pug">
   .searchbar-input-container
     input.searchbar-input(type='search' name='q' v-bind:placeholder="$t('home.searchPlaceholder')" autocomplete='off' spellcheck="false" v-model="words" @keyup.enter="_submit" @change="errMsg = null")
+    a.icon.btc-com(:href="'https://bch.btc.com/' + words" title="在 btc.com 查看" target="_blank")
     icon.search-icon(name="search" @click.native="_submit")
     .err-msg(v-if="displayErrMsg") {{displayErrMsg}}
 </template>
@@ -47,11 +48,11 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
   .searchbar-input-container {
     align-self: flex-start;
     position: relative;
-		display: flex;
+    display: flex;
     margin: 20px 0;
     padding: 0 .03rem;
     max-width: 500px;
@@ -64,23 +65,37 @@ export default {
     transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
   }
   .searchbar-input {
-		flex: 1;
-		min-width: 150px;
-		padding: .3rem;
-		border: 0;
-		transition: border .2s ease;
-		font-size: .8rem;
+    flex: 1;
+    min-width: 150px;
+    padding: .3rem;
+    border: 0;
+    transition: border .2s ease;
+    font-size: .8rem;
   }
   .search-icon {
     color: var(--theme);
     padding: 5px 5px 5px 10px;
-		align-self: center;
-		width: 2rem;
-		height: 2rem;
+    align-self: center;
+    width: 2rem;
+    height: 2rem;
+  }
+  .search-icon:hover {
+    cursor: pointer;
   }
   .err-msg { 
     position: absolute;
     top: 4rem;
     color: red;
+  }
+  .icon {
+    display: inline-block;
+    align-self: center;
+    width: 22px;
+    height: 22px;
+  }
+  .btc-com {
+    background: url('../assets/btc-com.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
   }
   </style>
