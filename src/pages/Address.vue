@@ -20,7 +20,7 @@
     .error(v-if="showErrorMsg") {{$t('address.serviceUnavailable')}}
       Button(@click="setAddressData(cashAddress)") {{$t('address.retry')}}
       span 或前往
-      a(:href="'https://bch.btc.com/' + cashAddress" title="在 btc.com 查看" target="_blank")  BTC.com 
+      a(:href="blockExplorerUrl + cashAddress" title="在 btc.com 查看" target="_blank")  BTC.com 
       span 查看
     .address-tx(v-if="addressTxs && addressTxs.total_count")
       // .desp {{$t('address.latestTxs')}}
@@ -28,7 +28,7 @@
         is-vertical-resize='',
         :vertical-resize-offset='60',
         is-horizontal-resize='',
-        style='width:350px',
+        style='width:auto',
         :multiple-sort='false',
         :min-height='399',
         even-bg-color='#f2f2f2',
@@ -38,8 +38,8 @@
         row-hover-color='#eee',
         row-click-color='#edf7ff',
         @sort-change='sortChange',
-        :paging-index='(pageIndex-1)*pageSize'
-				:is-loading="tableConfig.isLoading"
+        :paging-index='(pageIndex-1)*pageSize',
+        :is-loading="tableConfig.isLoading",
       )
       .mt20.mb20.bold
       v-pagination(
@@ -92,6 +92,7 @@ export default {
       prices: { cny: null, usd: null },
       pageIndex: 1,
       pageSize: 10,
+      blockExplorerUrl: 'https://bch.btc.com/',
       tableConfig: {
         multipleSort: false,
         tableData: [],
@@ -107,12 +108,22 @@ export default {
             }
           },
           {field: 'time', width: 170, columnAlign: 'center', isFrozen: true},
+          {
+            field: 'id',
+            width: 70,
+            columnAlign: 'center',
+            isFrozen: true,
+            formatter: (rowData, index, pagingIndex) => {
+              return `<a href=${this.blockExplorerUrl + rowData.id} target="_blank" title="可复制完整交易 ID 或点击前往 BTC.com 查看">${rowData.id}</a>`
+            }
+          },
         ],
         titleRows: [
           [
             {fields: ['title'], title: '方向', titleAlign: 'center'},
             {fields: ['amount'], title: '金额', titleAlign: 'center'},
             {fields: ['time'], title: '时间', titleAlign: 'center'},
+            {fields: ['id'], title: 'ID', titleAlign: 'center'},
           ]
         ],
         isLoading: true,
@@ -237,7 +248,8 @@ export default {
           'amount': (tx.balance_diff > 0 && '+') + tx.balance_diff / 10 ** 8,
           // block_time 未出块时为 0
           // created_at 早期交易的时间是错的，应该优先取 block_time，如果为 0 时，取 created_at
-          'time': this.timeFormat(tx.block_time || tx.created_at)
+          'time': this.timeFormat(tx.block_time || tx.created_at),
+          'id': tx.hash,
         }
       })
         .slice((this.pageIndex - 1) * this.pageSize, this.pageIndex * this.pageSize)
@@ -341,6 +353,14 @@ export default {
   }
   .v-table-views {
     min-height: 442px;
+    border: none;
+  }
+  .v-table-leftview {
+    border: 1px solid rgba(221, 221, 221, 1);
+    border-bottom: none;
+  }
+  .v-table-loading-content {
+    left: 30%;
   }
   .address-tx {
     font-size: 0.9rem;
