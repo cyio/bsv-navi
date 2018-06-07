@@ -353,7 +353,7 @@ export default {
   }
   .v-table-views {
     min-height: 442px;
-    border: none;
+    border: none!important;
   }
   .v-table-leftview {
     border: 1px solid rgba(221, 221, 221, 1);
@@ -366,18 +366,24 @@ export default {
     font-size: 0.9rem;
   }
   .v-page-li-active {
-    border-color: var(--theme);
+    border-color: var(--theme)!important;
     background-color: @border-color;
   }
   .v-page-li-active:hover {
-    border-color: darken(#f08b16, 10);
-    background-color: @border-color;
+    border-color: darken(#fff, 10)!important;
+    background-color: @border-color!important;
   }
   .v-page-li:hover {
-    border-color: darken(#f08b16, 10);
+    border-color: darken(#f08b16, 10)!important;
+  }
+  .v-page-li-active a {
+    color: #fff!important;
   }
   .v-page-li:hover a {
-    color: var(--theme);
+    color: var(--theme)!important;
+  }
+  .v-page-li-active:hover a {
+    color: #fff!important;
   }
   .ivu-spin {
     position: absolute;
