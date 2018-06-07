@@ -245,7 +245,7 @@ export default {
       return this.addressTxs.list.map(tx => {
         return tx && {
           'title': tx.balance_diff > 0 ? this.$t('address.received') : this.$t('address.sent'),
-          'amount': (tx.balance_diff > 0 && '+') + tx.balance_diff / 10 ** 8,
+          'amount': (tx.balance_diff > 0 ? '+' : '') + Number(tx.balance_diff / 10 ** 8).toFixed(8).replace(/\.?0+$/, ''),
           // block_time 未出块时为 0
           // created_at 早期交易的时间是错的，应该优先取 block_time，如果为 0 时，取 created_at
           'time': this.timeFormat(tx.block_time || tx.created_at),
