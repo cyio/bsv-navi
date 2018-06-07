@@ -2,7 +2,7 @@
 .address-view
   search-box(:keywords='cashAddress' :errors='addressErrors' :submit='submit')
   .address-detail
-    .row(v-if="!showLoading")
+    .row(v-if="!showLoading && !showErrorMsg")
       .address-balance
         div(v-if="addressDetail")
           .label {{$t('address.balance')}}
@@ -17,6 +17,11 @@
           span 账户暂无数据<br>未使用过的地址
       .qr-wrap(v-if="qrUrl")
         img(:src="qrUrl")
+    .error(v-if="showErrorMsg") {{$t('address.serviceUnavailable')}}
+      Button(@click="setAddressData(cashAddress)") {{$t('address.retry')}}
+      span 或前往
+      a(:href="'https://bch.btc.com/' + cashAddress" title="在 btc.com 查看" target="_blank")  BTC.com 
+      span 查看
     .address-tx(v-if="addressTxs && addressTxs.total_count")
       // .desp {{$t('address.latestTxs')}}
       v-table(
@@ -45,8 +50,6 @@
         :layout="['total', 'prev', 'pager', 'next', 'jumper']"
       )
     Spin(size="large" v-if="showLoading")
-    .error(v-if="showErrorMsg") {{$t('address.serviceUnavailable')}}
-      button.btn(@click="setAddressData(cashAddress)") {{$t('address.retry')}}
 </template>
 
 <script>
@@ -61,7 +64,7 @@ import { format } from 'date-fns'
 import numeral from 'numeral'
 import 'vue-easytable/libs/themes-base/index.css'
 import { VTable, VPagination } from 'vue-easytable'
-import { Spin } from 'iview'
+import { Spin, Button } from 'iview'
 // const timeAgo = new Timeago()
 // const proxyHost = 'http://api.oaker.bid/proxy'
 const proxyHost = 'https://bird.ioliu.cn/v1'
@@ -73,6 +76,7 @@ export default {
     SearchBox,
     VTable,
     VPagination,
+    Button,
     Spin
   },
   data () {
@@ -146,9 +150,9 @@ export default {
       this.getTableData()
       this.qrUrl = await this.generateQR(bchaddr.toCashAddress(id))
       this.showLoading = false
-      // if (!Object.keys(this.addressDetail).length || !Object.keys(this.addressTxs).length) {
-      // this.showErrorMsg = true
-      // }
+      if (!Object.keys(this.addressDetail).length) {
+        this.showErrorMsg = true
+      }
     },
     getAddressDetail (address) {
       // const url = `/api/address?${address}`
@@ -359,5 +363,11 @@ export default {
     position: absolute;
     top: 295px;
     left: 45%;
+  }
+  .error {
+    padding: 20px;
+  }
+  .error button {
+    margin: 0 10px;
   }
   </style>

@@ -38,7 +38,7 @@ export default {
     _submit () {
       let address = this.words.trim()
       if (!address) {
-        this.errMsg = '不得为空'
+        // this.errMsg = '不得为空'
         return
       }
       this.submit(address)
@@ -97,5 +97,6 @@ export default {
     background: url('../assets/btc-com.png');
     background-size: 100%;
     background-repeat: no-repeat;
+    opacity: .8;
   }
-  </style>
+</style>
