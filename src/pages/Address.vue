@@ -66,8 +66,8 @@ import 'vue-easytable/libs/themes-base/index.css'
 import { VTable, VPagination } from 'vue-easytable'
 import { Spin, Button } from 'iview'
 // const timeAgo = new Timeago()
-// const proxyHost = 'http://api.oaker.bid/proxy'
-const proxyHost = 'https://bird.ioliu.cn/v1'
+const proxyHost = 'https://cors.oaker.bid/'
+// const proxyHost = 'https://bird.ioliu.cn/v2/?url='
 export default {
   name: 'Address',
   mixins: [mixin],
@@ -156,20 +156,20 @@ export default {
     },
     getAddressDetail (address) {
       // const url = `/api/address?${address}`
-      const url = `${proxyHost}/?url=https://bch-chain.api.btc.com/v3/address/${address}`
+      const url = `${proxyHost}https://bch-chain.api.btc.com/v3/address/${address}`
       return fetch(url).then(res => res.json().then(res => {
         return res.headers ? res.data.data : res.data
       }).catch(err => console.error(err)))
     },
     async getAddressTxs (address, page = this.pageIndex, pageSize = this.pageSize) {
       // const url = `/api/address-txs?${address}`
-      const url = `${proxyHost}/?url=https://bch-chain.api.btc.com/v3/address/${address}/tx?page=${page}&pagesize=${pageSize}&verbose=1`
+      const url = `${proxyHost}https://bch-chain.api.btc.com/v3/address/${address}/tx?page=${page}&pagesize=${pageSize}&verbose=1`
       return fetch(url).then(res => res.json().then(res => {
         return res.headers ? res.data.data : res.data
       }).catch(err => console.error(err)))
     },
     getPrices () {
-      const url = `${proxyHost}/?url=https://api.coinmarketcap.com/v2/ticker/1831/?convert=CNY`
+      const url = `${proxyHost}https://api.coinmarketcap.com/v2/ticker/1831/?convert=CNY`
       return fetch(url).then(res => res.json().then(res => {
         return res.headers ? res.data.data : res.data
       }).catch(err => console.error(err)))
