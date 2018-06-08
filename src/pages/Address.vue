@@ -2,18 +2,18 @@
 .address-view
   search-box(:keywords='cashAddress' :errors='addressErrors' :submit='submit')
   .address-detail
-    .row(v-if="!showLoading && !showErrorMsg")
+    .row
       .address-balance
-        div(v-if="addressDetail")
+        div
           .label {{$t('address.balance')}}
           .fiat-row
-            div(v-show="prices.usd")
-              span.value {{addressBalance * prices[fiat] | format}}
+            div
+              span.value {{addressFiatBalance || '-----'}}
               span.unit {{fiat.toUpperCase()}}
           .balance-row
-            span.value {{addressBalance}}
+            span.value {{addressDetail ? addressBalance : '-----'}}
             span.unit BCH
-        div(v-if="addressDetail === null")
+        div(v-if="!showLoading && !showErrorMsg && addressDetail === null")
           span 账户暂无数据<br>未使用过的地址
       .qr-wrap(v-if="qrUrl")
         img(:src="qrUrl")
@@ -50,7 +50,7 @@
         :page-size='pageSize',
         :layout="['total', 'prev', 'pager', 'next', 'jumper']"
       )
-    Spin(size="large" v-if="showLoading")
+    // Spin(size="large" v-if="showLoading")
 </template>
 
 <script>
@@ -65,7 +65,7 @@ import QRCode from 'qrcode'
 import { format } from 'date-fns'
 // import Timeago from 'timeago.js'
 import numeral from 'numeral'
-import { Spin, Button } from 'iview'
+import { Button } from 'iview'
 // const timeAgo = new Timeago()
 const proxyHost = 'https://cors.oaker.bid/'
 // const proxyHost = 'https://bird.ioliu.cn/v2/?url='
@@ -78,7 +78,6 @@ export default {
     VTable,
     VPagination,
     Button,
-    Spin
   },
   data () {
     return {
@@ -158,10 +157,10 @@ export default {
       this.addressDetail = this.addressTxs = this.addressErrors = null
       this.showLoading = true
       this.showErrorMsg = false
+      this.qrUrl = await this.generateQR(bchaddr.toCashAddress(id))
       this.getAddressDetail(id).then(async data => {
         this.addressDetail = data
         this.getTableData()
-        this.qrUrl = await this.generateQR(bchaddr.toCashAddress(id))
         this.showLoading = false
         if (!Object.keys(this.addressDetail).length) {
           this.showErrorMsg = true
@@ -268,6 +267,9 @@ export default {
       })
         .slice((this.pageIndex - 1) * this.pageSize, this.pageIndex * this.pageSize)
         .filter(i => !!i)
+    },
+    addressFiatBalance() {
+      return this.addressDetail && this.prices.usd && numeral(this.addressBalance * this.prices[this.fiat]).format('0,0.00')
     }
   },
   filters: {
@@ -310,11 +312,13 @@ export default {
     grid-template-columns: repeat(2, 1fr);
     box-shadow: 0 0 black;
     width: 20rem;
+    min-height: 112px;
   }
   .qr-wrap {
     text-align: right;
   }
   .address-balance {
+    width: 13rem;
     padding: 10px;
   }
   .address-balance .label {
@@ -358,6 +362,11 @@ export default {
   .loading {
     margin-top: 50px;
   }
+  .address-tx {
+    font-size: 0.9rem;
+    overflow-x: scroll;
+    max-width: 100%;
+  }
   .address-tx .desp {
     text-align: right;
     line-height: 2rem;
@@ -367,6 +376,7 @@ export default {
   }
   .v-table-views {
     min-height: 442px;
+    min-width: 450px;
     border: none!important;
   }
   .v-table-leftview {
@@ -375,9 +385,6 @@ export default {
   }
   .v-table-loading-content {
     left: 30%!important;
-  }
-  .address-tx {
-    font-size: 0.9rem;
   }
   .v-page-li-active {
     border-color: var(--theme)!important;
