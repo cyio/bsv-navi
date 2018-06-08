@@ -53,8 +53,10 @@
 </template>
 
 <script>
+import 'vue-easytable/libs/themes-base/index.css'
+import { VTable, VPagination } from 'vue-easytable'
 import mixin from '@/mixin'
-// import { sleep } from '../utils'
+import { fetchRetry } from '../utils'
 import Modal from '../components/Modal'
 import SearchBox from '../components/SearchBox'
 import bchaddr from 'bchaddrjs'
@@ -62,8 +64,6 @@ import QRCode from 'qrcode'
 import { format } from 'date-fns'
 // import Timeago from 'timeago.js'
 import numeral from 'numeral'
-import 'vue-easytable/libs/themes-base/index.css'
-import { VTable, VPagination } from 'vue-easytable'
 import { Spin, Button } from 'iview'
 // const timeAgo = new Timeago()
 const proxyHost = 'https://cors.oaker.bid/'
@@ -157,30 +157,36 @@ export default {
       this.addressDetail = this.addressTxs = this.addressErrors = null
       this.showLoading = true
       this.showErrorMsg = false
-      this.addressDetail = await this.getAddressDetail(id)
-      this.getTableData()
-      this.qrUrl = await this.generateQR(bchaddr.toCashAddress(id))
-      this.showLoading = false
-      if (!Object.keys(this.addressDetail).length) {
-        this.showErrorMsg = true
-      }
+      this.getAddressDetail(id).then(async data => {
+        this.addressDetail = data
+        this.getTableData()
+        this.qrUrl = await this.generateQR(bchaddr.toCashAddress(id))
+        this.showLoading = false
+        if (!Object.keys(this.addressDetail).length) {
+          this.showErrorMsg = true
+        }
+      })
     },
     getAddressDetail (address) {
       // const url = `/api/address?${address}`
       const url = `${proxyHost}https://bch-chain.api.btc.com/v3/address/${address}`
-      return fetch(url).then(res => res.json().then(res => {
+      return fetchRetry(url).then(res => res.json().then(res => {
         return res.headers ? res.data.data : res.data
-      }).catch(err => console.error(err)))
+      }))
     },
-    async getAddressTxs (address, page = this.pageIndex, pageSize = this.pageSize) {
+    getAddressTxs (address, page = this.pageIndex, pageSize = this.pageSize) {
       // const url = `/api/address-txs?${address}`
       const url = `${proxyHost}https://bch-chain.api.btc.com/v3/address/${address}/tx?page=${page}&pagesize=${pageSize}&verbose=1`
-      return fetch(url).then(res => res.json().then(res => {
-        return res.headers ? res.data.data : res.data
-      }).catch(err => console.error(err)))
+      return new Promise((resolve, reject) => {
+        fetchRetry(url).then(res => {
+          res.json().then(res => {
+            resolve(res.headers ? res.data.data : res.data)
+          })
+        })
+      })
     },
     getPrices () {
-      const url = `${proxyHost}https://api.coinmarketcap.com/v2/ticker/1831/?convert=CNY`
+      const url = `https://api.coinmarketcap.com/v2/ticker/1831/?convert=CNY`
       return fetch(url).then(res => res.json().then(res => {
         return res.headers ? res.data.data : res.data
       }).catch(err => console.error(err)))
@@ -192,15 +198,22 @@ export default {
     async getTableData() {
       this.tableConfig.isLoading = true
       if (!this.addressTxs) {
-        this.addressTxs = await this.getAddressTxs(this.legacyAddress)
+        this.getAddressTxs(this.legacyAddress).then(data => {
+          this.addressTxs = data
+          this.tableConfig.isLoading = false
+        })
       } else {
         if (!this.addressTxs.list[(this.pageIndex - 1) * this.pageSize]) {
-          let newData = await this.getAddressTxs(this.legacyAddress)
-          this.addressTxs.list[(this.pageIndex - 1) * this.pageSize] = null
-          this.addressTxs.list.splice((this.pageIndex - 1) * this.pageSize, 0, ...(newData.list))
+          this.getAddressTxs(this.legacyAddress).then(data => {
+            let newData = data
+            this.addressTxs.list[(this.pageIndex - 1) * this.pageSize] = null
+            this.addressTxs.list.splice((this.pageIndex - 1) * this.pageSize, 0, ...(newData.list))
+            this.tableConfig.isLoading = false
+          })
+        } else {
+          this.tableConfig.isLoading = false
         }
       }
-      this.tableConfig.isLoading = false
     },
     async pageChange(pageIndex) {
       this.pageIndex = pageIndex
@@ -360,7 +373,7 @@ export default {
     border-bottom: none;
   }
   .v-table-loading-content {
-    left: 30%;
+    left: 30%!important;
   }
   .address-tx {
     font-size: 0.9rem;
