@@ -22,7 +22,7 @@
       span 或前往
       a(:href="blockExplorerUrl + cashAddress" title="在 btc.com 查看" target="_blank")  BTC.com 
       span 查看
-    .address-tx(v-if="addressTxs && addressTxs.total_count")
+    .address-tx
       // .desp {{$t('address.latestTxs')}}
       v-table(
         is-vertical-resize='',
@@ -43,6 +43,7 @@
       )
       .mt20.mb20.bold
       v-pagination(
+        v-if="addressTxs && addressTxs.total_count"
         @page-change='pageChange',
         @page-size-change='pageSizeChange',
         :total='addressTxs.total_count',
