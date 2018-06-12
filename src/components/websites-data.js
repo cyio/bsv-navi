@@ -34,6 +34,7 @@ export default {
   资讯: {
     content: [
       { title: '币世界', url: 'https://www.bishijie.com/kuaixun' },
+      { title: 'Bitcoin.com 中文', url: 'https://cn.bitcoin.com/' },
       { title: 'Bitcoin.com', url: 'https://news.bitcoin.com/' },
       { title: 'CoinGeek', url: 'https://coingeek.com/' },
     ],
@@ -132,11 +133,11 @@ export default {
   入门: {
     content: [
       {
-        title: '官网',
+        title: '社区官网',
         desc: '比特币现金 - 点对点数字现金',
-        url: 'https://www.bitcoincash.org/',
+        url: 'https://www.bitcoincash.org/zh-cn',
       },
-      { title: '常见问题', url: 'https://www.bitcoincash.org/#faq' },
+      { title: '常见问题', url: 'https://www.bitcoincash.org/zh-cn/#faq' },
       {
         title: '白皮书中文',
         url:
@@ -144,9 +145,14 @@ export default {
       },
       {
         title: '比特币是什么-江卓尔',
+        desc: '知乎最高票答案，中文界第一科普长文',
         url: 'https://www.zhihu.com/question/22076666/answer/69638270',
       },
-      { title: 'Nakamoto Studies', url: 'http://nakamotostudies.org/' },
+      {
+        title: '中本聪研究所',
+        desc: '阅读中本聪邮件、论坛帖子首选 - Nakamoto Studies',
+        url: 'https://nakamotostudies.org/',
+      },
     ],
   },
   钱包: {
