@@ -1,7 +1,7 @@
 export default {
   社交: {
     content: [
-      { title: 'BCH.club', url: 'http://bch.club/' },
+      { title: 'BCH.club', url: 'https://bch.club/' },
       { title: '巴比特论坛', url: 'http://8btc.com/forum-147-1.html' },
       { title: 'Reddit', url: 'https://www.reddit.com/r/btc/' },
       { title: 'Memo', desc: '去中心化微博', url: 'https://memo.cash/' },

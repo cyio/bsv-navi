@@ -2,7 +2,7 @@
   .statistics
     ul(v-if="list")
       li(v-for="item in list")
-        span.label {{item.label}}：
+        span.label {{item.label}}: 
         span.value {{item.value || '-----'}}
 </template>
 <script>
@@ -35,6 +35,7 @@ export default {
         let nodes = data.nodes
         this.market.nodes = `${nodes.follow} / ${this.formatPercentage(nodes.follow, nodes.total)}`
         this.market.price = `￥${Math.round(data.price)}`
+        this.market.percent_change_24h = ` (${data.percent_change_24h > 0 ? '+' : ''}${data.percent_change_24h}%)`
         this.market.supply = numeral(data.circulating_supply / (10 ** 4)).format('0,000') + '万' + ' / ' + this.formatPercentage(data.circulating_supply, data.max_supply)
         this.market['bch/btc'] = data.bch_against_btc.toFixed(3)
       }))
@@ -44,7 +45,7 @@ export default {
     list() {
       let market = this.market
       return [
-        { label: '最新价', value: market.price },
+        { label: '最新价', value: market.price + market.percent_change_24h },
         { label: 'BCH/BTC', value: market['bch/btc'] },
         { label: '已供应', value: market.supply },
         { label: '遵循最新共识节点数', value: market.nodes },
