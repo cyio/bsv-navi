@@ -13,7 +13,7 @@ Vue.use(VueI18n)
 Vue.component('icon', Icon)
 
 const shared = {
-  isZh: /zh/.test(window.navigator.language || window.navigator.userLanguage)
+  isZh: /zh/.test(window.navigator.language || window.navigator.userLanguage),
 }
 
 const translations = {
@@ -33,8 +33,11 @@ const translations = {
       sent: '发送',
       received: '接收',
       serviceUnavailable: '服务暂不可用',
-      retry: '重试'
-    }
+      retry: '重试',
+      direction: '方向',
+      amount: '金额',
+      time: '时间',
+    },
   },
   en: {
     home: {
@@ -49,26 +52,29 @@ const translations = {
     address: {
       balance: 'Balance',
       latestTxs: 'Latest 10 Transactions',
-      sent: 'Sent发送',
+      sent: 'Sent',
       received: 'Received',
       serviceUnavailable: 'Service Unavailable',
-      retry: 'Retry'
-    }
-  }
+      retry: 'Retry',
+      direction: 'Direction',
+      amount: 'Amount',
+      time: 'Time',
+    },
+  },
 }
 
 const i18n = new VueI18n({
   locale: shared.isZh ? 'zh' : 'en',
-  messages: translations
+  messages: translations,
 })
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   data: {
-    shared
+    shared,
   },
   router,
   i18n,
   template: '<App/>',
-  components: { App }
+  components: { App },
 })

@@ -6,11 +6,6 @@ export default {
       { title: 'Reddit', url: 'https://www.reddit.com/r/btc/' },
       { title: 'Memo', desc: '去中心化微博', url: 'https://memo.cash/' },
       {
-        title: 'BlockPress',
-        desc: '去中心化微博',
-        url: 'https://www.blockpress.com/ ',
-      },
-      {
         title: 'Yours',
         desc: '能赚 BCH 的内容创作平台',
         url: 'https://www.yours.org/',
@@ -135,7 +130,7 @@ export default {
       {
         title: '社区官网',
         desc: '比特币现金 - 点对点数字现金',
-        url: 'https://www.bitcoincash.org/zh-cn',
+        url: 'https://www.bitcoincash.org/zh-CN/',
       },
       { title: '常见问题', url: 'https://www.bitcoincash.org/zh-cn/#faq' },
       {
@@ -200,9 +195,9 @@ export default {
         url: 'https://bitpay.com/',
       },
       {
-        title: 'Atlantis',
-        desc: 'Accept Bitcoin Cash Payments instantly',
-        url: 'https://www.atlantislabs.co/',
+        title: 'CashFlow',
+        desc: 'Bitcoin Cash Payment Processor with 0-conf and Shopify plugin',
+        url: 'https://cashflow.fm/',
       },
     ],
   },

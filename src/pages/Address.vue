@@ -120,9 +120,9 @@ export default {
         ],
         titleRows: [
           [
-            {fields: ['title'], title: '方向', titleAlign: 'center'},
-            {fields: ['amount'], title: '金额', titleAlign: 'center'},
-            {fields: ['time'], title: '时间', titleAlign: 'center'},
+            {fields: ['title'], title: this.$t('address.direction'), titleAlign: 'center'},
+            {fields: ['amount'], title: this.$t('address.amount'), titleAlign: 'center'},
+            {fields: ['time'], title: this.$t('address.time'), titleAlign: 'center'},
             {fields: ['id'], title: 'ID', titleAlign: 'center'},
           ]
         ],
