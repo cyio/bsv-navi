@@ -57,11 +57,10 @@
 import 'vue-easytable/libs/themes-base/index.css'
 import { VTable, VPagination } from 'vue-easytable'
 import mixin from '@/mixin'
-import { fetchRetry } from '../utils'
+import { fetchRetry, generateQR } from '../utils'
 import Modal from '../components/Modal'
 import SearchBox from '../components/SearchBox'
 import bchaddr from 'bchaddrjs'
-import QRCode from 'qrcode'
 import { format } from 'date-fns'
 // import Timeago from 'timeago.js'
 import numeral from 'numeral'
@@ -157,7 +156,7 @@ export default {
       this.addressDetail = this.addressTxs = this.addressErrors = null
       this.showLoading = true
       this.showErrorMsg = false
-      this.qrUrl = await this.generateQR(bchaddr.toCashAddress(id))
+      this.qrUrl = await generateQR(bchaddr.toCashAddress(id))
       this.getAddressDetail(id).then(async data => {
         this.addressDetail = data
         this.getTableData()
@@ -190,10 +189,6 @@ export default {
       return fetch(url).then(res => res.json().then(res => {
         return res.headers ? res.data.data : res.data
       }).catch(err => console.error(err)))
-    },
-    async generateQR (text) {
-      const url = await QRCode.toDataURL(text.toUpperCase(), { mode: 'alphanumeric' })
-      return url
     },
     async getTableData() {
       this.tableConfig.isLoading = true

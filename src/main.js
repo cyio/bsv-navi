@@ -25,7 +25,7 @@ const translations = {
       mobile: '电话&微信',
       email: '邮箱',
       sourceCode: '开放源码',
-      searchPlaceholder: 'BCH 帐户查看器，支持新旧地址格式...',
+      searchPlaceholder: 'BCH 地址，$handler',
     },
     address: {
       balance: '余额',
@@ -47,7 +47,7 @@ const translations = {
       mobile: 'Mobile&Wechat',
       email: 'Email',
       sourceCode: 'Source Code',
-      searchPlaceholder: 'BCH address, support legacy / cashAddress',
+      searchPlaceholder: 'BCH address, $handler',
     },
     address: {
       balance: 'Balance',

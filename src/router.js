@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/pages/Home'
 import Address from '@/pages/Address'
+import Handle from '@/pages/Handle'
 import SafeGuides from '@/pages/SafeGuides'
 
 Vue.use(Router)
@@ -33,6 +34,15 @@ const routes = [
         // content: 'The home page of our example app.'
         // }
       ],
+    },
+  },
+  {
+    path: '/handle/:id',
+    name: 'Handle',
+    component: Handle,
+    meta: {
+      title: isZh ? 'HandCash 收款地址查询' : 'HandCash Payment Address Query',
+      metaTags: [],
     },
   },
   {

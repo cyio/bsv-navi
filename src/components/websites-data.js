@@ -1,5 +1,5 @@
 export default {
-  社交: {
+  社区: {
     content: [
       { title: 'BCH.club', url: 'https://bch.club/' },
       { title: '巴比特论坛', url: 'http://8btc.com/forum-147-1.html' },
@@ -121,6 +121,11 @@ export default {
         desc: 'Live Bitcoin Cash vs Bitcoin Core Transaction Visualizer ',
         url: 'https://txhighway.com/',
       },
+      {
+        title: 'TX Street',
+        desc: 'Bitcoin Transaction Visualizer',
+        url: 'https://txstreet.com/',
+      },
       { title: 'CoinDance', url: 'https://cash.coin.dance/' },
       { title: 'Cashnodes', url: 'https://cashnodes.bitcoinunlimited.info/' },
     ],
@@ -152,7 +157,7 @@ export default {
   },
   钱包: {
     content: [
-      { title: 'BTC.com', url: 'https://wallet.btc.com/' },
+      { title: 'HandCash', url: 'http://www.handcash.io/' },
       { title: 'Bitcoin.com', url: 'https://www.bitcoin.com/' },
       { title: 'Bread', url: 'https://breadapp.com/' },
       { title: '比特派', url: 'http://bitpie.com/' },
@@ -176,9 +181,9 @@ export default {
         url: 'https://www.bitbox.earth/',
       },
       {
-        title: 'Coinb.in',
-        desc: 'Support Bitcoin Cash setting',
-        url: 'https://cyio.github.io/coinbin',
+        title: 'bchjs',
+        desc: 'Bitcoin Cash Wallet by Bchjs',
+        url: 'https://ccoincash.github.io',
       },
       {
         title: 'Devs.Cash',

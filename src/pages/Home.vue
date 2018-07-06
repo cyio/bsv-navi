@@ -35,7 +35,8 @@ export default {
   },
   methods: {
     async submit (keywords) {
-      this.go({path: '/address/' + keywords})
+      const isHandle = /^\$/.test(keywords)
+      this.go({path: `/${isHandle ? 'handle' : 'address'}/${keywords}`})
     }
   },
   computed: {
