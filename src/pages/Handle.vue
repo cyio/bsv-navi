@@ -5,10 +5,10 @@
       img(:src="qrUrl")
     .address(@click='copyAddress')
       textarea(ref='addr', readonly='') {{receivingAddress}}
-    .err-msg(v-if="!showLoading && !receivingAddress") 查询失败
+    .err-msg(v-if="!showLoading && !receivingAddress") 查询失败，请检查 $handle 拼写是否正确
     .desc
       span 本页面使用
-      a(href="http://handcash.io/api-docs/" target="_blank") 官方API
+      a(href="http://handcash.io/api-docs/" target="_blank") HandCash API
       span 查询 $handle 的收款地址
     Spin(size="large" v-if="showLoading")
 </template>
@@ -54,6 +54,7 @@ export default {
     setHandle() {
       if (this.$route.params.id && this.handle !== this.$route.params.id) {
         this.handle = this.$route.params.id
+        document.title = `$${this.handle} 的 BCH 收款`
         this.getAddress(this.handle)
       }
     },
@@ -103,7 +104,7 @@ export default {
     width: 96%;
   }
   .address textarea {
-    width: 14.4rem;
+    width: 14.5rem;
     border: none;
     resize: none;
   }
@@ -116,6 +117,6 @@ export default {
   }
   .desc {
     margin-top: 5rem;
-    font-size: .9rem;
+    font-size: .8rem;
   }
 </style>

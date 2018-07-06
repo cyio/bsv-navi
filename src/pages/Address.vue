@@ -131,6 +131,13 @@ export default {
   },
   methods: {
     submit (address) {
+      const keywords = address.trim()
+      const isHandle = /^\$/.test(keywords)
+      if (isHandle) {
+        this.go({path: `/${isHandle ? 'handle' : 'address'}/${isHandle ? keywords.substr(1) : keywords}`})
+        return
+      }
+
       try {
         if (bchaddr.isLegacyAddress(address)) {
           const cashAddr = bchaddr.toCashAddress(address)

@@ -40,10 +40,6 @@ const routes = [
     path: '/handle/:id',
     name: 'Handle',
     component: Handle,
-    meta: {
-      title: isZh ? 'HandCash 收款地址查询' : 'HandCash Payment Address Query',
-      metaTags: [],
-    },
   },
   {
     path: '/safe-guides',
