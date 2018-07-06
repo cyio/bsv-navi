@@ -1,6 +1,6 @@
 <template lang="pug">
   .handle-view
-    .name {{handle}}
+    .name ${{handle}}
     .qr-wrap(v-if="qrUrl" @click='copyAddress')
       img(:src="qrUrl")
     .address(@click='copyAddress')
@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     getAddress(handle) {
-      let url = `https://api.handcash.io/api/receivingAddress/${handle.substr(1)}`
+      let url = `https://api.handcash.io/api/receivingAddress/${handle}`
       this.showLoading = true
       fetch(url).then(res => {
         if (res.status !== 200) {
