@@ -2,14 +2,18 @@
   .searchbar-input-container
     input.searchbar-input(type='search' name='q' v-bind:placeholder="$t('home.searchPlaceholder')" autocomplete='off' spellcheck="false" v-model="words" @keyup.enter="_submit" @change="errMsg = null")
     a.icon.btc-com(:href="'https://bch.btc.com/' + words" title="在 btc.com 查看" target="_blank")
-    icon.search-icon(name="search" @click.native="_submit")
+    icon(type="search").search-icon(name="search" @click.native="_submit")
     .err-msg(v-if="displayErrMsg") {{displayErrMsg}}
 </template>
 <script>
 import mixin from '@/mixin.js'
+import { Icon } from 'iview'
 export default {
   name: 'search-box',
   mixins: [mixin],
+  components: {
+    Icon,
+  },
   props: {
     keywords: {
       type: String,
@@ -73,11 +77,10 @@ export default {
     font-size: .8rem;
   }
   .search-icon {
+    font-size: 1.5rem;
     color: var(--theme);
     padding: 5px 5px 5px 10px;
     align-self: center;
-    width: 2rem;
-    height: 2rem;
   }
   .search-icon:hover {
     cursor: pointer;
