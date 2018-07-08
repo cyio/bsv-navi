@@ -16,8 +16,8 @@ install:
 script:
 - yarn build
 after_script:
-- cp -r gh-dist/.git dist/
-- cd dist
+- cp -rf dist/* gh-dist/
+- cd gh-dist
 - cp index.html 404.html
 - git add --all
 - git commit --message "auto deploy"
