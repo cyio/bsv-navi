@@ -10,17 +10,18 @@ cache:
 before_install:
 - git config --global user.name "cyio"
 - git config --global user.email "ibeceo@gmail.com"
-- git clone --branch gh-pages https://github.com/cyio/bch123.org.git dist
+- git clone --branch gh-pages https://github.com/cyio/bch123.org.git gh-dist
 install:
 - yarn
 script:
 - yarn build
 after_script:
+- cp -r gh-dist/.git dist/
 - cd dist
 - cp index.html 404.html
 - git add --all
 - git commit --message "auto deploy"
-- git push --force "https://cyio:${GITHUB_TOKEN}@${GH_REF}" gh-pages:gh-pages
+- git push "https://cyio:${GITHUB_TOKEN}@${GH_REF}" gh-pages:gh-pages
 env:
   global:
   - GH_REF: github.com/cyio/bch123.org.git
