@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/index/pages/Home'
 import Address from '@/index/pages/Address'
-import Handle from '@/index/pages/Handle'
 import SafeGuides from '@/index/pages/SafeGuides'
 
 Vue.use(Router)
@@ -37,11 +36,6 @@ const routes = [
     },
   },
   {
-    path: '/handle/:id',
-    name: 'Handle',
-    component: Handle,
-  },
-  {
     path: '/safe-guides',
     name: 'SafeGuides',
     component: SafeGuides,
@@ -53,7 +47,7 @@ const routes = [
 ]
 
 const router = new Router({
-  mode: 'hash',
+  mode: 'history',
   routes,
   scrollBehavior(to, from, savedPosition) {
     // console.log('scroll', to.path, from.path, savedPosition)

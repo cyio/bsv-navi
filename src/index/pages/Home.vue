@@ -37,7 +37,11 @@ export default {
     async submit (keywords) {
       keywords = keywords.trim()
       const isHandle = /^\$/.test(keywords)
-      this.go({path: `/${isHandle ? 'handle' : 'address'}/${isHandle ? keywords.substr(1) : keywords}`})
+      if (isHandle) {
+        window.location.assign(window.location.origin + '/handle?id=' + keywords.substr(1))
+      } else {
+        this.go({path: `/address/${keywords}`})
+      }
     }
   },
   computed: {

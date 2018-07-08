@@ -52,11 +52,16 @@ export default {
       })
     },
     setHandle() {
-      if (this.$route.params.id && this.handle !== this.$route.params.id) {
-        this.handle = this.$route.params.id
-        document.title = `$${this.handle} 的 BCH 收款`
-        this.getAddress(this.handle)
+      let uri = window.location.search.substring(1)
+      let params = new URLSearchParams(uri)
+      console.log(params)
+      this.handle = params.get("id")
+      if (!this.handle) {
+        window.location.assign(window.location.origin)
+        return
       }
+      document.title = `$${this.handle} 的 BCH 收款`
+      this.getAddress(this.handle)
     },
     copyAddress () {
       this.$refs.addr.select()
@@ -72,12 +77,6 @@ export default {
   filters: {
   },
   watch: {
-    '$route': {
-      deep: true,
-      handler() {
-        this.setHandle()
-      }
-    }
   },
   created () {
     this.setHandle()

@@ -15,7 +15,6 @@
       transition(name='fade', v-if='!$route.meta.keepAlive')
         router-view
       Footer.layout-footer-center @{{(new Date().getFullYear())}} © BCH123.org 
-        a.link(@click="go({path: '/handle/oakerx'})") $oakerx
 </div>
 </template>
 
