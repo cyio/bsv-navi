@@ -1,8 +1,9 @@
 <template lang="pug">
   .handle-view
     .name ${{handle}}
-    .qr-wrap(v-if="qrUrl" @click='copyAddress')
-      img(:src="qrUrl")
+    .qr-wrap()
+      img(v-if="qrUrl" :src="qrUrl" @click='copyAddress')
+      .preloader(v-else) ...
     .address(@click='copyAddress')
       textarea(ref='addr', readonly='') {{receivingAddress}}
     .err-msg(v-if="!showLoading && !receivingAddress") 查询失败，请检查 $handle 拼写是否正确
@@ -10,6 +11,10 @@
       span 本页面使用
       a(href="http://handcash.io/api-docs/" target="_blank") HandCash API
       span 查询 $handle 的收款地址
+      br
+      span 由
+      a(:href="originUrl") BCH123.org
+      span 提供
     Spin(size="large" v-if="showLoading")
 </template>
 
@@ -73,6 +78,9 @@ export default {
     },
   },
   computed: {
+    originUrl() {
+      return window.location.origin
+    }
   },
   filters: {
   },
@@ -86,7 +94,18 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="stylus">
+  w = 14.5rem
+  theme = #f8b832
+  fg = #fff8ff
+
+  html, body {
+    background: theme;
+    color: fg;
+  }
+  a {
+    padding: 0 0.2rem;
+  }
   .handle-view {
     display: flex;
     flex-direction: column;
@@ -106,9 +125,22 @@ export default {
     width: 14.5rem;
     border: none;
     resize: none;
+    background: none;
+    color: fg;
   }
   .qr-wrap {
-    padding: 1rem;
+    margin: 1rem;
+    width: w;
+    height: w;
+    background: #fff;
+    img {
+      width: 100%;
+    }
+    .preloader {
+      margin-top: 30%;
+      font-size: 3rem;
+      color: theme;
+    }
   }
   .err-msg {
     color: red;
