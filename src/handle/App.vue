@@ -15,19 +15,19 @@
       span 由
       a(:href="originUrl") BCH123.org
       span 提供
-    Spin(size="large" v-if="showLoading")
+    // Spin(size="large" v-if="showLoading")
 </template>
 
 <script>
 import mixin from '@/mixin.js'
 import bchaddr from 'bchaddrjs'
 import { generateQR } from '@/utils'
-import { Spin } from 'iview'
+// import { Spin } from 'iview'
 export default {
   name: 'Home',
   mixins: [mixin],
   components: {
-    Spin
+    // Spin
   },
   data () {
     return {
@@ -102,6 +102,7 @@ export default {
   html, body {
     background: theme;
     color: fg;
+    font-size: 1rem;
   }
   a {
     padding: 0 0.2rem;

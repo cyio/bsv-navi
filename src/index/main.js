@@ -5,6 +5,7 @@ import 'iview/dist/styles/iview.css'
 import App from './App'
 import router from './router'
 import VueI18n from 'vue-i18n'
+import "@/registerServiceWorker"
 
 Vue.config.productionTip = false
 Vue.use(VueI18n)

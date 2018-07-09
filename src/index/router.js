@@ -47,7 +47,7 @@ const routes = [
 ]
 
 const router = new Router({
-  mode: 'history',
+  mode: 'hash',
   routes,
   scrollBehavior(to, from, savedPosition) {
     // console.log('scroll', to.path, from.path, savedPosition)
