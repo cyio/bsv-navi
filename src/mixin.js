@@ -10,6 +10,9 @@ export default {
     },
     goBack () {
       this.$router.go(-1)
+    },
+    goHome() {
+      window.location.assign(window.location.origin)
     }
   },
   computed: {

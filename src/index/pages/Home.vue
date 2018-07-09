@@ -31,17 +31,15 @@ export default {
   },
   data () {
     return {
+      isHandle: false,
+      currentView: null,
     }
   },
   methods: {
     async submit (keywords) {
       keywords = keywords.trim()
       const isHandle = /^\$/.test(keywords)
-      if (isHandle) {
-        window.location.assign(window.location.origin + '/handle?id=' + keywords.substr(1))
-      } else {
-        this.go({path: `/address/${keywords}`})
-      }
+      this.go({path: `?q=${keywords}`})
     }
   },
   computed: {

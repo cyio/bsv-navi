@@ -208,10 +208,9 @@ export default {
   },
   考古: {
     content: [
-      // {title: '创世地址', url: `${location.protocol}//${location.host}/#/address/bitcoincash:qp3wjpa3tjlj042z2wv7hahsldgwhwy0rq9sywjpyy`},
       {
         title: '创世地址',
-        url: '/address/bitcoincash:qp3wjpa3tjlj042z2wv7hahsldgwhwy0rq9sywjpyy',
+        url: `?q=bitcoincash:qp3wjpa3tjlj042z2wv7hahsldgwhwy0rq9sywjpyy`,
       },
       {
         title: '创世交易',

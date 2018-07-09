@@ -1,5 +1,5 @@
 <template lang="pug">
-#app
+#app(:class="{ handle: currentView === 'handle' }")
   Layout
     Header
       .layout-logo.link(@click="go({path: '/'})")
@@ -9,12 +9,14 @@
       .layout-nav
         // .link(v-if="$route.name === 'Home'" @click="go({path: '/safe-guides'})") 安全指南
         .link(v-if='isSupportWebShare', @click='share') 分享
-    Content
+    Content(v-if="currentView")
+      router-view(:name="currentView")
+    Content(v-else)
       keep-alive
         router-view(v-if='$route.meta.keepAlive')
       transition(name='fade', v-if='!$route.meta.keepAlive')
         router-view
-      Footer.layout-footer-center @{{(new Date().getFullYear())}} © BCH123.org 
+    Footer.layout-footer-center @{{(new Date().getFullYear())}} © BCH123.org 
 </div>
 </template>
 
@@ -33,6 +35,8 @@ export default {
   },
   data () {
     return {
+      isHandle: false,
+      currentView: null,
     }
   },
   methods: {
@@ -48,7 +52,26 @@ export default {
       }
     }
   },
-  mounted() {
+  watch: {
+    '$route.query.q': function (newRoute, oldRoute) {
+      // console.log(newRoute, oldRoute)
+      let id = newRoute
+      if (id) {
+        this.isHandle = /^\$/.test(id)
+        this.currentView = this.isHandle ? 'handle' : 'address'
+      } else {
+        this.currentView = null
+      }
+    },
+  },
+  created () {
+    let id = this.$route.query.q
+    if (id) {
+      this.isHandle = /^\$/.test(id)
+      this.currentView = this.isHandle ? 'handle' : 'address'
+    } else {
+      this.currentView = null
+    }
   }
 }
 </script>
@@ -216,7 +239,7 @@ img, embed, iframe {
     background: none;
   }
   .ivu-layout-header {
-    background: #fff;
+    background: none;
     boxShadow: 0 2px 3px 2px rgba(0,0,0,.1);
     padding: 0;
     margin-top: 10px;

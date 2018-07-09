@@ -10,8 +10,8 @@ export function isMobile() {
   )
 }
 
-export const fetchRetry = (url, options, n = 3) =>
-  fetch(url, options)
+export function fetchRetry(url, options, n = 3) {
+  return fetch(url, options)
     .then(res => {
       if (n === 1) return console.warn('fetch retry finished')
       return res.status === 403 ? fetchRetry(url, options, n - 1) : res
@@ -20,6 +20,7 @@ export const fetchRetry = (url, options, n = 3) =>
       if (n === 1) throw error
       return fetchRetry(url, options, n - 1)
     })
+}
 
 export async function generateQR(text) {
   const url = await QRCode.toDataURL(text.toUpperCase(), {

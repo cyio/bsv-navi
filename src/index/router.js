@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/index/pages/Home'
 import Address from '@/index/pages/Address'
+import Handle from '@/index/pages/Handle'
 import SafeGuides from '@/index/pages/SafeGuides'
 
 Vue.use(Router)
@@ -14,27 +15,31 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home,
+    components: {
+      default: Home,
+      address: Address,
+      handle: Handle,
+    },
     meta: { keepAlive: true, title: 'BCH123_比特币现金导航' },
   },
-  {
-    path: '/address/:id',
-    name: 'Address',
-    component: Address,
-    meta: {
-      title: isZh ? 'BCH 帐户查看器' : 'BCH Account Viewer',
-      metaTags: [
-        // {
-        // name: 'description',
-        // content: 'The home page of our example app.'
-        // },
-        // {
-        // property: 'og:description',
-        // content: 'The home page of our example app.'
-        // }
-      ],
-    },
-  },
+  // {
+    // path: '/address/:id',
+    // name: 'Address',
+    // component: Address,
+    // meta: {
+      // title: isZh ? 'BCH 帐户查看器' : 'BCH Account Viewer',
+      // metaTags: [
+        // // {
+        // // name: 'description',
+        // // content: 'The home page of our example app.'
+        // // },
+        // // {
+        // // property: 'og:description',
+        // // content: 'The home page of our example app.'
+        // // }
+      // ],
+    // },
+  // },
   {
     path: '/safe-guides',
     name: 'SafeGuides',
@@ -47,7 +52,7 @@ const routes = [
 ]
 
 const router = new Router({
-  mode: 'hash',
+  mode: 'history',
   routes,
   scrollBehavior(to, from, savedPosition) {
     // console.log('scroll', to.path, from.path, savedPosition)

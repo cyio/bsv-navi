@@ -131,17 +131,18 @@ export default {
   },
   methods: {
     submit (address) {
+      console.log('trigger submit')
       const keywords = address.trim()
       const isHandle = /^\$/.test(keywords)
       if (isHandle) {
-        this.go({path: `/${isHandle ? 'handle' : 'address'}/${isHandle ? keywords.substr(1) : keywords}`})
+        this.go({path: `/?q=${keywords}`})
         return
       }
 
       try {
         if (bchaddr.isLegacyAddress(address)) {
           const cashAddr = bchaddr.toCashAddress(address)
-          this.$router.replace({path: '/address/' + cashAddr}, () => {
+          this.$router.replace({path: '?q=' + cashAddr}, () => {
             this.legacyAddress = address
             this.cashAddress = cashAddr
             this.setAddressData(this.legacyAddress)
@@ -280,17 +281,31 @@ export default {
       return numeral(value).format('0,0.00')
     }
   },
+  watch: {
+    '$route.query.q': function (newRoute, oldRoute) {
+      console.log(newRoute, oldRoute)
+      let id = newRoute
+      if (id && !this.cashAddress) {
+        console.log('debug watch')
+        this.cashAddress = id
+        this.submit(this.cashAddress)
+      } else {
+      }
+    },
+  },
   created () {
-    if (this.$route.params.id && this.cashAddress !== this.$route.params.id) {
-      this.cashAddress = this.$route.params.id
+    let id = this.$route.query.q
+    if (id && !this.cashAddress) {
+      console.log('debug created')
+      this.cashAddress = id
       this.submit(this.cashAddress)
     }
-  },
-  mounted () {
     this.getPrices().then(data => {
       this.prices.cny = data.quotes.CNY.price
       this.prices.usd = data.quotes.USD.price
     })
+  },
+  mounted () {
   }
 }
 </script>
