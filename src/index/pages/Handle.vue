@@ -5,8 +5,9 @@
       img(v-if="qrUrl" :src="qrUrl" @click='copyAddress')
       .preloader(v-else) ....
     .address(@click='copyAddress')
-      textarea(ref='addr', readonly='') {{receivingAddress}}
+      #tocopy.text {{receivingAddress}}
     .err-msg(v-if="!showLoading && !receivingAddress") 查询失败，请检查 $handle 拼写是否正确
+    Button(size="large" @click="copyAddress" :class="{success: isCopied}") {{isCopied ? '已' : ''}}复制
     .desc
       span 本页面使用
       a(href="http://handcash.io/api-docs/" target="_blank") HandCash API
@@ -17,13 +18,14 @@
 <script>
 import mixin from '@/mixin.js'
 import bchaddr from 'bchaddrjs'
-import { generateQR } from '@/utils'
-// import { Spin } from 'iview'
+import { generateQR, copyToClipboard } from '@/utils'
+import { Spin, Button } from 'iview'
 export default {
   name: 'Home',
   mixins: [mixin],
   components: {
-    // Spin
+    Button,
+    Spin
   },
   data () {
     return {
@@ -64,12 +66,12 @@ export default {
       this.getAddress(this.handle.substr(1))
     },
     copyAddress () {
-      this.$refs.addr.select()
-      document.execCommand('copy')
-      this.isCopied = true
-      setTimeout(() => {
-        this.isCopied = false
-      }, 3000)
+      if (copyToClipboard('tocopy')) {
+        this.isCopied = true
+        setTimeout(() => {
+          this.isCopied = false
+        }, 1000)
+      }
     },
   },
   computed: {
@@ -98,6 +100,11 @@ export default {
     background: bg;
     color: fg;
     font-size: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     .layout-logo {
       color: fg;
     }
@@ -111,20 +118,27 @@ export default {
     a {
       padding: 0 0.2rem;
     }
+    .hidden {
+      display: none;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
     .name {
       font-weight: bold;
       font-size: 1.2rem;
       color: var(--bg);
     }
     .address {
-      width: 96%;
+      // width: 96%;
     }
-    .address textarea {
+    .address .text {
       width: 14.5rem;
-      border: none;
-      resize: none;
-      background: none;
-      color: fg;
+      word-wrap: break-word;
+      // border: none;
+      // resize: none;
+      // background: none;
+      // color: fg;
     }
     .qr-wrap {
       margin: 1rem;
@@ -146,8 +160,19 @@ export default {
       margin: 1rem 0;
     }
     .desc {
-      margin-top: 5rem;
+      margin-top: 2rem;
       font-size: .8rem;
+    }
+    button {
+      margin-top: 5rem;
+      width: w;
+    }
+    button span {
+      padding: .1rem .6rem;
+      transition: transform .2s ease-out;
+    }
+    .success span {
+      transform: scale(1.5);
     }
   }
 </style>

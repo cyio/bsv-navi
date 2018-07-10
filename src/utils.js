@@ -28,3 +28,12 @@ export async function generateQR(text) {
   })
   return url
 }
+
+export function copyToClipboard(containerid) {
+  const selection = window.getSelection();
+  const range = document.createRange();
+  range.selectNodeContents(document.getElementById(containerid));
+  selection.removeAllRanges();
+  selection.addRange(range);
+  return document.execCommand("copy");
+}
