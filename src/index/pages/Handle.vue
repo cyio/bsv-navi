@@ -4,7 +4,7 @@
     .qr-wrap()
       img(v-if="qrUrl" :src="qrUrl" @click='copyAddress')
       .preloader(v-else) ....
-    .address(@click='copyAddress')
+    .address(@click='switchAddressType')
       #tocopy.text {{receivingAddress}}
     .err-msg(v-if="!showLoading && !receivingAddress") 查询失败，请检查 $handle 拼写是否正确
     Button(size="large" @click="copyAddress" :class="{success: isCopied}") {{isCopied ? '已' : ''}}复制
@@ -18,7 +18,7 @@
 <script>
 import mixin from '@/mixin.js'
 import bchaddr from 'bchaddrjs'
-import { generateQR, copyToClipboard } from '@/utils'
+import { generateAddressQR, copyToClipboard } from '@/utils'
 import { Spin, Button } from 'iview'
 export default {
   name: 'Home',
@@ -49,7 +49,7 @@ export default {
         res.json().then(async result => {
           console.log(result)
           this.receivingAddress = bchaddr.toCashAddress(result.receivingAddress)
-          this.qrUrl = await generateQR(this.receivingAddress)
+          this.qrUrl = await generateAddressQR(this.receivingAddress)
           this.showLoading = false
         })
       })
@@ -72,6 +72,11 @@ export default {
           this.isCopied = false
         }, 1000)
       }
+    },
+    async switchAddressType () {
+      const isLegacy = bchaddr.isLegacyAddress(this.receivingAddress)
+      this.receivingAddress = bchaddr[isLegacy ? 'toCashAddress' : 'toLegacyAddress'](this.receivingAddress)
+      this.qrUrl = await generateAddressQR(this.receivingAddress, !isLegacy)
     },
   },
   computed: {
@@ -114,7 +119,7 @@ export default {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin: 4rem auto;
+    margin-top: 3rem;
     a {
       padding: 0 0.2rem;
     }
@@ -135,6 +140,7 @@ export default {
     .address .text {
       width: 14.5rem;
       word-wrap: break-word;
+      color: #495060;
       // border: none;
       // resize: none;
       // background: none;

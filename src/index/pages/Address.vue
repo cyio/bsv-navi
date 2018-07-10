@@ -57,7 +57,7 @@
 import 'vue-easytable/libs/themes-base/index.css'
 import { VTable, VPagination } from 'vue-easytable'
 import mixin from '@/mixin'
-import { fetchRetry, generateQR } from '@/utils'
+import { fetchRetry, generateAddressQR } from '@/utils'
 import Modal from '@/components/Modal'
 import SearchBox from '@/components/SearchBox'
 import bchaddr from 'bchaddrjs'
@@ -164,7 +164,7 @@ export default {
       this.addressDetail = this.addressTxs = this.addressErrors = null
       this.showLoading = true
       this.showErrorMsg = false
-      this.qrUrl = await generateQR(bchaddr.toCashAddress(id))
+      this.qrUrl = await generateAddressQR(bchaddr.toCashAddress(id))
       this.getAddressDetail(id).then(async data => {
         this.addressDetail = data
         this.getTableData()
