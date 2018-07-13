@@ -211,7 +211,7 @@ export default {
     content: [
       {
         title: '创世地址',
-        url: `?q=bitcoincash:qp3wjpa3tjlj042z2wv7hahsldgwhwy0rq9sywjpyy`,
+        url: `?q=qp3wjpa3tjlj042z2wv7hahsldgwhwy0rq9sywjpyy`,
       },
       {
         title: '创世交易',

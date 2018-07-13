@@ -4,10 +4,12 @@
     .qr-wrap()
       img(v-if="qrUrl" :src="qrUrl" @click='copyAddress')
       .preloader(v-else) ....
-    .address(@click='switchAddressType')
+    .address
       #tocopy.text {{receivingAddress}}
     .err-msg(v-if="!showLoading && !receivingAddress") 查询失败，请检查 $handle 拼写是否正确
     Button(size="large" @click="copyAddress" :class="{success: isCopied}") {{isCopied ? '已' : ''}}复制
+    .switch-wrap 使用旧版地址  
+      i-switch(@on-change="switchAddressType")
     .desc
       span 本页面使用
       a(href="http://handcash.io/api-docs/" target="_blank") HandCash API
@@ -18,14 +20,15 @@
 <script>
 import mixin from '@/mixin.js'
 import bchaddr from 'bchaddrjs'
-import { generateAddressQR, copyToClipboard } from '@/utils'
-import { Spin, Button } from 'iview'
+import { generateAddressQR, copyToClipboard } from '@/utils/'
+import { Spin, Button, Switch } from 'iview'
 export default {
   name: 'Home',
   mixins: [mixin],
   components: {
     Button,
-    Spin
+    Spin,
+    'i-switch': Switch,
   },
   data () {
     return {
@@ -48,8 +51,9 @@ export default {
         }
         res.json().then(async result => {
           console.log(result)
-          this.receivingAddress = bchaddr.toCashAddress(result.receivingAddress)
-          this.qrUrl = await generateAddressQR(this.receivingAddress)
+          const cashAddr = bchaddr.toCashAddress(result.receivingAddress)
+          this.receivingAddress = cashAddr.substr(12)
+          this.qrUrl = await generateAddressQR(cashAddr)
           this.showLoading = false
         })
       })
@@ -76,6 +80,8 @@ export default {
     async switchAddressType () {
       const isLegacy = bchaddr.isLegacyAddress(this.receivingAddress)
       this.receivingAddress = bchaddr[isLegacy ? 'toCashAddress' : 'toLegacyAddress'](this.receivingAddress)
+      if (this.receivingAddress.indexOf('bitcoincash') > -1)
+        this.receivingAddress = this.receivingAddress.substr(12)
       this.qrUrl = await generateAddressQR(this.receivingAddress, !isLegacy)
     },
   },
@@ -126,7 +132,7 @@ export default {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
     a {
       padding: 0 0.2rem;
     }
@@ -177,7 +183,8 @@ export default {
       font-size: .8rem;
     }
     button {
-      margin-top: 5rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
       width: w;
     }
     button span {
@@ -186,6 +193,11 @@ export default {
     }
     .success span {
       transform: scale(1.5);
+    }
+    .switch-wrap {
+      width: w;
+      display: flex;
+      justify-content: space-between;
     }
   }
 </style>

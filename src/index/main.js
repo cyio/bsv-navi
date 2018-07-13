@@ -1,14 +1,18 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import 'iview/dist/styles/iview.css'
+// import 'iview/dist/styles/iview.css'
+import '@/theme.less'
 import App from './App'
 import router from './router'
 import VueI18n from 'vue-i18n'
+import touch from 'vue-directive-touch';
+
 import "@/registerServiceWorker"
 
 Vue.config.productionTip = false
 Vue.use(VueI18n)
+Vue.use(touch)
 
 const shared = {
   isZh: /zh/.test(window.navigator.language || window.navigator.userLanguage),

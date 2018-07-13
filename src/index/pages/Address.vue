@@ -57,7 +57,7 @@
 import 'vue-easytable/libs/themes-base/index.css'
 import { VTable, VPagination } from 'vue-easytable'
 import mixin from '@/mixin'
-import { fetchRetry, generateAddressQR } from '@/utils'
+import { fetchRetry, generateAddressQR } from '@/utils/'
 import Modal from '@/components/Modal'
 import SearchBox from '@/components/SearchBox'
 import bchaddr from 'bchaddrjs'
@@ -141,16 +141,15 @@ export default {
 
       try {
         if (bchaddr.isLegacyAddress(address)) {
-          const cashAddr = bchaddr.toCashAddress(address)
+          const cashAddr = (bchaddr.toCashAddress(address)).substr(12)
           this.$router.replace({path: '?q=' + cashAddr}, () => {
             this.legacyAddress = address
             this.cashAddress = cashAddr
             this.setAddressData(this.legacyAddress)
-            this.setAddressData(this.legacyAddress)
           })
         } else if (bchaddr.isCashAddress(address)) {
           this.legacyAddress = bchaddr.toLegacyAddress(address)
-          this.cashAddress = address
+          this.cashAddress = address.indexOf('bitcoincash') > -1 ? address.substr(12) : address
           this.setAddressData(this.legacyAddress)
         }
       } catch (e) {
@@ -287,7 +286,7 @@ export default {
       let id = newRoute
       if (id && !this.cashAddress) {
         console.log('debug watch')
-        this.cashAddress = id
+        this.cashAddress = id.indexOf('bitcoincash') > -1 ? id.substr(12) : id
         this.submit(this.cashAddress)
       } else {
       }
@@ -297,7 +296,7 @@ export default {
     let id = this.$route.query.q
     if (id && !this.cashAddress) {
       console.log('debug created')
-      this.cashAddress = id
+      this.cashAddress = id.indexOf('bitcoincash') > -1 ? id.substr(12) : id
       this.submit(this.cashAddress)
     }
     this.getPrices().then(data => {
