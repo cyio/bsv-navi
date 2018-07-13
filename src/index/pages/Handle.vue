@@ -113,6 +113,13 @@ export default {
     .layout-logo {
       color: fg;
     }
+    .ivu-layout {
+      overflow-y: scroll;
+    }
+    ::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
   }
   .handle-view {
     display: flex;

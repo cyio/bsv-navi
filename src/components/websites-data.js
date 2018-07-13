@@ -105,6 +105,7 @@ export default {
     content: [
       { title: 'fork.lol', url: 'https://fork.lol/' },
       { title: 'Cash vs Core', url: 'https://cashvscore.com/' },
+      { title: 'chaintrend', url: 'https://chaintrend.org/' },
       {
         title: 'Transactions',
         desc: 'BCH,BTC 每日交易数对比',
