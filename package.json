@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "maintain": "nodemon --watch server server/maintain.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -16,6 +17,7 @@
     "numeral": "^2.0.6",
     "qrcode": "^1.2.0",
     "register-service-worker": "^1.0.0",
+    "superagent": "^3.8.3",
     "vue": "^2.5.16",
     "vue-directive-touch": "^1.0.10",
     "vue-easytable": "^1.7.1",
