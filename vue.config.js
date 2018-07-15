@@ -25,6 +25,13 @@ module.exports = {
       ]
     },
   },
+  pwa: {
+    workboxPluginMode: 'GenerateSW',
+    workboxOptions: {
+      importWorkboxFrom: 'disabled',
+      importScripts: ['https://cdn.jsdelivr.net/npm/workbox-sw@latest/build/workbox-sw.min.js'],
+    },
+  },
   pages: {
     index: {
       entry: 'src/index/main.js',
@@ -40,7 +47,7 @@ module.exports = {
       // template: 'public/index.html',
       // filename: 'handle/index.html',
     // }
-  }
+  },
 }
 
 function resolve (dir) {
