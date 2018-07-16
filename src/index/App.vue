@@ -3,9 +3,9 @@
   Layout
     Header
       .layout-logo.link(@click="go({path: '/'})")
-        span(v-if="$route.name === 'Home'") {{$t('home.title')}}
+        span(v-if="!currentView && $route.name === 'Home'") {{$t('home.title')}}
         .logo-wrap(v-else)
-      span.sub-page-title(v-if="$route.name !== 'Home' && $route.meta.title") > {{$route.meta.title}}
+      span.sub-page-title(v-if="currentView && $route.meta.titles[currentView]") > {{$route.meta.titles[currentView]}}
       .layout-nav
         // .link(v-if="$route.name === 'Home'" @click="go({path: '/safe-guides'})") 安全指南
         .link(v-if='isSupportWebShare', @click='share') 分享
@@ -35,7 +35,6 @@ export default {
   },
   data () {
     return {
-      isHandle: false,
       currentView: null,
     }
   },
@@ -57,18 +56,17 @@ export default {
       // console.log(newRoute, oldRoute)
       let id = newRoute
       if (id) {
-        this.isHandle = /^\$/.test(id)
-        this.currentView = this.isHandle ? 'handle' : 'address'
+        this.currentView = this.isHandle(id) ? 'handle' : 'address'
       } else {
         this.currentView = null
+        document.title = 'BCH123_' + this.$t('home.title')
       }
     },
   },
   created () {
     let id = this.$route.query.q
     if (id) {
-      this.isHandle = /^\$/.test(id)
-      this.currentView = this.isHandle ? 'handle' : 'address'
+      this.currentView = this.isHandle(id) ? 'handle' : 'address'
     } else {
       this.currentView = null
     }

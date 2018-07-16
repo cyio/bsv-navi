@@ -61,13 +61,20 @@ export default {
     setHandle() {
       let uri = window.location.search.substring(1)
       let params = new URLSearchParams(uri)
-      this.handle = params.get('q')
-      if (!this.handle) {
+      let handle = params.get('q')
+      if (!handle) {
         window.location.assign(window.location.origin)
         return
       }
+      if (handle.indexOf('$') === 0) {
+        handle = handle.substr(1)
+        this.handle = handle
+      } else {
+        this.handle = '$' + handle
+      }
+      this.$router.replace({path: '?q=' + handle})
       document.title = `${this.handle} 的 BCH 收款`
-      this.getAddress(this.handle.substr(1))
+      this.getAddress(handle)
     },
     copyAddress () {
       if (copyToClipboard('tocopy')) {

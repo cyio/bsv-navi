@@ -24,7 +24,6 @@ export function fetchRetry(url, options, n = 3) {
 
 export async function generateAddressQR(text, isLegacy) {
   const newText = isLegacy ? text : text.toUpperCase()
-  console.log(isLegacy, newText)
   const url = await QRCode.toDataURL(newText, { mode: 'alphanumeric' })
   return url
 }

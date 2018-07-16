@@ -31,14 +31,12 @@ export default {
   },
   data () {
     return {
-      isHandle: false,
       currentView: null,
     }
   },
   methods: {
     async submit (keywords) {
       keywords = keywords.trim()
-      const isHandle = /^\$/.test(keywords)
       this.go({path: `?q=${keywords}`})
     }
   },

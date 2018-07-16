@@ -20,7 +20,13 @@ const routes = [
       address: Address,
       handle: Handle,
     },
-    meta: { keepAlive: true, title: 'BCH123_比特币现金导航' },
+    meta: {
+      keepAlive: true,
+      titles: {
+        default: 'BCH123_比特币现金导航',
+        address: 'BCH 帐户查看器'
+      }
+    },
   },
   // {
     // path: '/address/:id',

@@ -13,6 +13,9 @@ export default {
     },
     goHome() {
       window.location.assign(window.location.origin)
+    },
+    isHandle(keywords) {
+      return /^\$/.test(keywords) || keywords.length < 20
     }
   },
   computed: {

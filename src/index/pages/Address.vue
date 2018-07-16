@@ -133,8 +133,7 @@ export default {
     submit (address) {
       console.log('trigger submit')
       const keywords = address.trim()
-      const isHandle = /^\$/.test(keywords)
-      if (isHandle) {
+      if (this.isHandle(keywords)) {
         this.go({path: `/?q=${keywords}`})
         return
       }
@@ -160,6 +159,7 @@ export default {
     },
     async setAddressData (id) {
       // console.log(id)
+      document.title = '帐户 ' + this.cashAddress
       this.addressDetail = this.addressTxs = this.addressErrors = null
       this.showLoading = true
       this.showErrorMsg = false
