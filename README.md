@@ -9,22 +9,22 @@ install dependencies
 npm install
 ```
 
-run backend
-```sh
-lean up
-# or not use leancloud
-npm run dev
-```
 run frontend
 ```sh
-npm run dev:web
+npm run serve
 ```
 
-## Deploy
+run data maintain script
 ```sh
-# build frontend
+npm run maintain
+```
+
+## Build
+```sh
 npm run build
-lean deploy
-# or not use leancloud
-npm run start
+```
+
+## Forever Alive
+```sh
+pm2 start npm --name bch123-maintain -- run maintain
 ```
