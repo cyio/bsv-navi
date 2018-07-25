@@ -141,11 +141,10 @@ export default {
       try {
         if (bchaddr.isLegacyAddress(address)) {
           const cashAddr = (bchaddr.toCashAddress(address)).substr(12)
-          this.$router.replace({path: '?q=' + cashAddr}, () => {
-            this.legacyAddress = address
-            this.cashAddress = cashAddr
-            this.setAddressData(this.legacyAddress)
-          })
+          // history.pushState(null, '', `?q=${cashAddr}`);
+          this.legacyAddress = address
+          this.cashAddress = cashAddr
+          this.setAddressData(this.legacyAddress)
         } else if (bchaddr.isCashAddress(address)) {
           this.legacyAddress = bchaddr.toLegacyAddress(address)
           this.cashAddress = address.indexOf('bitcoincash') > -1 ? address.substr(12) : address
@@ -160,9 +159,9 @@ export default {
     async setAddressData (id) {
       // console.log(id)
       document.title = '帐户 ' + this.cashAddress
-      this.addressDetail = this.addressTxs = this.addressErrors = null
       this.showLoading = true
       this.showErrorMsg = false
+      this.addressDetail = this.addressTxs = this.addressErrors = null
       this.qrUrl = await generateAddressQR(bchaddr.toCashAddress(id))
       this.getAddressDetail(id).then(async data => {
         this.addressDetail = data
@@ -282,9 +281,9 @@ export default {
   },
   watch: {
     '$route.query.q': function (newRoute, oldRoute) {
-      console.log(newRoute, oldRoute)
+      console.log({newRoute, oldRoute})
       let id = newRoute
-      if (id && !this.cashAddress) {
+      if (id && (!this.cashAddress || newRoute !== oldRoute)) {
         console.log('debug watch')
         this.cashAddress = id.indexOf('bitcoincash') > -1 ? id.substr(12) : id
         this.submit(this.cashAddress)

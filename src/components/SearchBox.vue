@@ -45,6 +45,10 @@ export default {
         // this.errMsg = '不得为空'
         return
       }
+      if (address.indexOf('bitcoincash:') === 0) {
+        this.words = address = address.substr(12)
+        history.replaceState(null, '', `?q=${address}`);
+      }
       this.submit(address)
     }
   },

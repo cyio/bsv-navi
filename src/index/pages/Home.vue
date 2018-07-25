@@ -37,6 +37,9 @@ export default {
   methods: {
     async submit (keywords) {
       keywords = keywords.trim()
+      if (keywords.indexOf('bitcoincash:') === 0) {
+        keywords = keywords.substr(12)
+      }
       this.go({path: `?q=${keywords}`})
     }
   },
