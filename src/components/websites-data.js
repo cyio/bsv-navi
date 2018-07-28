@@ -160,18 +160,18 @@ export default {
     content: [
       { title: 'HandCash', url: 'http://www.handcash.io/' },
       { title: 'Bitcoin.com', url: 'https://www.bitcoin.com/' },
-      { title: 'Bread', url: 'https://breadapp.com/' },
-      { title: '比特派', url: 'http://bitpie.com/' },
+      { title: '打点钱包', url: 'https://www.ddpurse.com/' },
       { title: 'Coinomi', url: 'https://coinomi.com/' },
       { title: 'Jaxx', url: 'https://jaxx.io/' },
+      { title: 'Exodus', url: 'https://www.exodus.io/' },
     ],
   },
   交易所: {
     content: [
       { title: '币安', url: 'https://www.binance.com/' },
+      { title: 'CoinEx', url: 'https://www.coinex.com/' },
       { title: 'OKEx', url: 'https://www.okex.com/' },
       { title: '火币', url: 'https://www.huobi.com/' },
-      { title: 'CoinEx', url: 'https://www.coinex.com/' },
     ],
   },
   开发: {
