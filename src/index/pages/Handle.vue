@@ -5,15 +5,16 @@
       img(v-if="qrUrl" :src="qrUrl" @click='copyAddress')
       .preloader(v-else) ....
     .address
-      #tocopy.text {{receivingAddress}}
-    .err-msg(v-if="!showLoading && !receivingAddress") 查询失败，请检查 $handle 拼写是否正确
-    Button(size="large" @click="copyAddress" :class="{success: isCopied}") {{isCopied ? '已' : ''}}复制
-    .switch-wrap 使用旧版地址  
+      span#tocopy.text {{addressForDisplay}}
+    .err-msg(v-if="!showLoading && !receivingAddress") {{$t('handle.useLegacy')}}
+    Button(size="large" @click="copyAddress" :class="{success: isCopied}") {{isCopied ? $t('handle.copied') : $t('handle.copy')}}
+    .switch-wrap {{$t('handle.useLegacy')}}
       i-switch(@on-change="switchAddressType")
     .desc
-      span 本页面使用
+      span via
       a(href="http://handcash.io/api-docs/" target="_blank") HandCash API
-      span 查询 $handle 的收款地址
+      span  made by
+      a(:href="donateUrl" target="_blank") $oaker
     // Spin(size="large" v-if="showLoading")
 </template>
 
@@ -34,6 +35,7 @@ export default {
     return {
       handle: null,
       receivingAddress: null,
+      addressForDisplay: null,
       qrUrl: null,
       showLoading: true,
       isCopied: false,
@@ -52,7 +54,8 @@ export default {
         res.json().then(async result => {
           console.log(result)
           const cashAddr = bchaddr.toCashAddress(result.receivingAddress)
-          this.receivingAddress = cashAddr.substr(12)
+          this.receivingAddress = cashAddr
+          this.addressForDisplay = cashAddr.substr(12)
           this.qrUrl = await generateAddressQR(cashAddr)
           this.showLoading = false
         })
@@ -73,7 +76,7 @@ export default {
         this.handle = '$' + handle
       }
       this.$router.replace({path: '?q=' + handle})
-      document.title = `${this.handle} 的 BCH 收款`
+      document.title = this.handle + this.$t('handle.title')
       this.getAddress(handle)
     },
     copyAddress () {
@@ -87,14 +90,18 @@ export default {
     async switchAddressType () {
       const isLegacy = bchaddr.isLegacyAddress(this.receivingAddress)
       this.receivingAddress = bchaddr[isLegacy ? 'toCashAddress' : 'toLegacyAddress'](this.receivingAddress)
-      if (this.receivingAddress.indexOf('bitcoincash') > -1)
-        this.receivingAddress = this.receivingAddress.substr(12)
+      this.addressForDisplay = this.receivingAddress.indexOf('bitcoincash') > -1
+        ? this.receivingAddress.substr(12)
+        : this.receivingAddress
       this.qrUrl = await generateAddressQR(this.receivingAddress, !isLegacy)
     },
   },
   computed: {
     originUrl() {
       return window.location.origin
+    },
+    donateUrl() {
+      return this.originUrl + '?q=oakerx'
     }
   },
   filters: {
@@ -111,8 +118,9 @@ export default {
 
 <style lang="stylus">
   w = 14.5rem
-  bg = #f8b832
-  fg = #fff8ff
+  theme = #00d77e
+  bg = #fff
+  fg = #333
 
   #app.handle {
     background: bg;
@@ -123,6 +131,7 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
+    background: #333;
     .layout-logo {
       color: fg;
     }
@@ -139,9 +148,13 @@ export default {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-top: 1.5rem;
+    margin: 1rem;
+    border-radius: 1rem;
+    padding-bottom: 1rem;
+    background: #fff;
     a {
       padding: 0 0.2rem;
+      color: theme;
     }
     .hidden {
       display: none;
@@ -153,12 +166,19 @@ export default {
       font-weight: bold;
       font-size: 1.2rem;
       color: var(--bg);
+      background: theme;
+      width: 100%;
+      height: 4rem;
+      line-height: @height;
+      color: #fff;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
     }
     .address {
-      // width: 96%;
+      width: 100%;
+      padding: 0 .3rem;
     }
     .address .text {
-      width: 14.5rem;
       word-wrap: break-word;
       color: #495060;
       // border: none;
@@ -167,10 +187,10 @@ export default {
       // color: fg;
     }
     .qr-wrap {
-      margin: 1rem;
+      margin: 1rem auto;
       width: w;
       height: w;
-      background: #fff;
+      background: #eee;
       text-align: center;
       img {
         width: 100%;
@@ -178,7 +198,7 @@ export default {
       .preloader {
         margin-top: 30%;
         font-size: 3rem;
-        color: bg;
+        color: theme;
       }
     }
     .err-msg {

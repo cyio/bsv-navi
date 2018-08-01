@@ -40,6 +40,13 @@ const translations = {
       amount: '金额',
       time: '时间',
     },
+    handle: {
+      title: ' 的 BCH 收款',
+      copy: '复制',
+      copied: '已复制',
+      useLegacy: '使用旧版地址',
+      failed: '查询失败，请检查 $handle 拼写是否正确'
+    }
   },
   en: {
     home: {
@@ -62,6 +69,13 @@ const translations = {
       amount: 'Amount',
       time: 'Time',
     },
+    handle: {
+      title: '\'s BCH Receiving Address',
+      copy: 'copy',
+      copied: 'copied',
+      useLegacy: 'use Legacy Address',
+      failed: 'Query failed, please check the spelling of $handle'
+    }
   },
 }
 
