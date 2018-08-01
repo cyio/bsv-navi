@@ -3,7 +3,7 @@
     .name {{handle}}
     .qr-wrap()
       img(v-if="qrUrl" :src="qrUrl" @click='copyAddress')
-      .preloader(v-else) ....
+      .preloader(v-else) .
     .address
       span#tocopy.text {{addressForDisplay}}
     .err-msg(v-if="!showLoading && !receivingAddress") {{$t('handle.useLegacy')}}
@@ -15,20 +15,18 @@
       a(href="http://handcash.io/api-docs/" target="_blank") HandCash API
       span  made by
       a(:href="donateUrl" target="_blank") $oaker
-    // Spin(size="large" v-if="showLoading")
 </template>
 
 <script>
 import mixin from '@/mixin.js'
 import bchaddr from 'bchaddrjs'
 import { generateAddressQR, copyToClipboard } from '@/utils/'
-import { Spin, Button, Switch } from 'iview'
+import { Button, Switch } from 'iview'
 export default {
   name: 'Home',
   mixins: [mixin],
   components: {
     Button,
-    Spin,
     'i-switch': Switch,
   },
   data () {
@@ -138,6 +136,9 @@ export default {
     .ivu-layout {
       overflow-y: scroll;
     }
+    .layout-nav .link {
+      color: #fff;
+    }
     ::-webkit-scrollbar {
       width: 0;
       height: 0;
@@ -148,7 +149,7 @@ export default {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin: 1rem;
+    margin: .8rem;
     border-radius: 1rem;
     padding-bottom: 1rem;
     background: #fff;
@@ -176,7 +177,8 @@ export default {
     }
     .address {
       width: 100%;
-      padding: 0 .3rem;
+      height: 3rem;
+      padding: 0 1rem;
     }
     .address .text {
       word-wrap: break-word;
@@ -187,10 +189,8 @@ export default {
       // color: fg;
     }
     .qr-wrap {
-      margin: 1rem auto;
       width: w;
       height: w;
-      background: #eee;
       text-align: center;
       img {
         width: 100%;
@@ -225,6 +225,17 @@ export default {
       width: w;
       display: flex;
       justify-content: space-between;
+    }
+    @keyframes fa-spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(359deg);
+      }
+    }
+    .preloader {
+      animation: fa-spin 2s infinite linear;
     }
   }
 </style>

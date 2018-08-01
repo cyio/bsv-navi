@@ -247,7 +247,7 @@ img, embed, iframe {
     width: 44px;
     height: @width;
     margin-right: 10px;
-    background: url('../assets/logo-bitcoincash-dark.part.svg');
+    background: url('../assets/favicon.png');
     background-repeat: no-repeat;
     background-size: 100%;
   }
