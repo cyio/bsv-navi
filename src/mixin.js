@@ -23,7 +23,7 @@ export default {
       return md.mobile()
     },
     isSupportWebShare () {
-      return md.is('AndroidOS') && md.version('Chrome') >= 61
+      return navigator.share
     }
   }
 }

@@ -40,15 +40,14 @@ export default {
   },
   methods: {
     share () {
-      if (navigator.share) {
-        navigator.share({
+      navigator
+        .share({
           title: 'BCH123.org',
           text: '',
           url: window.location.href
         })
-          .then(() => console.log('Successful share'))
-          .catch((error) => console.log('Error sharing', error))
-      }
+        .then(() => console.log('Successful share'))
+        .catch((error) => console.log('Error sharing', error))
     }
   },
   watch: {
