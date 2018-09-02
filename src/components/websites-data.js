@@ -193,20 +193,6 @@ export default {
       },
     ],
   },
-  支付商: {
-    content: [
-      {
-        title: 'BitPay',
-        desc: 'Get Started with Bitcoin and Bitcoin Cash Payments',
-        url: 'https://bitpay.com/',
-      },
-      {
-        title: 'CashFlow',
-        desc: 'Bitcoin Cash Payment Processor with 0-conf and Shopify plugin',
-        url: 'https://cashflow.fm/',
-      },
-    ],
-  },
   考古: {
     content: [
       {

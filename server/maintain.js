@@ -6,12 +6,11 @@ const fs = require('fs')
 Promise.almost = r => Promise.all(r.map(p => (p.catch ? p.catch(e => e) : p)))
 
 const buildFileContent = async () => {
-  Promise.almost([dataApi.getNodes(), dataApi.getMarket()]).then(values => {
+  Promise.almost([dataApi.getMarket()]).then(values => {
     // console.log(values)
     let content = {
       data: {
-        nodes: values[0],
-        ...values[1] 
+        ...values[0]
       }
     }
     updateGist(content)

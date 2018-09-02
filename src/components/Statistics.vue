@@ -48,7 +48,6 @@ export default {
         { label: '最新价', value: market.price + market.percent_change_24h },
         { label: 'BCH/BTC', value: market['bch/btc'] },
         { label: '已供应', value: market.supply },
-        { label: '遵循最新共识节点数', value: market.nodes },
       ]
     }
   },

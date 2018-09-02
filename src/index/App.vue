@@ -96,12 +96,12 @@ a {
   color: var(--theme);
 }
 a:active, a:hover {
-  // color: green;
+  color: green;
 }
 a:focus {
   // color: green;
-  // font-weight: bold;
-  // border-bottom: 1px solid;
+  font-weight: bold;
+  border-bottom: 1px solid;
 }
 input,textarea{
   outline:0;
