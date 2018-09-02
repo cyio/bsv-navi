@@ -15,7 +15,6 @@ export default {
         'price': null,
         'bch/btc': null,
         'supply': null,
-        'nodes': null,
       },
     }
   },
@@ -32,8 +31,6 @@ export default {
           console.warn('delayMinute: ', delayMinute)
         }
         let data = fileContent.data
-        let nodes = data.nodes
-        this.market.nodes = `${nodes.follow} / ${this.formatPercentage(nodes.follow, nodes.total)}`
         this.market.price = `￥${Math.round(data.price)}`
         this.market.percent_change_24h = ` (${data.percent_change_24h > 0 ? '+' : ''}${data.percent_change_24h}%)`
         this.market.supply = numeral(data.circulating_supply / (10 ** 4)).format('0,000') + '万' + ' / ' + this.formatPercentage(data.circulating_supply, data.max_supply)
