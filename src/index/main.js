@@ -21,7 +21,7 @@ const shared = {
 const translations = {
   zh: {
     home: {
-      title: '比特币导航',
+      title: 'BSV_比特币导航',
       about: '关于',
       aboutTitle: '联系/捐赠开发者(BSV)',
       mobile: '电话&微信',

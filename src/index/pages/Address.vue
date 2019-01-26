@@ -1,6 +1,6 @@
 <template lang="pug">
 .address-view
-  search-box(:keywords='cashAddress' :errors='addressErrors' :submit='submit')
+  search-box(:keywords='address' :errors='addressErrors' :submit='submit')
   .address-detail
     .row
       .address-balance
@@ -18,9 +18,9 @@
       .qr-wrap(v-if="qrUrl")
         img(:src="qrUrl")
     .error(v-if="showErrorMsg") {{$t('address.serviceUnavailable')}}
-      Button(@click="setAddressData(cashAddress)") {{$t('address.retry')}}
+      Button(@click="setAddressData(address)") {{$t('address.retry')}}
       span 或前往
-      a(:href="blockExplorerUrl + cashAddress" title="在 btc.com 查看" target="_blank")  BTC.com 
+      a(:href="blockExplorerUrl + address" title="在 btc.com 查看" target="_blank")  BTC.com 
       span 查看
     .address-tx
       // .desp {{$t('address.latestTxs')}}
@@ -80,8 +80,7 @@ export default {
   },
   data () {
     return {
-      cashAddress: null,
-      legacyAddress: null,
+      address: null,
       addressDetail: null,
       addressTxs: null,
       showLoading: true,
@@ -140,29 +139,22 @@ export default {
 
       try {
         if (bchaddr.isLegacyAddress(address)) {
-          const cashAddr = (bchaddr.toCashAddress(address)).substr(12)
-          // history.pushState(null, '', `?q=${cashAddr}`);
-          this.legacyAddress = address
-          this.cashAddress = cashAddr
-          this.setAddressData(this.legacyAddress)
-        } else if (bchaddr.isCashAddress(address)) {
-          this.legacyAddress = bchaddr.toLegacyAddress(address)
-          this.cashAddress = address.indexOf('bitcoincash') > -1 ? address.substr(12) : address
-          this.setAddressData(this.legacyAddress)
+          this.address = address
+          this.setAddressData(address)
         }
       } catch (e) {
         this.addressErrors = '地址格式不正确'
         this.addressDetail = this.addressTxs = this.qrUrl = null
         this.showLoading = true
+        console.error(e)
       }
     },
     async setAddressData (id) {
-      // console.log(id)
-      document.title = '帐户 ' + this.cashAddress
+      document.title = '帐户 ' + this.address
       this.showLoading = true
       this.showErrorMsg = false
       this.addressDetail = this.addressTxs = this.addressErrors = null
-      this.qrUrl = await generateAddressQR(bchaddr.toCashAddress(id))
+      this.qrUrl = await generateAddressQR(id)
       this.getAddressDetail(id).then(async data => {
         this.addressDetail = data
         this.getTableData()
@@ -191,7 +183,7 @@ export default {
       })
     },
     getPrices () {
-      const url = `https://api.coinmarketcap.com/v2/ticker/1831/?convert=CNY`
+      const url = `https://api.coinmarketcap.com/v2/ticker/3602/?convert=CNY`
       return fetch(url).then(res => res.json().then(res => {
         return res.headers ? res.data.data : res.data
       }).catch(err => console.error(err)))
@@ -199,13 +191,13 @@ export default {
     async getTableData() {
       this.tableConfig.isLoading = true
       if (!this.addressTxs) {
-        this.getAddressTxs(this.legacyAddress).then(data => {
+        this.getAddressTxs(this.address).then(data => {
           this.addressTxs = data
           this.tableConfig.isLoading = false
         })
       } else {
         if (!this.addressTxs.list[(this.pageIndex - 1) * this.pageSize]) {
-          this.getAddressTxs(this.legacyAddress).then(data => {
+          this.getAddressTxs(this.address).then(data => {
             let newData = data
             this.addressTxs.list[(this.pageIndex - 1) * this.pageSize] = null
             this.addressTxs.list.splice((this.pageIndex - 1) * this.pageSize, 0, ...(newData.list))
@@ -283,20 +275,19 @@ export default {
     '$route.query.q': function (newRoute, oldRoute) {
       console.log({newRoute, oldRoute})
       let id = newRoute
-      if (id && (!this.cashAddress || newRoute !== oldRoute)) {
-        console.log('debug watch')
-        this.cashAddress = id.indexOf('bitcoincash') > -1 ? id.substr(12) : id
-        this.submit(this.cashAddress)
+      if (id && (!this.address || newRoute !== oldRoute)) {
+        this.address = id
+        this.submit(this.address)
       } else {
       }
     },
   },
   created () {
     let id = this.$route.query.q
-    if (id && !this.cashAddress) {
+    if (id && !this.address) {
       console.log('debug created')
-      this.cashAddress = id.indexOf('bitcoincash') > -1 ? id.substr(12) : id
-      this.submit(this.cashAddress)
+      this.address = id
+      this.submit(this.address)
     }
     this.getPrices().then(data => {
       this.prices.cny = data.quotes.CNY.price

@@ -1,8 +1,8 @@
 <template lang="pug">
   .searchbar-input-container
-    input.searchbar-input(type='search' name='q' v-bind:placeholder="$t('home.searchPlaceholder')" autocomplete='off' spellcheck="false" v-model="words" @keyup.enter="_submit" @change="errMsg = null")
+    input.searchbar-input(type='search' name='q' v-bind:placeholder="$t('home.searchPlaceholder')" autocomplete='off' spellcheck="false" v-model.trim="words" @keyup.enter="_submit" @change="errMsg = null")
     a.icon.btc-com(:href="'https://bsv.btc.com/' + words" title="在 btc.com 查看" target="_blank")
-    icon(type="search").search-icon(name="search" @click.native="_submit")
+    icon.search-icon(type="search" name="search" @click.native="_submit")
     .err-msg(v-if="displayErrMsg") {{displayErrMsg}}
 </template>
 <script>
@@ -40,15 +40,15 @@ export default {
   },
   methods: {
     _submit () {
-      let address = this.words.trim()
+      const { words: address } = this
       if (!address) {
         // this.errMsg = '不得为空'
         return
       }
-      if (address.indexOf('bitcoincash:') === 0) {
-        this.words = address = address.substr(12)
-        history.replaceState(null, '', `?q=${address}`);
-      }
+      // if (address.indexOf('bitcoincash:') === 0) {
+        // this.words = address = address.substr(12)
+        // history.replaceState(null, '', `?q=${address}`);
+      // }
       this.submit(address)
     }
   },

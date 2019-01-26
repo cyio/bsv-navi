@@ -3,7 +3,7 @@ export default {
     content: [
       { title: '巴比特论坛', url: 'https://8btc.com/forum-269-1.html' },
       { title: 'Reddit', url: 'https://www.reddit.com/r/bitcoinsv/' },
-      { title: 'Memo', desc: '去中心化微博', url: 'https://bsv.memo.cash/' },
+      { title: 'Memo', desc: '去中心化微博', url: 'https://sv.memo.cash/' },
       {
         title: 'Yours',
         desc: '能赚 BSV 的内容创作平台',
@@ -43,21 +43,6 @@ export default {
       {
         title: '地址格式转换',
         url: 'https://bch.btc.com/tools/address-converter',
-      },
-    ],
-  },
-  打赏: {
-    content: [
-      {
-        title: '币赞',
-        desc: '微博',
-        url:
-          'https://media.weibo.cn/article?object_id=1022%3A2309404219418744887227&luicode=10000011&lfid=1076036468174724&id=2309404219418744887227&ep=G89ayvzef%252C6468174724%252CG89ayvzef%252C6468174724',
-      },
-      {
-        title: 'tippr',
-        desc: 'Twitter / Reddit',
-        url: 'https://www.reddit.com/r/tippr/wiki/index',
       },
     ],
   },
@@ -136,7 +121,7 @@ export default {
     content: [
       {
         title: '创世地址',
-        url: `?q=qp3wjpa3tjlj042z2wv7hahsldgwhwy0rq9sywjpyy`,
+        url: `?q=1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa`,
       },
       {
         title: '创世交易',

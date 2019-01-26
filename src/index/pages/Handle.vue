@@ -5,11 +5,8 @@
       img(v-if="qrUrl" :src="qrUrl" @click='copyAddress')
       .preloader(v-else) .
     .address
-      span#tocopy.text {{addressForDisplay}}
-    .err-msg(v-if="!showLoading && !receivingAddress") {{$t('handle.useLegacy')}}
+      span#tocopy.text {{receivingAddress}}
     Button(size="large" @click="copyAddress" :class="{success: isCopied}") {{isCopied ? $t('handle.copied') : $t('handle.copy')}}
-    .switch-wrap {{$t('handle.useLegacy')}}
-      i-switch(@on-change="switchAddressType")
     .desc
       span via
       a(href="http://handcash.io/api-docs/" target="_blank") HandCash API
@@ -33,7 +30,6 @@ export default {
     return {
       handle: null,
       receivingAddress: null,
-      addressForDisplay: null,
       qrUrl: null,
       showLoading: true,
       isCopied: false,
@@ -44,17 +40,15 @@ export default {
       let url = `https://api.handcash.io/api/receivingAddress/${handle}`
       this.showLoading = true
       fetch(url).then(res => {
+        this.showLoading = false
         if (res.status !== 200) {
           console.log('Looks like there was a problem. Status Code: ' + res.status)
-          this.showLoading = false
           return
         }
         res.json().then(async result => {
           console.log(result)
-          const cashAddr = bchaddr.toCashAddress(result.receivingAddress)
-          this.receivingAddress = cashAddr
-          this.addressForDisplay = cashAddr.substr(12)
-          this.qrUrl = await generateAddressQR(cashAddr)
+          this.receivingAddress = result.receivingAddress
+          this.qrUrl = await generateAddressQR(this.receivingAddress)
           this.showLoading = false
         })
       })
@@ -84,14 +78,6 @@ export default {
           this.isCopied = false
         }, 1000)
       }
-    },
-    async switchAddressType () {
-      const isLegacy = bchaddr.isLegacyAddress(this.receivingAddress)
-      this.receivingAddress = bchaddr[isLegacy ? 'toCashAddress' : 'toLegacyAddress'](this.receivingAddress)
-      this.addressForDisplay = this.receivingAddress.indexOf('bitcoincash') > -1
-        ? this.receivingAddress.substr(12)
-        : this.receivingAddress
-      this.qrUrl = await generateAddressQR(this.receivingAddress, !isLegacy)
     },
   },
   computed: {
