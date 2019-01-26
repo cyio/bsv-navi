@@ -1,6 +1,6 @@
-# BCH123.org
+# BSVGo.top
 
-Live site：[BCH123.org](https://bch123.org/)
+Live site：[BSVGo.top](https://bsvgo.top/)
 
 ## Development
 
@@ -26,5 +26,5 @@ npm run build
 
 ## Forever Alive
 ```sh
-pm2 start npm --name bch123-maintain -- run maintain
+pm2 start npm --name bsvgo-maintain -- run maintain
 ```

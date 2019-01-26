@@ -43,7 +43,7 @@ export default {
       let market = this.market
       return [
         { label: '最新价', value: market.price + market.percent_change_24h },
-        { label: 'BCH/BTC', value: market['bch/btc'] },
+        { label: 'BSV/BTC', value: market['bsv/btc'] },
         { label: '已供应', value: market.supply },
       ]
     }

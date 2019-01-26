@@ -16,7 +16,7 @@
         router-view(v-if='$route.meta.keepAlive')
       transition(name='fade', v-if='!$route.meta.keepAlive')
         router-view
-    Footer.layout-footer-center @{{(new Date().getFullYear())}} © BCH123.org 
+    Footer.layout-footer-center @{{(new Date().getFullYear())}} © BSVGo.top 
 </div>
 </template>
 
@@ -42,7 +42,7 @@ export default {
     share () {
       navigator
         .share({
-          title: 'BCH123.org',
+          title: 'BSVGo.top',
           text: '',
           url: window.location.href
         })
@@ -58,7 +58,7 @@ export default {
         this.currentView = this.isHandle(id) ? 'handle' : 'address'
       } else {
         this.currentView = null
-        document.title = 'BCH123_' + this.$t('home.title')
+        document.title = 'BSVGo_' + this.$t('home.title')
       }
     },
   },

@@ -21,13 +21,13 @@ const shared = {
 const translations = {
   zh: {
     home: {
-      title: '比特币现金导航',
+      title: '比特币导航',
       about: '关于',
-      aboutTitle: '联系/捐赠开发者(BCH)',
+      aboutTitle: '联系/捐赠开发者(BSV)',
       mobile: '电话&微信',
       email: '邮箱',
       sourceCode: '开放源码',
-      searchPlaceholder: 'BCH 地址，$handler',
+      searchPlaceholder: 'BSV 地址，$handler',
     },
     address: {
       balance: '余额',
@@ -41,7 +41,7 @@ const translations = {
       time: '时间',
     },
     handle: {
-      title: ' 的 BCH 收款',
+      title: ' 的 BSV 收款',
       copy: '复制',
       copied: '已复制',
       useLegacy: '使用旧版地址',
@@ -50,13 +50,13 @@ const translations = {
   },
   en: {
     home: {
-      title: 'BCH123',
+      title: 'BSVGo',
       about: 'About',
-      aboutTitle: 'Donate to the developer (BCH)',
+      aboutTitle: 'Donate to the developer (BSV)',
       mobile: 'Mobile&Wechat',
       email: 'Email',
       sourceCode: 'Source Code',
-      searchPlaceholder: 'BCH address, $handler',
+      searchPlaceholder: 'BSV address, $handler',
     },
     address: {
       balance: 'Balance',
@@ -70,7 +70,7 @@ const translations = {
       time: 'Time',
     },
     handle: {
-      title: '\'s BCH Receiving Address',
+      title: '\'s BSV Receiving Address',
       copy: 'copy',
       copied: 'copied',
       useLegacy: 'use Legacy Address',

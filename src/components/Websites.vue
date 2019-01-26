@@ -41,7 +41,6 @@ export default {
     padding: 10px;
     table {
       max-width: 100%;
-      margin: 0 auto;
     }
     .tr-inner {
       margin-left: .5rem;

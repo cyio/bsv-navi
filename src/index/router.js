@@ -23,8 +23,8 @@ const routes = [
     meta: {
       keepAlive: true,
       titles: {
-        default: 'BCH123_比特币现金导航',
-        address: 'BCH 帐户查看器'
+        default: 'BSVGo_比特币导航',
+        address: 'BSV 帐户查看器'
       }
     },
   },

@@ -12,7 +12,7 @@
               span.unit {{fiat.toUpperCase()}}
           .balance-row
             span.value {{addressDetail ? addressBalance : '-----'}}
-            span.unit BCH
+            span.unit BSV
         div(v-if="!showLoading && !showErrorMsg && addressDetail === null")
           span 账户暂无数据<br>未使用过的地址
       .qr-wrap(v-if="qrUrl")
@@ -91,7 +91,7 @@ export default {
       prices: { cny: null, usd: null },
       pageIndex: 1,
       pageSize: 10,
-      blockExplorerUrl: 'https://bch.btc.com/',
+      blockExplorerUrl: 'https://bsv.btc.com/',
       tableConfig: {
         multipleSort: false,
         tableData: [],
@@ -174,14 +174,14 @@ export default {
     },
     getAddressDetail (address) {
       // const url = `/api/address?${address}`
-      const url = `${proxyHost}https://bch-chain.api.btc.com/v3/address/${address}`
+      const url = `${proxyHost}https://bsv-chain.api.btc.com/v3/address/${address}`
       return fetchRetry(url).then(res => res.json().then(res => {
         return res.headers ? res.data.data : res.data
       }))
     },
     getAddressTxs (address, page = this.pageIndex, pageSize = this.pageSize) {
       // const url = `/api/address-txs?${address}`
-      const url = `${proxyHost}https://bch-chain.api.btc.com/v3/address/${address}/tx?page=${page}&pagesize=${pageSize}&verbose=1`
+      const url = `${proxyHost}https://bsv-chain.api.btc.com/v3/address/${address}/tx?page=${page}&pagesize=${pageSize}&verbose=1`
       return new Promise((resolve, reject) => {
         fetchRetry(url).then(res => {
           res.json().then(res => {
