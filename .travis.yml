@@ -10,7 +10,7 @@ cache:
 before_install:
 - git config --global user.name "cyio"
 - git config --global user.email "ibeceo@gmail.com"
-- git clone --branch gh-pages https://github.com/cyio/bch123.org.git gh-dist
+- git clone --branch gh-pages https://github.com/cyio/bsv-navi gh-dist
 install:
 - yarn
 script:
@@ -24,5 +24,5 @@ after_script:
 - git push "https://cyio:${GITHUB_TOKEN}@${GH_REF}" gh-pages:gh-pages
 env:
   global:
-  - GH_REF: github.com/cyio/bch123.org.git
-  - secure: ciaUVmvIMEe++hGrY9niC7GtbMW2Q67p3e6cpgahAUjzDVHRYO72GG+PJW4/mMrxX1wBQbO49fp8B7xUPW3EjxTEK/drD2t2t4FU40FCaaoOg6nqLHYYZxL6ksiWVlFy/9uCaYGJ7e6svMdOA5DQhKDtgnkSCVOs5w2lNtG1oZoaucY7ecDkzR23vrlMLX1HJrhtHei89uuwuAf5KC5aoLVvSbdZsy7Q18+Fl43hK5m1w9tokDOWzOonRNZ5CGUYQz5VfzEFh6oautoqHQzia1GquWyXScFbLWvkXfGnuFPLnqSGNqZfvZH92OMW+7bjfQub3XfSh58V3P4d7syvOtyG4cZApGbcPJIvS23dnzA+ll1W8X+ogme3Ahc+Y/5ukIlKhuR5iqpHwd5nSSyZ8LMAfWkMX7te6XaBrWLrCqCYeDjUw2NNdxBielnomtLXUyZK5nD7wiSuEuCDl4jrPGQ6ojzJHjBSDGNbB+AgSEf8B1I1Kei9uLmX5Lw42BUST9JRRexSu82/tiXVG9qZeKrJULT4a+CmXUNBv2CP3p0n3/Yfh5TTncBVmrd022mmy6eGYeh8pXv3lYs+aeiS3mOwVHQ+3vfFELbQ3Polgk75B7LD1xijAeT3sVihk1QSpzS9N+1yOC4s5UR9k1mlEokcckdOz7duoQPoq7jZ3Tc=
+  - GH_REF: github.com/cyio/bsv-navi.git
+  - secure: NiE6bvlQFNnrRF8U9XFNxT1De25ydIW7g2/eKVYap4gBvv4WXoH1vsZGD9O8AHgk0JUsxYD0DF5sKg3L4jI3T1bzSvoudP2Y5kH0pdUlAlfQnQE+Vb/Z38Oby77pn3tvPWAx2IxF0JOIfVH+PjAfdefT5+M5RLg7KuLQDeir8ag5Au2Vw/7O9H3o81Vcst5Pza9xcgZKd/ib78PGHc5qvdIMBeVUx0kyJ/9xBEZJai+PyPuDy5sfI9y+UNlpvfMpZUIVlZJee2PO6ogsy8t1OyKgYVvuo5Fx57aue5pikLMrxqR1kNuoioNL5aFgldwFd2Eqxkk8l3ET9D4RR2Kmx4fm9hjNbqg/209BZ0KwxjzMeDnHAkYJaXgyR9NJ8dvQhsmDdDcxIse64xaJ7/NxwUvATcQCk37iNFQh/CpdtopLJ2NmEwVp79k0DnIf0XaAFSWAKt/qFhkFy6QzDKacQ5CDmZtsP9aETzs5teFeW3wmEQ/sIOQoxckDlB1tCAJkBKcA/SM/IbS4j7TMJd130XQfhu12rv9tk7snVfdpKQtDh3LifHEFSpOJaZJ2E02SnK3+F2U3dV+4ryZof9CPiulfqrPdH753mETgvnjX32vrtGrx84U4mlfPKRki7ohlAC+ys53GHrMhlDP66pimOcbeJKtOSQibrMfFsmNtqKc=
