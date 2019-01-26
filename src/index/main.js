@@ -50,7 +50,7 @@ const translations = {
   },
   en: {
     home: {
-      title: 'BSVGo',
+      title: 'BSV',
       about: 'About',
       aboutTitle: 'Donate to the developer (BSV)',
       mobile: 'Mobile&Wechat',

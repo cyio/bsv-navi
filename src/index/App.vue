@@ -16,7 +16,7 @@
         router-view(v-if='$route.meta.keepAlive')
       transition(name='fade', v-if='!$route.meta.keepAlive')
         router-view
-    Footer.layout-footer-center @{{(new Date().getFullYear())}} © BSVGo.top 
+    Footer.layout-footer-center @{{(new Date().getFullYear())}} © bsv.oaker.bid 
 </div>
 </template>
 
@@ -42,7 +42,7 @@ export default {
     share () {
       navigator
         .share({
-          title: 'BSVGo.top',
+          title: 'bsv.oaker.bid',
           text: '',
           url: window.location.href
         })
@@ -58,7 +58,7 @@ export default {
         this.currentView = this.isHandle(id) ? 'handle' : 'address'
       } else {
         this.currentView = null
-        document.title = 'BSVGo_' + this.$t('home.title')
+        document.title = 'BSV_' + this.$t('home.title')
       }
     },
   },

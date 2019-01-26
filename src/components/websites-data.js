@@ -13,7 +13,7 @@ export default {
   },
   行情: {
     content: [
-      // { title: '币值轻快版', url: 'https://coin.bsvgo.top/' },
+      // { title: '币值轻快版', url: 'https://coin.bsv.oaker.bid/' },
       {
         title: '加密货币市值',
         desc: 'Cryptocurrency Market Capitalizations | CoinMarketCap',

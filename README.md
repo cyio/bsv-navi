@@ -1,6 +1,6 @@
-# BSVGo.top
+# bsv.oaker.bid
 
-Live site：[BSVGo.top](https://bsvgo.top/)
+Live site：[bsv.oaker.bid](https://bsv.oaker.bid/)
 
 ## Development
 
@@ -26,5 +26,5 @@ npm run build
 
 ## Forever Alive
 ```sh
-pm2 start npm --name bsvgo-maintain -- run maintain
+pm2 start npm --name bsv-navi-maintain -- run maintain
 ```
