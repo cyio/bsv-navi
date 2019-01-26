@@ -1,5 +1,7 @@
 <template lang="pug">
-  .handle-view
+.container
+  .err-msg(v-if="errMsg") {{errMsg}}
+  .handle-view(v-else)
     .name {{handle}}
     .qr-wrap()
       img(v-if="qrUrl" :src="qrUrl" @click='copyAddress')
@@ -33,6 +35,7 @@ export default {
       qrUrl: null,
       showLoading: true,
       isCopied: false,
+      errMsg: null,
     }
   },
   methods: {
@@ -42,6 +45,7 @@ export default {
       fetch(url).then(res => {
         this.showLoading = false
         if (res.status !== 200) {
+          this.errMsg = 'request error'
           console.log('Looks like there was a problem. Status Code: ' + res.status)
           return
         }
@@ -130,15 +134,23 @@ export default {
       height: 0;
     }
   }
-  .handle-view {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .container {
     text-align: center;
     margin: .8rem;
     border-radius: 1rem;
     padding-bottom: 1rem;
     background: #fff;
+    min-height: 100px;
+  }
+  .err-msg {
+    font-weight: bold;
+    color: red;
+    padding-top: 30px;
+  }
+  .handle-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     a {
       padding: 0 0.2rem;
       color: theme;
