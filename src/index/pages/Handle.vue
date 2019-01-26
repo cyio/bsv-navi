@@ -19,8 +19,9 @@
 <script>
 import mixin from '@/mixin.js'
 import bchaddr from 'bchaddrjs'
-import { generateAddressQR, copyToClipboard } from '@/utils/'
+import { copyToClipboard } from '@/utils/'
 import { Button, Switch } from 'iview'
+import QRCode from 'qrcode'
 export default {
   name: 'Home',
   mixins: [mixin],
@@ -50,9 +51,8 @@ export default {
           return
         }
         res.json().then(async result => {
-          console.log(result)
           this.receivingAddress = result.receivingAddress
-          this.qrUrl = await generateAddressQR(this.receivingAddress)
+          this.qrUrl = await QRCode.toDataURL(this.receivingAddress)
           this.showLoading = false
         })
       })

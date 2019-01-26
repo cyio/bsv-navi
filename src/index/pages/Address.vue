@@ -57,13 +57,14 @@
 import 'vue-easytable/libs/themes-base/index.css'
 import { VTable, VPagination } from 'vue-easytable'
 import mixin from '@/mixin'
-import { fetchRetry, generateAddressQR } from '@/utils/'
+import { fetchRetry } from '@/utils/'
 import Modal from '@/components/Modal'
 import SearchBox from '@/components/SearchBox'
 import bchaddr from 'bchaddrjs'
 import { format } from 'date-fns'
 // import Timeago from 'timeago.js'
 import numeral from 'numeral'
+import QRCode from 'qrcode'
 import { Button } from 'iview'
 // const timeAgo = new Timeago()
 const proxyHost = 'https://cors.oaker.bid/'
@@ -154,7 +155,7 @@ export default {
       this.showLoading = true
       this.showErrorMsg = false
       this.addressDetail = this.addressTxs = this.addressErrors = null
-      this.qrUrl = await generateAddressQR(id)
+      this.qrUrl = await QRCode.toDataURL(id)
       this.getAddressDetail(id).then(async data => {
         this.addressDetail = data
         this.getTableData()

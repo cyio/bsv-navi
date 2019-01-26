@@ -1,5 +1,3 @@
-import QRCode from 'qrcode'
-
 export function sleep(ms = 0) {
   return new Promise((resolve, reject) => setTimeout(resolve, ms))
 }
@@ -20,12 +18,6 @@ export function fetchRetry(url, options, n = 3) {
       if (n === 1) throw error
       return fetchRetry(url, options, n - 1)
     })
-}
-
-export async function generateAddressQR(text, isLegacy) {
-  const newText = isLegacy ? text : text.toUpperCase()
-  const url = await QRCode.toDataURL(newText, { mode: 'alphanumeric' })
-  return url
 }
 
 export function copyToClipboard(containerid) {
