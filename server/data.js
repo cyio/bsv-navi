@@ -1,31 +1,33 @@
 const request = require('superagent')
 
 const getMarket = () => {
-  let market = {
-    price: null,
-    circulating_supply: null,
-    max_supply: null,
-    bch_against_btc: null,
-  }
-  return Promise.all([
-    request.get('https://api.coinmarketcap.com/v2/ticker/1831/?convert=CNY'),
-    request.get('https://api.fork.lol/exchangerate'),
-  ])
-    .then((result) => {
-      let [cmc, forkLol] = result
-      let cmcData = cmc.body
-      let forkLolData = forkLol.body
-      // console.log({cmcData, forkLolData})
-      market.price = cmcData.data.quotes.CNY.price
-      market.percent_change_24h = cmcData.data.quotes.CNY.percent_change_24h
-      market.circulating_supply = cmcData.data.circulating_supply
-      market.max_supply = cmcData.data.max_supply
-      market.bch_against_btc = forkLolData['bch/btc']
-      return market
+  return request.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=cny&ids=bitcoin-cash-sv')
+    .then((res) => {
+      const tickerData = res.body[0]
+      return {
+        price: tickerData.current_price,
+        percent_change_24h: tickerData.price_change_percentage_24h,
+        circulating_supply: tickerData.circulating_supply,
+        max_supply: tickerData.total_supply,
+      }
     })
     .catch(e => {
-      console.log()
-      return market
+      console.log('fetch error', e)
+      return {}
     })
 }
-module.exports = { getMarket }
+
+const getOTC = () => {
+  return request.get('https://otc-api.eiijo.cn/v1/data/market/detail?currencyId=1')
+    .then((res) => {
+      const otcData = res.body.data
+      return {
+        usdt_otc_price: otcData.detail[2].buy,
+      }
+    })
+    .catch(e => {
+      console.log('fetch error', e)
+      return {}
+    })
+}
+module.exports = { getMarket, getOTC }

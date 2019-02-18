@@ -1,6 +1,6 @@
 <template lang="pug">
 .home-view
-  // statistics
+  statistics
   // .logo-wrap
   search-box(:submit='submit')
   websites
