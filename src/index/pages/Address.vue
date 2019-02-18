@@ -184,9 +184,9 @@ export default {
       })
     },
     getPrices () {
-      const url = `https://api.coinmarketcap.com/v2/ticker/3602/?convert=CNY`
+      const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=cny&ids=bitcoin-cash-sv`
       return fetch(url).then(res => res.json().then(res => {
-        return res.headers ? res.data.data : res.data
+        return res[0]
       }).catch(err => console.error(err)))
     },
     async getTableData() {
@@ -286,13 +286,12 @@ export default {
   created () {
     let id = this.$route.query.q
     if (id && !this.address) {
-      console.log('debug created')
       this.address = id
       this.submit(this.address)
     }
     this.getPrices().then(data => {
-      this.prices.cny = data.quotes.CNY.price
-      this.prices.usd = data.quotes.USD.price
+      this.prices.cny = data.current_price
+      this.prices.usd = this.prices.cny / 6.8
     })
   },
   mounted () {

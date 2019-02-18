@@ -44,6 +44,15 @@ export default {
         title: '地址格式转换',
         url: 'https://bch.btc.com/tools/address-converter',
       },
+      {
+        title: 'Bitpaste',
+        url: 'https://www.bitpaste.app',
+      },
+      {
+        title: 'Bico Media',
+        url: 'https://bico.media/',
+        desc: 'Bitcoin sv blockchain files for content creators',
+      },
     ],
   },
   // 娱乐: {
