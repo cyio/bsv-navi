@@ -17,7 +17,7 @@ const getMarket = () => {
     })
 }
 
-const getOTC = () => {
+const getUSDTOTC = () => {
   return request.get('https://otc-api.eiijo.cn/v1/data/market/detail?currencyId=1')
     .then((res) => {
       const otcData = res.body.data
@@ -30,4 +30,18 @@ const getOTC = () => {
       return {}
     })
 }
-module.exports = { getMarket, getOTC }
+
+const getOTC = () => {
+  return request.get('https://api-ddc.wallstreetcn.com/market/real?fields=prod_name%2Cpreclose_px%2Clast_px%2Cpx_change%2Cpx_change_rate%2Cprice_precision&prod_code=000001.SS%2CUS500.OTC%2CEURUSD.OTC%2CXAUUSD.OTC%2CUSDCNH.OTC%2CUKOIL.OTC%2CBTCUSD.Bitfinex')
+    .then((res) => {
+      const otcData = res.body.data
+      return {
+        usd_otc_price: otcData.snapshot['USDCNH.OTC'][2]
+      }
+    })
+    .catch(e => {
+      console.log('fetch error', e)
+      return {}
+    })
+}
+module.exports = { getMarket, getUSDTOTC, getOTC }
