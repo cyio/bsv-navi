@@ -35,6 +35,8 @@ export default {
           price: `￥${Math.round(data.price)}`,
           percent_change_24h: ` (${data.percent_change_24h > 0 ? '+' : ''}${data.percent_change_24h.toFixed(2)}%)`,
           supply: numeral(data.circulating_supply / (10 ** 4)).format('0,000') + '万' + ' / ' + this.formatPercentage(data.circulating_supply, data.max_supply),
+          bsv_bch: data.bsv_bch.toFixed(4),
+          bsv_btc: data.bsv_btc.toFixed(4),
           usdt_otc_price: data.usdt_otc_price,
           usd_otc_price: data.usd_otc_price,
         }
@@ -47,7 +49,8 @@ export default {
       let market = this.market
       return [
         { label: '最新价', value: market.price + market.percent_change_24h },
-        // { label: 'BSV/BTC', value: market['bsv/btc'] },
+        { label: 'BSV/BTC', value: market.bsv_btc },
+        { label: 'BSV/BCH', value: market.bsv_bch },
         { label: '已供应', value: market.supply },
         { label: '火币USDT', value: market.usdt_otc_price },
         { label: '离岸人民币', value: market.usd_otc_price },

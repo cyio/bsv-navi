@@ -15,10 +15,12 @@ const buildFileContent = async () => {
         max_supply: null,
         usd_otc_price: null,
         usdt_otc_price: null,
+        bsv_bch: null,
+        bsv_btc: null,
       }
     }
     Object.assign(content.data, ...values)
-    // console.log(content.data)
+    console.log(content.data)
     updateGist(content)
   })
 }

@@ -1,14 +1,16 @@
 const request = require('superagent')
 
 const getMarket = () => {
-  return request.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=cny&ids=bitcoin-cash-sv')
+  return request.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=cny&ids=bitcoin,bitcoin-cash,bitcoin-cash-sv')
     .then((res) => {
-      const tickerData = res.body[0]
+      const [btcData, bchData, bsvData] = res.body
       return {
-        price: tickerData.current_price,
-        percent_change_24h: tickerData.price_change_percentage_24h,
-        circulating_supply: tickerData.circulating_supply,
-        max_supply: tickerData.total_supply,
+        price: bsvData.current_price,
+        percent_change_24h: bsvData.price_change_percentage_24h,
+        circulating_supply: bsvData.circulating_supply,
+        max_supply: bsvData.total_supply,
+        bsv_bch: bsvData.current_price / bchData.current_price,
+        bsv_btc: bsvData.current_price / btcData.current_price,
       }
     })
     .catch(e => {
