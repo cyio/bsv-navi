@@ -16,7 +16,18 @@
         router-view(v-if='$route.meta.keepAlive')
       transition(name='fade', v-if='!$route.meta.keepAlive')
         router-view
-    Footer.layout-footer-center @{{(new Date().getFullYear())}} © bsv.oaker.bid 
+    .money-button(
+      data-to="1743"
+      data-amount="0.98"
+      data-currency="CNY"
+      data-label="支持"
+      data-client-identifier="e675367a971e646a60120cdb3607f82f"
+      data-button-id="1552225294954"
+      data-button-data="{}"
+      data-type="tip"
+    )
+    Footer.layout-footer-center
+      div @{{(new Date().getFullYear())}} © bsv.oaker.bid 
 </div>
 </template>
 
@@ -266,6 +277,9 @@ img, embed, iframe {
     .address-detail {
       align-items: center;
     }
+  }
+  .money-button {
+    margin-top: 40px;
   }
   </style>
 
