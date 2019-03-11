@@ -1,7 +1,8 @@
 <template lang="pug">
 #app(:class="{ handle: currentView === 'handle' }")
-  Layout
-    Header
+  .bg
+  .main-container
+    header
       .layout-logo.link(@click="go({path: '/'})")
         span(v-if="!currentView && $route.name === 'Home'") {{$t('home.title')}}
         .logo-wrap(v-else)
@@ -9,9 +10,9 @@
       .layout-nav
         // .link(v-if="$route.name === 'Home'" @click="go({path: '/safe-guides'})") 安全指南
         .link(v-if='isSupportWebShare', @click='share') 分享
-    Content(v-if="currentView")
+    .content(v-if="currentView")
       router-view(:name="currentView")
-    Content(v-else)
+    .content(v-else)
       keep-alive
         router-view(v-if='$route.meta.keepAlive')
       transition(name='fade', v-if='!$route.meta.keepAlive')
@@ -26,23 +27,17 @@
         data-button-id="1552225294954"
         data-type="tip"
       )
-    Footer.layout-footer-center
+    footer
       div @{{(new Date().getFullYear())}} © bsv.oaker.bid 
 </div>
 </template>
 
 <script>
 import mixin from '@/mixin.js'
-import { Layout, Header, Footer, Icon, Button } from 'iview'
 export default {
   mixins: [mixin],
   name: 'app',
   components: {
-    Layout,
-    Header,
-    Footer,
-    Icon,
-    Button,
   },
   data () {
     return {
@@ -126,7 +121,8 @@ ul {
 }
 
 :root {
-  --theme: #f08b16;
+  --theme: #1d1d1d;
+  --highlight: #f7d154;
 }
 
 body {
@@ -134,16 +130,28 @@ body {
 }
 
 #app {
-  min-height: 100%;
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 100%;
+  height: 100vh;
+  background-image: url('~@/assets/bsv-bg.jpg');
+  background-blend-mode: soft-light;
+  background-color: gray;
+}
+
+header {
+  margin: 20px 0;
+  height: 40px;
 }
 
 footer {
   text-align: center;
   padding: 15px 0 10px;
-  color: #ccc;
+  font-size: 12px;
+  position: fixed;
+  bottom: 44px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 footer a {
@@ -228,6 +236,8 @@ img, embed, iframe {
     padding-left: 10px;
     // background: var(--theme);
     color: var(--theme);
+    font-size: 32px;
+    font-weight: 700;
   }
   .layout-nav{
 		margin-right: 20px;
@@ -239,14 +249,11 @@ img, embed, iframe {
     margin-left: 10px;
     font-size: .9rem;
   }
-  .layout-footer-center{
-    text-align: center;
+  .main-container {
+    min-height: 100vh;
+    background: #fff;
   }
-  .ivu-layout,
-  .ivu-layout-footer {
-    background: none;
-  }
-  .ivu-layout-header {
+  .main-container-header {
     background: none;
     boxShadow: 0 2px 3px 2px rgba(0,0,0,.1);
     padding: 0;
@@ -262,8 +269,14 @@ img, embed, iframe {
     background-repeat: no-repeat;
     background-size: 100%;
   }
+  .sub-page-title {
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    font-weight: 700;
+  }
   @media only screen and (min-width: 900px) {
-    .ivu-layout {
+    .main-container {
       width: 750px;
       margin: 0 auto;
       // border: 1px solid #efefef;
@@ -282,8 +295,9 @@ img, embed, iframe {
     display: flex;
     justify-content: center;
     padding-top: 40px;
+    position: fixed;
+    bottom: 54px;
     .money-button {
-      transform: translateX(25%);
     }
   }
   </style>

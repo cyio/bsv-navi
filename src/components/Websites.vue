@@ -45,6 +45,9 @@ export default {
     .tr-inner {
       margin-left: .5rem;
     }
+    th {
+      color: #929191;
+    }
     td {
       height: 2.2rem;
       line-height: @height;
