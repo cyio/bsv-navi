@@ -41,6 +41,7 @@ export default {
     content: [
       { title: '币世界', url: 'https://www.bishijie.com/kuaixun' },
       { title: 'CoinGeek', url: 'https://coingeek.com/' },
+      { title: 'BSV Daily', url: 'https://media.bitcoinfiles.org/83264827cdc0825b40868307daec68f34a78ce5f3ac3547b1efea61b64bfe449' },
     ],
   },
   浏览器: {
