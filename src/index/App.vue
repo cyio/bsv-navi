@@ -1,6 +1,5 @@
 <template lang="pug">
 #app(:class="{ handle: currentView === 'handle' }")
-  .bg
   .main-container
     header
       .layout-logo.link(@click="go({path: '/'})")
@@ -133,10 +132,11 @@ body {
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 100%;
-  height: 100vh;
   background-image: url('~@/assets/bsv-bg.jpg');
   background-blend-mode: soft-light;
   background-color: gray;
+  min-height: 100vh;
+  position: relative;
 }
 
 header {
@@ -145,13 +145,18 @@ header {
 }
 
 footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 4.5rem;            /* Footer height */
   text-align: center;
   padding: 15px 0 10px;
   font-size: 12px;
-  position: fixed;
-  bottom: 44px;
-  left: 50%;
-  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 footer a {
@@ -250,8 +255,11 @@ img, embed, iframe {
     font-size: .9rem;
   }
   .main-container {
-    min-height: 100vh;
     background: #fff;
+    min-height: 100vh;
+    .content {
+      padding-bottom: 4.5rem;    /* Footer height */
+    }
   }
   .main-container-header {
     background: none;
@@ -292,11 +300,8 @@ img, embed, iframe {
     }
   }
   .tip-wrap {
-    display: flex;
-    justify-content: center;
-    padding-top: 40px;
-    position: fixed;
-    bottom: 54px;
+    position: absolute;
+    bottom: 0;
     .money-button {
     }
   }
