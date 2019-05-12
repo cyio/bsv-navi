@@ -3,7 +3,7 @@ export default {
     content: [
       { title: 'BitSV.club', desc: 'BitcoinSV社区', url: 'https://bitsv.club/' },
       { title: '骷髅会', desc: '微信群聊天记录', url: 'https://svskull.club/' },
-      // { title: '巴比特论坛', url: 'https://8btc.com/forum-269-1.html' },
+      { title: '巴比特论坛', url: 'https://www.chainnode.com/forum/269' },
       { title: 'Reddit', url: 'https://www.reddit.com/r/bitcoinsv/' },
       { title: 'Memo', desc: '去中心化微博', url: 'https://sv.memo.cash/' },
       {
@@ -122,8 +122,9 @@ export default {
   钱包: {
     content: [
       { title: 'HandCash', url: 'http://www.handcash.io/' },
+      { title: 'Relayx', url: 'https://relayx.io/' },
       { title: 'ElectrumSV', desc: 'The Bitcoin SV Desktop Wallet', url: 'https://electrumsv.io/' },
-      // { title: '打点钱包', url: 'https://www.ddpurse.com/' },
+      { title: '打点钱包', url: 'https://www.ddpurse.com/' },
       { title: 'Coinomi', url: 'https://coinomi.com/' },
       { title: 'Jaxx', url: 'https://jaxx.io/' },
       { title: 'Exodus', url: 'https://www.exodus.io/' },
@@ -131,9 +132,10 @@ export default {
   },
   交易所: {
     content: [
-      { title: '币安', url: 'https://www.binance.com/' },
-      { title: '火币', url: 'https://www.huobi.com/' },
+      // { title: '币安', url: 'https://www.binance.com/' },
       { title: 'OKEx', url: 'https://www.okex.com/' },
+      { title: '火币', url: 'https://www.huobi.com/' },
+      { title: 'Float SV', url: 'https://www.floatsv.com/' },
     ],
   },
   // 开发: {
