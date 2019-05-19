@@ -12,11 +12,14 @@
  */
 
 importScripts(
-  "https://cdn.jsdelivr.net/npm/workbox-sw@latest/build/workbox-sw.min.js",
-  "/precache-manifest.09ee7c894c955cdc5136ab9784ea0744.js"
+  "https://cdn.jsdelivr.net/npm/workbox-sw@3.6.3/build/workbox-sw.min.js",
+  "/precache-manifest.e2a70b667a94f7efa6736043f49364e0.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "bsv.oaker.bid"});
+
+workbox.skipWaiting();
+workbox.clientsClaim();
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
