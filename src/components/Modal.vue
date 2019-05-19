@@ -65,7 +65,6 @@ export default {
 }
 .modal-container {
 	margin: 0px auto;
-	// padding: 1.5rem 2rem 1.8rem 2rem;
 	background-color: #fff;
 	border-radius: 5px;
 	box-shadow: 0 0 10px #C5C5C5;
@@ -94,7 +93,6 @@ export default {
 	transition: opacity .12s linear;
 }
 .modal-full-wrapper {
-	// padding: 6rem 2rem;
 	margin: 0 auto;
 	max-width: 640px;
 	box-sizing: inherit;
@@ -138,7 +136,6 @@ export default {
 	transform: rotate(135deg);
 }
 .modal-body {
-	// padding: .1rem;
 }
 .modal-default-button {
 	float: right;
