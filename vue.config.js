@@ -29,7 +29,7 @@ module.exports = {
     workboxPluginMode: 'GenerateSW',
     workboxOptions: {
       importWorkboxFrom: 'disabled',
-      importScripts: ['https://cdn.jsdelivr.net/npm/workbox-sw@latest/build/workbox-sw.min.js'],
+      importScripts: ['https://cdn.jsdelivr.net/npm/workbox-sw@3.6.3/build/workbox-sw.min.js'],
       skipWaiting: true,
       clientsClaim: true,
     },
