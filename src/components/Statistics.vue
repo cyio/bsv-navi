@@ -38,7 +38,7 @@ export default {
           bsv_bch: data.bsv_bch.toFixed(4),
           bsv_btc: data.bsv_btc.toFixed(4),
           usdt_otc_price: data.usdt_otc_price,
-          usd_otc_price: data.usd_otc_price,
+          usd_otc_price: data.usd_otc_price.toFixed(2),
         }
         // this.market['bch/btc'] = data.bch_against_btc.toFixed(3)
       }))
