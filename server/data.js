@@ -34,11 +34,11 @@ const getUSDTOTC = () => {
 }
 
 const getOTC = () => {
-  return request.get('https://api-ddc.wallstreetcn.com/market/real?fields=prod_name%2Cpreclose_px%2Clast_px%2Cpx_change%2Cpx_change_rate%2Cprice_precision&prod_code=000001.SS%2CUS500.OTC%2CEURUSD.OTC%2CXAUUSD.OTC%2CUSDCNH.OTC%2CUKOIL.OTC%2CBTCUSD.Bitfinex')
+  return request.get('https://api.exchangerate-api.com/v4/latest/USD')
     .then((res) => {
-      const otcData = res.body.data
+      const otcData = res.body
       return {
-        usd_otc_price: otcData.snapshot['USDCNH.OTC'][2]
+        usd_otc_price: otcData.rates.CNY
       }
     })
     .catch(e => {
