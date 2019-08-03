@@ -46,16 +46,18 @@ export default {
   },
   浏览器: {
     content: [
-      { title: 'BTC.com', url: 'https://bsv.btc.com' },
+      { title: 'ViaBTC', url: 'https://explorer.viabtc.com/bsv' },
       { title: 'WhatsOnChain', url: 'https://whatsonchain.com/' },
       { title: 'Blockchair', url: 'https://blockchair.com/bitcoin-sv' },
+      { title: 'BTC.com', url: 'https://bsv.btc.com' },
     ],
   },
   工具: {
     content: [
       {
-        title: '地址格式转换',
-        url: 'https://bch.btc.com/tools/address-converter',
+        title: 'Polynym',
+        desc: 'Simple BSV address resolution for HandCash, RelayX and PayMail handles.',
+        url: 'https://polynym.io/',
       },
       {
         title: 'Bitpaste',
@@ -85,6 +87,11 @@ export default {
         title: 'Hashrates',
         desc: 'BSV,BCH,BTC 每日算力对比',
         url: 'https://bitinfocharts.com/comparison/hashrate-btc-bch-bsv.html#6m',
+      },
+      {
+        title: 'BitcoinBlocks',
+        desc: 'live transactions on Bitcoin SV ',
+        url: 'https://bitcoinblocks.live/',
       },
       {
         title: 'TX Highway',
