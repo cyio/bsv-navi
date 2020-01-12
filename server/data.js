@@ -46,4 +46,23 @@ const getOTC = () => {
       return {}
     })
 }
-module.exports = { getMarket, getUSDTOTC, getOTC }
+
+const getChangeOf60Days = () => {
+  return request.get('https://api-pub.bitfinex.com/v2/candles/trade:1D:tBSVUSD/hist?limit=60&sort=0')
+    .then((res) => {
+      const data = res.body
+      // return data[0]
+      const changes = data.map(item => (item[2] - item[1]) / item[1])
+      const result = changes.reduce((acc, pre) => acc + pre, 0)
+      return {
+        change_of_60days: result
+      }
+    })
+    .catch(e => {
+      console.log('fetch error', e)
+      return {}
+    })
+}
+// getChangeOf60Days().then(d => console.log(d))
+
+module.exports = { getMarket, getUSDTOTC, getOTC, getChangeOf60Days }

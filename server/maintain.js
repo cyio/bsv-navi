@@ -6,7 +6,12 @@ const fs = require('fs')
 Promise.almost = r => Promise.all(r.map(p => (p.catch ? p.catch(e => e) : p)))
 
 const buildFileContent = async () => {
-  Promise.almost([dataApi.getMarket(), dataApi.getOTC(), dataApi.getUSDTOTC()]).then(values => {
+  Promise.almost([
+    dataApi.getMarket(),
+    dataApi.getOTC(),
+    dataApi.getUSDTOTC(),
+    dataApi.getChangeOf60Days(),
+  ]).then(values => {
     const content = {
       data: {
         price: null,
@@ -17,6 +22,7 @@ const buildFileContent = async () => {
         usdt_otc_price: null,
         bsv_bch: null,
         bsv_btc: null,
+        change_of_60days: null,
       }
     }
     Object.assign(content.data, ...values)
