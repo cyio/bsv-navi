@@ -57,7 +57,7 @@
 import 'vue-easytable/libs/themes-base/index.css'
 import { VTable, VPagination } from 'vue-easytable'
 import mixin from '@/mixin'
-import { fetchRetry } from '@/utils/'
+import { fetchRetry, inSleepTime } from '@/utils/'
 import Modal from '@/components/Modal'
 import SearchBox from '@/components/SearchBox'
 import bchaddr from 'bchaddrjs'
@@ -67,7 +67,7 @@ import numeral from 'numeral'
 import QRCode from 'qrcode'
 import { Button } from 'iview'
 // const timeAgo = new Timeago()
-const proxyHost = 'https://cors.oaker.bid/'
+const proxyHost = 'https://cnbeta.leanapp.cn/api/proxy?url='
 // const proxyHost = 'https://bird.ioliu.cn/v2/?url='
 export default {
   name: 'Address',
@@ -165,7 +165,22 @@ export default {
         }
       })
     },
+    // leancloud 免费服务有休眠限制，跳往第三方
+    checkSleep() {
+      if (inSleepTime()) {
+        if (window.confirm(`应用休眠中，服务时间 6:00 - 24:00，点击确定前往第三方网站查看 ${this.blockExplorerUrl}`)) { 
+          const url = this.blockExplorerUrl + this.address
+          window.location.replace(url)
+        } else {
+          window.history.back()
+        }
+        throw new Error('') // 阻止请求接口
+      }
+    },
     getAddressDetail (address) {
+      if (proxyHost.indexOf('lean') > -1) {
+        this.checkSleep()
+      }
       // const url = `/api/address?${address}`
       const url = `${proxyHost}https://bsv-chain.api.btc.com/v3/address/${address}`
       return fetchRetry(url).then(res => res.json().then(res => {

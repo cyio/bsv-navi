@@ -140,8 +140,8 @@ body {
 }
 
 header {
-  margin: 20px 0;
-  height: 40px;
+  padding: 20px 0;
+  display: flex;
 }
 
 footer {
@@ -235,7 +235,7 @@ img, embed, iframe {
   .layout-logo{
     display: flex;
     border-radius: 3px;
-    float: left;
+    // float: left;
     position: relative;
     font-size: 1.2rem;
     padding-left: 10px;

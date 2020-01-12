@@ -11,7 +11,15 @@ let task
 export default {
   data () {
     return {
-      market: null
+      market: {
+        '最新价': null,
+        'BSV/BTC': null,
+        'BSV/BCH': null,
+        '已供应': null,
+        '火币USDT': null,
+        '离岸人民币': null,
+        '60日累计涨幅': null
+      }
     }
   },
   methods: {

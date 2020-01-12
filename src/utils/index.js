@@ -28,3 +28,8 @@ export function copyToClipboard(containerid) {
   selection.addRange(range);
   return document.execCommand("copy");
 }
+
+export const inSleepTime = () => {
+  const h = new Date().getHours()
+  return h >= 0 && h <= 5
+}
