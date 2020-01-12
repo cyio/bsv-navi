@@ -6,7 +6,7 @@
         span.value {{market[key] || '-----'}}
 </template>
 <script>
-import { formatSupply, formatPercentage } from '../utils'
+import { formatSupply, formatPercentage } from '@/utils/'
 let task
 export default {
   data () {

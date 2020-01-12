@@ -1,3 +1,5 @@
+import numeral from 'numeral'
+
 export function sleep(ms = 0) {
   return new Promise((resolve, reject) => setTimeout(resolve, ms))
 }
@@ -29,7 +31,15 @@ export function copyToClipboard(containerid) {
   return document.execCommand("copy");
 }
 
-export const inSleepTime = () => {
+export function inSleepTime () {
   const h = new Date().getHours()
   return h >= 0 && h <= 5
+}
+
+export function formatPercentage (portion, total) {
+  return ((portion / total) * 100).toFixed(2) + '%'
+}
+
+export function formatSupply (circulating_supply, max_supply) {
+  return numeral(circulating_supply / (10 ** 4)).format('0,000') + '万' + ' / ' + formatPercentage(circulating_supply, max_supply)
 }
