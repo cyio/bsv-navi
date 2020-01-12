@@ -1,7 +1,7 @@
 export default {
   社区: {
     content: [
-      { title: 'BitSV.club', desc: 'BitcoinSV社区', url: 'https://bitsv.club/' },
+      // { title: 'BitSV.club', desc: 'BitcoinSV社区', url: 'https://bitsv.club/' },
       { title: '骷髅会', desc: '微信群聊天记录', url: 'https://svskull.club/' },
       { title: '巴比特论坛', url: 'https://www.chainnode.com/forum/269' },
       { title: 'Reddit', url: 'https://www.reddit.com/r/bitcoinsv/' },
@@ -78,13 +78,18 @@ export default {
   数据: {
     content: [
       {
-        title: 'Transactions',
+        title: '活跃地址',
+        desc: 'BSV,BCH,BTC 每日活跃地址数对比',
+        url: 'https://bitinfocharts.com/comparison/activeaddresses-btc-bch-bsv.html#log&6m',
+      },
+      {
+        title: '交易量',
         desc: 'BSV,BCH,BTC 每日交易数对比',
         url:
           'https://bitinfocharts.com/comparison/transactions-btc-bch-bsv.html#log&6m',
       },
       {
-        title: 'Hashrates',
+        title: '算力',
         desc: 'BSV,BCH,BTC 每日算力对比',
         url: 'https://bitinfocharts.com/comparison/hashrate-btc-bch-bsv.html#6m',
       },
