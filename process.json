@@ -1,0 +1,9 @@
+{
+	"name": "bsv-navi-maintain",
+	"script": "./server/maintain.js",
+	"cwd":"./",
+  "watch": true,
+	"ignore_watch" : [
+	],
+	"max_memory_restart": "100M"
+}
