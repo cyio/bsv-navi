@@ -16,16 +16,16 @@
         router-view(v-if='$route.meta.keepAlive')
       transition(name='fade', v-if='!$route.meta.keepAlive')
         router-view
-    .tip-wrap
-      .money-button(
-        data-to="1743"
-        data-amount="1"
-        data-currency="CNY"
-        data-label="打赏"
-        data-client-identifier="e675367a971e646a60120cdb3607f82f"
-        data-button-id="1552225294954"
-        data-type="tip"
-      )
+    // .tip-wrap
+      // .money-button(
+        // data-to="1743"
+        // data-amount="1"
+        // data-currency="CNY"
+        // data-label="打赏"
+        // data-client-identifier="e675367a971e646a60120cdb3607f82f"
+        // data-button-id="1552225294954"
+        // data-type="tip"
+      // )
     footer
       div @{{(new Date().getFullYear())}} © bsv.oaker.bid 
 </div>
@@ -129,9 +129,9 @@ body {
 }
 
 #app {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  grid-template-columns: 100%;
+  // display: grid;
+  // grid-template-rows: auto 1fr auto;
+  // grid-template-columns: 100%;
   background-image: url('~@/assets/bsv-bg.jpg');
   background-blend-mode: soft-light;
   background-color: gray;
@@ -245,10 +245,10 @@ img, embed, iframe {
     font-weight: 700;
   }
   .layout-nav{
-		margin-right: 20px;
-		float: right;
+    margin-right: 20px;
+    float: right;
     display: flex;
-		font-size: .9rem;
+    font-size: .9rem;
   }
   .layout-nav .link {
     margin-left: 10px;
@@ -305,5 +305,5 @@ img, embed, iframe {
     .money-button {
     }
   }
-  </style>
+</style>
 
