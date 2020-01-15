@@ -3,14 +3,18 @@ const request = require('superagent')
 const getMarket = () => {
   return request.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=cny&ids=bitcoin,bitcoin-cash,bitcoin-cash-sv')
     .then((res) => {
-      const [btcData, bchData, bsvData] = res.body
+      // 返回数据会根据市值变化
+      // const [btcData, bchData, bsvData] = res.body
+      const convertedData = {}
+      res.body.forEach(i => convertedData[i.symbol] = i)
+      const { btc, bch, bsv } = convertedData
       return {
-        price: bsvData.current_price,
-        percent_change_24h: bsvData.price_change_percentage_24h,
-        circulating_supply: bsvData.circulating_supply,
-        max_supply: bsvData.total_supply,
-        bsv_bch: bsvData.current_price / bchData.current_price,
-        bsv_btc: bsvData.current_price / btcData.current_price,
+        price: bsv.current_price,
+        percent_change_24h: bsv.price_change_percentage_24h,
+        circulating_supply: bsv.circulating_supply,
+        max_supply: bsv.total_supply,
+        bsv_bch: bsv.current_price / bch.current_price,
+        bsv_btc: bsv.current_price / btc.current_price,
       }
     })
     .catch(e => {

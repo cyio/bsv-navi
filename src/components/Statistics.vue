@@ -40,7 +40,7 @@ export default {
           '已供应': formatSupply(circulating_supply, max_supply),
           '火币USDT': data.usdt_otc_price,
           '离岸人民币': data.usd_otc_price.toFixed(2),
-          '60日累计涨幅': `${change_of_60days > 0 ? '+' : ''}${change_of_60days.toFixed(2) * 100}%`
+          '60日累计涨幅': change_of_60days !== null && `${change_of_60days > 0 ? '+' : ''}${change_of_60days.toFixed(2) * 100}%`
         }
         // this.market['bch/btc'] = data.bch_against_btc.toFixed(3)
       }))
