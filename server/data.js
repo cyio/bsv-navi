@@ -28,7 +28,7 @@ const getUSDTOTC = () => {
     .then((res) => {
       const otcData = res.body.data
       return {
-        usdt_otc_price: otcData.detail[2].buy,
+        usdt_otc_price: otcData.detail.filter(i => i.coinName === 'USDT')[0].buy,
       }
     })
     .catch(e => {
