@@ -101,11 +101,11 @@ a {
   color: var(--theme);
 }
 a:active, a:hover {
-  color: green;
+  color: #e7aa00;
 }
 a:focus {
   // color: green;
-  font-weight: bold;
+  // font-weight: bold;
   border-bottom: 1px solid;
 }
 input,textarea{

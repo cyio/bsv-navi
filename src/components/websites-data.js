@@ -2,8 +2,9 @@ export default {
   社区: {
     content: [
       // { title: 'BitSV.club', desc: 'BitcoinSV社区', url: 'https://bitsv.club/' },
-      { title: '骷髅会', desc: '微信群聊天记录', url: 'https://svskull.club/' },
-      { title: 'WeiBlock', desc: '链上微博', url: 'https://weiblock.app/' },
+      // { title: '骷髅会', desc: '微信群聊天记录', url: 'https://svskull.club/' },
+      // { title: 'WeiBlock', desc: '链上微博', url: 'https://weiblock.app/' },
+      { title: 'ShowBuzz', url: 'https://www.showbuzz.app/' },
       { title: '巴比特论坛', url: 'https://www.chainnode.com/forum/269' },
       { title: 'Reddit', url: 'https://www.reddit.com/r/bitcoinsv/' },
       // { title: 'Memo', desc: '去中心化微博', url: 'https://sv.memo.cash/' },
@@ -47,6 +48,7 @@ export default {
   },
   浏览器: {
     content: [
+      { title: '欧科云链', url: 'https://www.oklink.com/bsv' },
       { title: 'ViaBTC', url: 'https://explorer.viabtc.com/bsv' },
       { title: 'WhatsOnChain', url: 'https://whatsonchain.com/' },
       { title: 'Blockchair', url: 'https://blockchair.com/bitcoin-sv' },
@@ -109,11 +111,6 @@ export default {
   },
   入门: {
     content: [
-      // {
-        // title: '社区官网',
-        // desc: '比特币现金 - 点对点数字现金',
-        // url: 'https://www.bitcoincash.org/zh-CN/',
-      // },
       // { title: '常见问题', url: 'https://www.bitcoincash.org/zh-cn/#faq' },
       {
         title: '白皮书中文',
@@ -129,6 +126,10 @@ export default {
         title: '中本聪研究所',
         desc: '阅读中本聪邮件、论坛帖子首选 - Nakamoto Studies',
         url: 'https://nakamotostudies.org/',
+      },
+      {
+        title: '中本聪愿景',
+        url: 'https://bitcoinsv.io/zh/chinese-satoshis-vision/',
       },
     ],
   },

@@ -189,7 +189,7 @@ export default {
     },
     getAddressTxs (address, page = this.pageIndex, pageSize = this.pageSize) {
       // const url = `/api/address-txs?${address}`
-      const url = `${proxyHost}https://bsv-chain.api.btc.com/v3/address/${address}/tx?page=${page}&pagesize=${pageSize}&verbose=1`
+      const url = `${proxyHost}${encodeURIComponent(`https://bsv-chain.api.btc.com/v3/address/${address}/tx?page=${page}&pagesize=${pageSize}&verbose=1`)}`
       return new Promise((resolve, reject) => {
         fetchRetry(url).then(res => {
           res.json().then(res => {
