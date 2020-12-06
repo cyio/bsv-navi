@@ -4,7 +4,9 @@
 </template>
 <script>
 import marked from 'marked'
-import mdFile from '@/assets/safe-guides.md'
+// const mdFile = require('./../../assets/safe-guides.md')
+// import mdFile from '@/assets/safe-guides.md'
+// console.log(mdFile)
 marked.setOptions({
   renderer: new marked.Renderer(),
   gfm: true,
@@ -22,7 +24,7 @@ export default {
   },
   data () {
     return {
-      content: marked(mdFile)
+      content: null,
     }
   },
   computed: {
@@ -30,9 +32,22 @@ export default {
   methods: {
   },
   mounted () {
+    fetch('/safe-guides.md')
+      .then(response => {
+        return response.text()
+      })
+      .then(text => {
+        console.log(text)
+        this.content = marked(text)
+      })
   }
 }
 </script>
+
+<style lang="css">
+@import "./../../assets/github-markdown.css"
+</style>
+
 <style lang="stylus">
   .safe-guides-view {
     min-height: 500px;

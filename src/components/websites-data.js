@@ -28,11 +28,11 @@ export default {
         desc: 'Cryptocurrency Market Capitalizations | CoinMarketCap',
         url: 'https://coinmarketcap.com/zh/',
       },
-      {
-        title: '非小号',
-        desc: '比特币行情价格_专注数字货币行业大数据分析',
-        url: 'https://www.feixiaohao.com/',
-      },
+      // {
+        // title: '非小号',
+        // desc: '比特币行情价格_专注数字货币行业大数据分析',
+        // url: 'https://www.feixiaohao.com/',
+      // },
       // {
         // title: 'Bitcoin Price Prediction Tracker',
         // url: 'https://bircoin.top/',
@@ -131,10 +131,17 @@ export default {
         title: '中本聪愿景',
         url: 'https://bitcoinsv.io/zh/chinese-satoshis-vision/',
       },
+      {
+        title: '重生计划',
+        desc: '比特币重生计划：重返创世纪 |「比特币重生计划：重返创世纪」Metanet.Press ',
+        url: 'https://metanet.press/rebirth/',
+      },
     ],
   },
   钱包: {
     content: [
+      { title: '最佳实践', desc: '钱包使用最佳实践', url: 'https://aaron67.cc/2019/02/18/bitcoin-wallet-best-practice/' },
+      { title: '安全指南', url: '/safe-guides' },
       { title: 'HandCash', url: 'http://www.handcash.io/' },
       { title: 'Relayx', url: 'https://relayx.io/' },
       { title: 'ElectrumSV', desc: 'The Bitcoin SV Desktop Wallet', url: 'https://electrumsv.io/' },

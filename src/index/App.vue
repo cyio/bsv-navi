@@ -79,7 +79,6 @@ export default {
 </script>
 
 <style lang="stylus">
-// @import "@/assets/github-markdown.css"
 ::-webkit-scrollbar {
   width: 0.3em;
   height: 0.3em;
@@ -121,6 +120,7 @@ ul {
 
 :root {
   --theme: #1d1d1d;
+  // --theme: #e9b229;
   --highlight: #f7d154;
 }
 
@@ -134,13 +134,14 @@ body {
   // grid-template-columns: 100%;
   background-image: url('~@/assets/bsv-bg.jpg');
   background-blend-mode: soft-light;
-  background-color: gray;
+  background-repeat: repeat-x;
+  background-color: #e8e8e8;
   min-height: 100vh;
   position: relative;
 }
 
 header {
-  padding: 20px 0;
+  padding-top: 20px;
   display: flex;
 }
 
@@ -285,7 +286,8 @@ img, embed, iframe {
   }
   @media only screen and (min-width: 900px) {
     .main-container {
-      width: 750px;
+      // width: 750px;
+      width: 900px;
       margin: 0 auto;
       // border: 1px solid #efefef;
     }

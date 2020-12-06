@@ -43,9 +43,13 @@ export default {
       max-width: 100%;
     }
     .tr-inner {
+      display: flex;
+      flex-wrap: wrap;
       margin-left: .5rem;
     }
     th {
+      padding-top: 5px;
+      vertical-align: top;
       color: #929191;
     }
     td {
