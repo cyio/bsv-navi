@@ -49,6 +49,7 @@ export default {
   浏览器: {
     content: [
       { title: '欧科云链', url: 'https://www.oklink.com/bsv' },
+      { title: 'BitcoinFiles', url: 'https://bitcoinfiles.org/' },
       { title: 'ViaBTC', url: 'https://explorer.viabtc.com/bsv' },
       { title: 'WhatsOnChain', url: 'https://whatsonchain.com/' },
       { title: 'Blockchair', url: 'https://blockchair.com/bitcoin-sv' },
