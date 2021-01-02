@@ -27,7 +27,7 @@ const translations = {
       mobile: '电话&微信',
       email: '邮箱',
       sourceCode: '开放源码',
-      searchPlaceholder: 'BSV 地址，$handler',
+      searchPlaceholder: 'BSV 地址',
     },
     address: {
       balance: '余额',
@@ -56,7 +56,7 @@ const translations = {
       mobile: 'Mobile&Wechat',
       email: 'Email',
       sourceCode: 'Source Code',
-      searchPlaceholder: 'BSV address, $handler',
+      searchPlaceholder: 'BSV address',
     },
     address: {
       balance: 'Balance',

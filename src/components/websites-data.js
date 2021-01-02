@@ -4,6 +4,7 @@ export default {
       // { title: 'BitSV.club', desc: 'BitcoinSV社区', url: 'https://bitsv.club/' },
       // { title: '骷髅会', desc: '微信群聊天记录', url: 'https://svskull.club/' },
       // { title: 'WeiBlock', desc: '链上微博', url: 'https://weiblock.app/' },
+      { title: 'MetaBuzz', url: 'https://buzz.metasv.com/metasv-buzz' },
       { title: 'ShowBuzz', url: 'https://www.showbuzz.app/' },
       { title: '巴比特论坛', url: 'https://www.chainnode.com/forum/269' },
       { title: 'Reddit', url: 'https://www.reddit.com/r/bitcoinsv/' },

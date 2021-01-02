@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/index/pages/Home'
 import Address from '@/index/pages/Address'
-import Handle from '@/index/pages/Handle'
+// import Handle from '@/index/pages/Handle'
 import SafeGuides from '@/index/pages/SafeGuides'
 
 Vue.use(Router)
@@ -18,12 +18,12 @@ const routes = [
     components: {
       default: Home,
       address: Address,
-      handle: Handle,
+      // handle: Handle,
     },
     meta: {
       keepAlive: true,
       titles: {
-        default: 'BSV_比特币导航',
+        default: '比特币导航_BSV',
         address: 'BSV 帐户查看器'
       }
     },
