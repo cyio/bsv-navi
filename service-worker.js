@@ -13,7 +13,7 @@
 
 importScripts(
   "https://cdn.jsdelivr.net/npm/workbox-sw@3.6.3/build/workbox-sw.min.js",
-  "/precache-manifest.f3237e8d12e7b2651650ad3535df026d.js"
+  "/precache-manifest.271b6ceb14d17e34fae35cd8fac1da3d.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "bsv.oaker.bid"});
