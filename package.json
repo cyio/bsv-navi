@@ -12,7 +12,7 @@
     "bchaddrjs": "^0.2.1",
     "date-fns": "^1.29.0",
     "iview": "^2.14.3",
-    "marked": "^0.4.0",
+    "marked": "^0.7.0",
     "mobile-detect": "^1.4.2",
     "numeral": "^2.0.6",
     "qrcode": "^1.2.0",
