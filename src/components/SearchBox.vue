@@ -1,7 +1,7 @@
 <template lang="pug">
   .searchbar-input-container
     input.searchbar-input(type='search' name='q' v-bind:placeholder="$t('home.searchPlaceholder')" autocomplete='off' spellcheck="false" v-model.trim="words" @keyup.enter="_submit" @change="errMsg = null")
-    a.icon.btc-com(:href="'https://bsv.btc.com/' + words" title="在 btc.com 查看" target="_blank")
+    a.icon.btc-com(:href="'https://www.oklink.com/bsv/address/' + words" title="在第三方网站查看" target="_blank")
     icon.search-icon(type="search" name="search" @click.native="_submit")
     .err-msg(v-if="displayErrMsg") {{displayErrMsg}}
 </template>
@@ -101,7 +101,7 @@ export default {
     height: 22px;
   }
   .btc-com {
-    background: url('../assets/btc-com.png');
+    background: url('https://static.bafang.com/cdn/assets/imgs/MjAxOTQ/9E112E326CD349DB835D0BA50259CEE5.png');
     background-size: 100%;
     background-repeat: no-repeat;
     opacity: .8;

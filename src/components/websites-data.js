@@ -4,7 +4,7 @@ export default {
       // { title: 'BitSV.club', desc: 'BitcoinSV社区', url: 'https://bitsv.club/' },
       // { title: '骷髅会', desc: '微信群聊天记录', url: 'https://svskull.club/' },
       // { title: 'WeiBlock', desc: '链上微博', url: 'https://weiblock.app/' },
-      { title: 'MetaBuzz', url: 'https://buzz.metasv.com/metasv-buzz' },
+      // { title: 'MetaBuzz', url: 'https://buzz.metasv.com/metasv-buzz' },
       { title: 'ShowBuzz', url: 'https://www.showbuzz.app/' },
       { title: 'MetaPhotos', url: 'https://metaphotos.top/' },
       { title: '巴比特论坛', url: 'https://www.chainnode.com/forum/269' },
@@ -45,7 +45,7 @@ export default {
     content: [
       { title: '币世界', url: 'https://www.bishijie.com/kuaixun' },
       { title: 'CoinGeek', url: 'https://coingeek.com/' },
-      { title: 'BSV Daily', url: 'https://media.bitcoinfiles.org/83264827cdc0825b40868307daec68f34a78ce5f3ac3547b1efea61b64bfe449' },
+      // { title: 'BSV Daily', url: 'https://media.bitcoinfiles.org/83264827cdc0825b40868307daec68f34a78ce5f3ac3547b1efea61b64bfe449' },
     ],
   },
   浏览器: {
@@ -98,6 +98,11 @@ export default {
         title: '算力',
         desc: 'BSV,BCH,BTC 每日算力对比',
         url: 'https://bitinfocharts.com/comparison/hashrate-btc-bch-bsv.html#6m',
+      },
+      {
+        title: '数据中心_QKL123',
+        desc: '',
+        url: 'https://www.qkl123.com/project/bsv/data',
       },
       {
         title: 'BitcoinBlocks',
