@@ -5,6 +5,7 @@ export default {
       // { title: '骷髅会', desc: '微信群聊天记录', url: 'https://svskull.club/' },
       // { title: 'WeiBlock', desc: '链上微博', url: 'https://weiblock.app/' },
       // { title: 'MetaBuzz', url: 'https://buzz.metasv.com/metasv-buzz' },
+      { title: 'Twetch', url: 'https://twetch.app/' },
       { title: 'ShowBuzz', url: 'https://www.showbuzz.app/' },
       { title: 'MetaPhotos', url: 'https://metaphotos.top/' },
       { title: '巴比特论坛', url: 'https://www.chainnode.com/forum/269' },
@@ -130,11 +131,11 @@ export default {
         desc: '知乎最高票答案，中文界第一科普长文',
         url: 'https://www.zhihu.com/question/22076666/answer/69638270',
       },
-      {
-        title: '中本聪研究所',
-        desc: '阅读中本聪邮件、论坛帖子首选 - Nakamoto Studies',
-        url: 'https://nakamotostudies.org/',
-      },
+      // {
+      // title: '中本聪研究所',
+      // desc: '阅读中本聪邮件、论坛帖子首选 - Nakamoto Studies',
+      // url: 'https://nakamotostudies.org/',
+      // },
       {
         title: '中本聪愿景',
         url: 'https://bitcoinsv.io/zh/chinese-satoshis-vision/',
