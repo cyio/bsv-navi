@@ -4,12 +4,12 @@ export default {
       // { title: 'BitSV.club', desc: 'BitcoinSV社区', url: 'https://bitsv.club/' },
       // { title: '骷髅会', desc: '微信群聊天记录', url: 'https://svskull.club/' },
       // { title: 'WeiBlock', desc: '链上微博', url: 'https://weiblock.app/' },
-      // { title: 'MetaBuzz', url: 'https://buzz.metasv.com/metasv-buzz' },
       { title: 'Twetch', url: 'https://twetch.app/' },
       { title: 'ShowBuzz', url: 'https://www.showbuzz.app/' },
+      // { title: 'MetaBuzz', url: 'https://buzz.metasv.com/metasv-buzz' },
       { title: 'MetaPhotos', url: 'https://metaphotos.top/' },
       { title: '巴比特论坛', url: 'https://www.chainnode.com/forum/269' },
-      { title: 'Reddit', url: 'https://www.reddit.com/r/bitcoinsv/' },
+      { title: 'Reddit', url: 'https://www.reddit.com/r/bitcoincashSV/' },
       // { title: 'Memo', desc: '去中心化微博', url: 'https://sv.memo.cash/' },
       // {
         // title: 'Yours',
@@ -136,6 +136,10 @@ export default {
       // desc: '阅读中本聪邮件、论坛帖子首选 - Nakamoto Studies',
       // url: 'https://nakamotostudies.org/',
       // },
+      {
+        title: 'Craig Wright',
+        url: 'https://craigwright.net/',
+      },
       {
         title: '中本聪愿景',
         url: 'https://bitcoinsv.io/zh/chinese-satoshis-vision/',
