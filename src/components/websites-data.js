@@ -112,14 +112,13 @@ export default {
         url: 'https://www.qkl123.com/project/bsv/data',
       },
       {
+        title: 'Bitcoin Scaling',
+        url: ' https://bitcoinscaling.io/stats',
+      },
+      {
         title: 'BitcoinBlocks',
         desc: 'live transactions on Bitcoin SV ',
         url: 'https://bitcoinblocks.live/',
-      },
-      {
-        title: 'TX Highway',
-        desc: 'Live Bitcoin Cash vs Bitcoin Core Transaction Visualizer ',
-        url: 'https://txhighway.com/',
       },
       { title: 'CoinDance', url: 'https://coin.dance/' },
     ],
@@ -163,6 +162,7 @@ export default {
       { title: '安全指南', url: '/safe-guides' },
       { title: 'HandCash', url: 'http://www.handcash.io/' },
       { title: 'Relayx', url: 'https://relayx.io/' },
+      { title: 'Simply Cash', url: 'https://simply.cash/' },
       { title: 'ElectrumSV', desc: 'The Bitcoin SV Desktop Wallet', url: 'https://electrumsv.io/' },
       { title: '打点钱包', url: 'https://www.ddpurse.com/' },
       { title: 'Coinomi', url: 'https://coinomi.com/' },

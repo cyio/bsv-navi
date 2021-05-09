@@ -30,6 +30,7 @@ export default {
         let delayMinute = (Number(new Date()) - Number(new Date(result.updated_at))) / 1000 / 60
         if (delayMinute > 5) {
           console.warn('delayMinute: ', delayMinute)
+          return
         }
         let data = fileContent.data
         const { percent_change_24h, circulating_supply, max_supply, change_of_60days } = data
