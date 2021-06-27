@@ -112,6 +112,11 @@ export default {
         url: 'https://www.qkl123.com/project/bsv/data',
       },
       {
+        title: 'BSVData',
+        desc: 'An Honest Bitcoin Data Analyser',
+        url: 'https://bsvdata.com',
+      },
+      {
         title: 'Bitcoin Scaling',
         url: ' https://bitcoinscaling.io/stats',
       },
