@@ -50,18 +50,17 @@ export default {
   },
   资讯: {
     content: [
-      { title: '币世界', url: 'https://www.bishijie.com/kuaixun' },
       { title: 'CoinGeek', url: 'https://coingeek.com/' },
       // { title: 'BSV Daily', url: 'https://media.bitcoinfiles.org/83264827cdc0825b40868307daec68f34a78ce5f3ac3547b1efea61b64bfe449' },
     ],
   },
   浏览器: {
     content: [
+      { title: 'WhatsOnChain', url: 'https://whatsonchain.com/' },
+      { title: 'Blockchair', url: 'https://blockchair.com/bitcoin-sv' },
       { title: '欧科云链', url: 'https://www.oklink.com/bsv' },
       { title: 'BitcoinFiles', url: 'https://bitcoinfiles.org/' },
       { title: 'ViaBTC', url: 'https://explorer.viabtc.com/bsv' },
-      { title: 'WhatsOnChain', url: 'https://whatsonchain.com/' },
-      { title: 'Blockchair', url: 'https://blockchair.com/bitcoin-sv' },
       { title: 'BTC.com', url: 'https://bsv.btc.com' },
     ],
   },

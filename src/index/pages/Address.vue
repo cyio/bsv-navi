@@ -199,10 +199,16 @@ export default {
         })
       })
     },
-    getPrices () {
+    getPricesOld () {
       const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=cny&ids=bitcoin-cash-sv`
       return fetch(url).then(res => res.json().then(res => {
         return res[0]
+      }).catch(err => console.error(err)))
+    },
+    getPrices() {
+      const url = 'https://api.cryptonator.com/api/full/bsv-usd'
+      return fetch(url).then(res => res.json().then(res => {
+        return res.ticker.price
       }).catch(err => console.error(err)))
     },
     async getTableData() {
@@ -306,8 +312,8 @@ export default {
       this.submit(this.address)
     }
     this.getPrices().then(data => {
-      this.prices.cny = data.current_price
-      this.prices.usd = this.prices.cny / 6.8
+      this.prices.cny = data * 6.3
+      this.prices.usd = data
     })
   },
   mounted () {
