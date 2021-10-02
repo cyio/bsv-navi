@@ -20,7 +20,7 @@
     .error(v-if="showErrorMsg") {{$t('address.serviceUnavailable')}}
       Button(@click="setAddressData(address)") {{$t('address.retry')}}
       span 或前往
-      a(:href="blockExplorerUrl + address" title="在第三方网站查看" target="_blank")
+      a(:href="blockExplorerUrl + address" title="在 btc.com 查看" target="_blank")  BTC.com 
       span 查看
     .address-tx
       // .desp {{$t('address.latestTxs')}}
@@ -91,8 +91,7 @@ export default {
       prices: { cny: null, usd: null },
       pageIndex: 1,
       pageSize: 10,
-      // blockExplorerUrl: 'https://bsv.btc.com/',
-      blockExplorerUrl: 'https://www.oklink.com/bsv/tx/',
+      blockExplorerUrl: 'https://bsv.btc.com/',
       tableConfig: {
         multipleSort: false,
         tableData: [],
@@ -114,7 +113,7 @@ export default {
             columnAlign: 'center',
             isFrozen: true,
             formatter: (rowData, index, pagingIndex) => {
-              return `<a href=${this.blockExplorerUrl + rowData.id} target="_blank" title="可复制完整交易 ID 或点击前往查看">${rowData.id}</a>`
+              return `<a href=${this.blockExplorerUrl + rowData.id} target="_blank" title="可复制完整交易 ID 或点击前往 BTC.com 查看">${rowData.id}</a>`
             }
           },
         ],
