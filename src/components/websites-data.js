@@ -23,7 +23,8 @@ export default {
   MetaID: {
     content: [
       { title: 'ShowBuzz', url: 'https://www.showbuzz.app/' },
-      { title: 'MetaBuzz', url: 'https://buzz.metasv.com/metasv-buzz' },
+      { title: 'BuzzBit', desc: '发 buzz 降费、升级体验', url: 'https://buzzbit.vercel.app/' },
+      // { title: 'MetaBuzz', url: 'https://buzz.metasv.com/metasv-buzz' },
       { title: 'MetaPhotos', url: 'https://metaphotos.top/' },
       { title: 'MetaId Scan', url: 'https://scan.metaid.io/' },
       { title: 'MetaId 开发', url: 'https://www.metaid101.com/' },
@@ -37,6 +38,7 @@ export default {
         desc: 'Cryptocurrency Market Capitalizations | CoinMarketCap',
         url: 'https://coinmarketcap.com/zh/',
       },
+      { title: 'CEO', desc: 'TokenSwap Market Cap', url: 'https://ceobsv.com/' },
       // {
         // title: '非小号',
         // desc: '比特币行情价格_专注数字货币行业大数据分析',
@@ -90,6 +92,17 @@ export default {
   数据: {
     content: [
       {
+        title: 'BSVData',
+        desc: 'An Honest Bitcoin Data Analyser',
+        url: 'https://bsvdata.com',
+      },
+      { title: 'CoinDance', url: 'https://coin.dance/' },
+      {
+        title: 'BitcoinBlocks',
+        desc: 'live transactions on Bitcoin SV ',
+        url: 'https://bitcoinblocks.live/',
+      },
+      {
         title: '活跃地址',
         desc: 'BSV,BCH,BTC 每日活跃地址数对比',
         url: 'https://bitinfocharts.com/comparison/activeaddresses-btc-bch-bsv.html#log&6m',
@@ -111,20 +124,9 @@ export default {
         url: 'https://www.qkl123.com/project/bsv/data',
       },
       {
-        title: 'BSVData',
-        desc: 'An Honest Bitcoin Data Analyser',
-        url: 'https://bsvdata.com',
-      },
-      {
         title: 'Bitcoin Scaling',
         url: ' https://bitcoinscaling.io/stats',
       },
-      {
-        title: 'BitcoinBlocks',
-        desc: 'live transactions on Bitcoin SV ',
-        url: 'https://bitcoinblocks.live/',
-      },
-      { title: 'CoinDance', url: 'https://coin.dance/' },
     ],
   },
   入门: {
@@ -176,6 +178,7 @@ export default {
   },
   交易所: {
     content: [
+      { title: 'TokenSwap', desc: 'AMM DEX running on BSV', url: 'https://tswap.io/' },
       // { title: '币安', url: 'https://www.binance.com/' },
       { title: 'OKEx', url: 'https://www.okex.com/' },
       { title: '火币', url: 'https://www.huobi.com/' },
