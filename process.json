@@ -3,6 +3,7 @@
 	"script": "./server/maintain.js",
 	"cwd":"./",
   "watch": true,
+    watch_delay: 10000,
 	"ignore_watch" : [
 	],
 	"max_memory_restart": "100M"

@@ -68,13 +68,13 @@ const getChangeOf60Days = () => {
     })
 }
 
-const getReturnRate = () => {
+const getOkexReturnRate = () => {
   return request.get('https://www.okex.com/v2/asset/balance/project-currency')
     .then((res) => {
-      const data = res.body
+      const { data } = res.body
       const bsv = data.find(i => i.currencyName === 'BSV')
       return {
-        rate: bsv.rateRangeMin
+        okex_return_rate: bsv.rateRangeMin
       }
     })
     .catch(e => {
@@ -89,5 +89,5 @@ module.exports = {
   getUSDTOTC,
   getOTC,
   getChangeOf60Days,
-  getReturnRate
+  getOkexReturnRate
 }

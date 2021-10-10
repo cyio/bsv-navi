@@ -10,7 +10,7 @@ const buildFileContent = async () => {
     dataApi.getOTC(),
     dataApi.getUSDTOTC(),
     dataApi.getChangeOf60Days(),
-    dataApi.getReturnRate(),
+    dataApi.getOkexReturnRate(),
   ]).then(values => {
     const content = {
       data: {
@@ -57,10 +57,11 @@ const updateGist = (content) => {
         clearInterval(task)
         throw 'Error: give up update gist'
       }
-      if (e.response.status === 401) {
+      if (e.response && e.response.status === 401) {
         refreshGiteeToken(content)
       } else {
-        console.log(e.response.status, e.response.statusText, e.response.config)
+        console.log(e)
+        throw 'Error: give up update gist'
       }
     })
 }
