@@ -1,7 +1,6 @@
 const config = require('../private-config.json')
 const request = require('superagent')
 const dataApi = require('./data.js')
-const querystring = require('querystring')
 const fs = require('fs')
 Promise.almost = r => Promise.all(r.map(p => (p.catch ? p.catch(e => e) : p)))
 
@@ -11,6 +10,7 @@ const buildFileContent = async () => {
     dataApi.getOTC(),
     dataApi.getUSDTOTC(),
     dataApi.getChangeOf60Days(),
+    dataApi.getReturnRate(),
   ]).then(values => {
     const content = {
       data: {
@@ -26,7 +26,7 @@ const buildFileContent = async () => {
       }
     }
     Object.assign(content.data, ...values)
-    console.log(content.data)
+    console.log('all data: ', content.data)
     updateGist(content)
   })
 }
