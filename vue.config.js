@@ -50,6 +50,19 @@ module.exports = {
       // filename: 'handle/index.html',
     // }
   },
+  devServer: {
+    disableHostCheck: true,
+    proxy: {
+      '/api': {
+        target: 'https://vercel-server-bit.vercel.app',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': '' // 重写接口
+        }
+      }
+    },
+    historyApiFallback: false,
+  },
 }
 
 function resolve (dir) {

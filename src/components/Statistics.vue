@@ -24,7 +24,7 @@ export default {
     }
   },
   methods: {
-    getMaintainData() {
+    getMaintainDataFromGitee() {
       let url = 'https://gitee.com/api/v5/gists/ba375uensivprto2c08xq70'
       fetch(url).then(res => res.json().then(result => {
         let fileContent = JSON.parse(result.files['main.json'].content)
@@ -46,6 +46,23 @@ export default {
           'OKEx活期年化': data.okex_return_rate
         }
         // this.market['bch/btc'] = data.bch_against_btc.toFixed(3)
+      }))
+    },
+    getMaintainData() {
+      let url = 'https://vercel-server-bit.vercel.app/api/bsv/data'
+      fetch(url).then(res => res.json().then(result => {
+        let data = result.data
+        const { percent_change_24h, circulating_supply, max_supply, change_of_60days } = data
+        this.market = {
+          '最新价': `￥${Math.round(data.price)}`,
+          'BSV/BTC': data.bsv_btc.toFixed(4),
+          'BSV/BCH': data.bsv_bch.toFixed(4),
+          '已供应': formatSupply(circulating_supply, max_supply),
+          '火币USDT': data.usdt_otc_price,
+          '离岸人民币': data.usd_otc_price.toFixed(2),
+          '60日累计涨幅': change_of_60days !== null && `${change_of_60days > 0 ? '+' : ''}${Math.round(change_of_60days * 100)}%`,
+          'OKEx活期年化': data.okex_return_rate
+        }
       }))
     }
   },
