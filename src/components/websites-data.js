@@ -5,7 +5,7 @@ export default {
       // { title: '骷髅会', desc: '微信群聊天记录', url: 'https://svskull.club/' },
       // { title: 'WeiBlock', desc: '链上微博', url: 'https://weiblock.app/' },
       { title: 'Twetch', url: 'https://twetch.app/' },
-      { title: '巴比特论坛', url: 'https://www.chainnode.com/forum/269' },
+      // { title: '巴比特论坛', url: 'https://www.chainnode.com/forum/269' },
       { title: 'Reddit', url: 'https://www.reddit.com/r/bitcoincashSV/' },
       // { title: 'Memo', desc: '去中心化微博', url: 'https://sv.memo.cash/' },
       // {
@@ -38,6 +38,7 @@ export default {
         desc: 'Cryptocurrency Market Capitalizations | CoinMarketCap',
         url: 'https://coinmarketcap.com/zh/',
       },
+      { title: 'CoinDesk', desc: '', url: 'https://www.coindesk.com/price/bitcoin-sv/' },
       { title: 'CEO', desc: 'TokenSwap Market Cap', url: 'https://ceobsv.com/' },
       // {
         // title: '非小号',
@@ -60,10 +61,10 @@ export default {
     content: [
       { title: 'WhatsOnChain', url: 'https://whatsonchain.com/' },
       { title: 'Blockchair', url: 'https://blockchair.com/bitcoin-sv' },
-      { title: '欧科云链', url: 'https://www.oklink.com/bsv' },
+      // { title: '欧科云链', url: 'https://www.oklink.com/bsv' },
+      { title: 'ViaWallet', url: 'https://explorer.viawallet.com/bsv' },
       { title: 'BitcoinFiles', url: 'https://bitcoinfiles.org/' },
-      { title: 'ViaBTC', url: 'https://explorer.viabtc.com/bsv' },
-      { title: 'BTC.com', url: 'https://bsv.btc.com' },
+      // { title: 'BTC.com', url: 'https://bsv.btc.com' },
     ],
   },
   工具: {
@@ -170,6 +171,7 @@ export default {
       { title: 'Relayx', url: 'https://relayx.io/' },
       { title: 'Simply Cash', url: 'https://simply.cash/' },
       { title: 'ElectrumSV', desc: 'The Bitcoin SV Desktop Wallet', url: 'https://electrumsv.io/' },
+      { title: 'Volt', desc: '你的数字资产保险柜', url: 'https://volt.id/' },
       { title: '打点钱包', url: 'https://www.ddpurse.com/' },
       { title: 'Coinomi', url: 'https://coinomi.com/' },
       { title: 'Jaxx', url: 'https://jaxx.io/' },
