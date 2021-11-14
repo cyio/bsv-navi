@@ -136,7 +136,7 @@ export default {
       {
         title: '白皮书中文',
         url:
-          'http://www.8btc.com/wiki/bitcoin-a-peer-to-peer-electronic-cash-system',
+          'https://web.archive.org/web/20170702071816/http://www.8btc.com/wiki/bitcoin-a-peer-to-peer-electronic-cash-system',
       },
       {
         title: '比特币是什么',

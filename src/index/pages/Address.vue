@@ -22,7 +22,7 @@
       span 或前往
       a(:href="blockExplorerUrl + address" title="在 btc.com 查看" target="_blank")  BTC.com 
       span 查看
-    .address-tx
+    .address-tx(v-if="0")
       // .desp {{$t('address.latestTxs')}}
       v-table(
         is-vertical-resize='',
@@ -158,7 +158,7 @@ export default {
       this.qrUrl = await QRCode.toDataURL(id)
       this.getAddressDetail(id).then(async data => {
         this.addressDetail = data
-        this.getTableData()
+        // this.getTableData()
         this.showLoading = false
         if (!Object.keys(this.addressDetail).length) {
           this.showErrorMsg = true
@@ -181,10 +181,9 @@ export default {
       if (proxyHost.indexOf('lean') > -1) {
         this.checkSleep()
       }
-      // const url = `/api/address?${address}`
-      const url = `${proxyHost}https://bsv-chain.api.btc.com/v3/address/${address}`
+      const url = `https://api.whatsonchain.com/v1/bsv/main/address/${address}/balance`
       return fetchRetry(url).then(res => res.json().then(res => {
-        return res.headers ? res.data.data : res.data
+        return res
       }))
     },
     getAddressTxs (address, page = this.pageIndex, pageSize = this.pageSize) {
@@ -266,7 +265,8 @@ export default {
       return this.$root.$data.shared.isZh ? 'cny' : 'usd'
     },
     addressBalance () {
-      return this.addressDetail.balance / 10 ** 8
+      const { confirmed, unconfirmed } = this.addressDetail
+      return (confirmed + unconfirmed) / 10 ** 8
     },
     tableData () {
       if (!this.addressTxs) return []

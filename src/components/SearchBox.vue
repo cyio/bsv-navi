@@ -1,7 +1,7 @@
 <template lang="pug">
   .searchbar-input-container
     input.searchbar-input(type='search' name='q' v-bind:placeholder="$t('home.searchPlaceholder')" autocomplete='off' spellcheck="false" v-model.trim="words" @keyup.enter="_submit" @change="errMsg = null")
-    a.icon.link-icon.btc-com(:href="'https://bsv.btc.com/' + words" title="在 btc.com 查看" target="_blank")
+    //- a.icon.link-icon.btc-com(:href="'https://bsv.btc.com/' + words" title="在 btc.com 查看" target="_blank")
     a.icon.link-icon.wsc-com(:href="'https://whatsonchain.com/address/' + words" title="在 whatsonchain 查看" target="_blank")
     icon.search-icon(type="search" name="search" @click.native="_submit")
     .err-msg(v-if="displayErrMsg") {{displayErrMsg}}
