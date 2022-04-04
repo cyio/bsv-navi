@@ -104,6 +104,11 @@ export default {
         url: 'https://bitcoinblocks.live/',
       },
       {
+        title: '加密图表',
+        desc: 'Cryptocurrency charts - Market Capitalization, Transactions last 24h, Avg. transaction value, Active Addresses last 24h',
+        url: 'https://bitinfocharts.com/cryptocurrency-charts.html',
+      },
+      {
         title: '活跃地址',
         desc: 'BSV,BCH,BTC 每日活跃地址数对比',
         url: 'https://bitinfocharts.com/comparison/activeaddresses-btc-bch-bsv.html#log&6m',
@@ -122,7 +127,7 @@ export default {
       {
         title: '数据中心_QKL123',
         desc: '',
-        url: 'https://www.qkl123.com/project/bsv/data',
+        url: 'https://m.qkl123.com/data',
       },
       {
         title: 'Bitcoin Scaling',
@@ -183,8 +188,8 @@ export default {
       { title: 'TokenSwap', desc: 'AMM DEX running on BSV', url: 'https://tswap.io/' },
       // { title: '币安', url: 'https://www.binance.com/' },
       { title: 'OKEx', url: 'https://www.okex.com/' },
-      { title: '火币', url: 'https://www.huobi.com/' },
-      { title: 'Float SV', url: 'https://www.floatsv.com/' },
+      // { title: '火币', url: 'https://www.huobi.com/' },
+      // { title: 'Float SV', url: 'https://www.floatsv.com/' },
     ],
   },
   // 开发: {

@@ -16,7 +16,7 @@ export default {
         'BSV/BTC': null,
         'BSV/BCH': null,
         '已供应': null,
-        '火币USDT': null,
+        // '火币USDT': null,
         '离岸人民币': null,
         '60日累计涨幅': null,
         'OKEx活期年化': null,
@@ -40,7 +40,7 @@ export default {
           'BSV/BTC': data.bsv_btc.toFixed(4),
           'BSV/BCH': data.bsv_bch.toFixed(4),
           '已供应': formatSupply(circulating_supply, max_supply),
-          '火币USDT': data.usdt_otc_price,
+          // '火币USDT': data.usdt_otc_price,
           '离岸人民币': data.usd_otc_price.toFixed(2),
           '60日累计涨幅': change_of_60days !== null && `${change_of_60days > 0 ? '+' : ''}${Math.round(change_of_60days * 100)}%`,
           'OKEx活期年化': data.okex_return_rate
@@ -58,7 +58,7 @@ export default {
           'BSV/BTC': data.bsv_btc.toFixed(4),
           'BSV/BCH': data.bsv_bch.toFixed(4),
           '已供应': formatSupply(circulating_supply, max_supply),
-          '火币USDT': data.usdt_otc_price,
+          // '火币USDT': data.usdt_otc_price,
           '离岸人民币': data.usd_otc_price.toFixed(2),
           '60日累计涨幅': change_of_60days !== null && `${change_of_60days > 0 ? '+' : ''}${Math.round(change_of_60days * 100)}%`,
           'OKEx活期年化': data.okex_return_rate
