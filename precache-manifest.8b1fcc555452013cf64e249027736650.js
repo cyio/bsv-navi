@@ -1,31 +1,31 @@
 self.__precacheManifest = [
   {
-    "revision": "7b580d20060dd8e1892e",
+    "revision": "70cd2bd9d26bc566b3a0",
     "url": "/css/chunk-vendors.89a7451d.css"
   },
   {
-    "revision": "7b580d20060dd8e1892e",
-    "url": "/js/chunk-vendors.05de351d.js"
+    "revision": "70cd2bd9d26bc566b3a0",
+    "url": "/js/chunk-vendors-legacy.e62cb086.js"
   },
   {
-    "revision": "3de7832db17972da3f6a",
+    "revision": "e9c9b13a968adbcf2f5c",
     "url": "/css/index.2ed4ea3d.css"
   },
   {
-    "revision": "3de7832db17972da3f6a",
-    "url": "/js/index.c23fa0df.js"
+    "revision": "e9c9b13a968adbcf2f5c",
+    "url": "/js/index-legacy.13524580.js"
   },
   {
     "revision": "2c2ae068be3b089e0a5b59abb1831550",
     "url": "/fonts/ionicons.2c2ae068.eot"
   },
   {
-    "revision": "24712f6c47821394fba7942fbb52c3b2",
-    "url": "/fonts/ionicons.24712f6c.ttf"
-  },
-  {
     "revision": "05acfdb568b3df49ad31355b19495d4a",
     "url": "/fonts/ionicons.05acfdb5.woff"
+  },
+  {
+    "revision": "24712f6c47821394fba7942fbb52c3b2",
+    "url": "/fonts/ionicons.24712f6c.ttf"
   },
   {
     "revision": "621bd386841f74e0053cb8e67f8a0604",
@@ -56,11 +56,7 @@ self.__precacheManifest = [
     "url": "/img/bsv-bg.de504324.jpg"
   },
   {
-    "revision": "44107995d24f7f3f9947bafaeebf6415",
+    "revision": "267cf0fa3a7eb57b5bef43db7df7af5a",
     "url": "/index.html"
-  },
-  {
-    "revision": "2183e41bbdc4c424b140c6d9fc3368fa",
-    "url": "/safe-guides.md"
   }
 ];
