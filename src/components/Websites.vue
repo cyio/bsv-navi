@@ -1,16 +1,18 @@
 <template lang="pug">
 .websites-view
   table
-    tr(v-for="cateName in Object.keys(sites)")
-      th(@click="sites[cateName].expand = !sites[cateName].expand") {{cateName}}
+    tr(v-for="cateKey in Object.keys(sites)")
+      th(@click="sites[cateKey].expand = !sites[cateKey].expand") {{sites[cateKey].name}}
       .tr-inner
-        td(v-for="(site, index) in sites[cateName].content")
+        td(v-for="(site, index) in sites[cateKey].list")
           a.link(v-if="site.url.includes('http')" :href='site.url', :title='site.desc', target='_blank') {{site.title}}
           a.link(v-else @click="go({path: site.url})" tabindex="0") {{site.title}}
 </template>
 <script>
 import mixin from '@/mixin.js'
-import sites from './websites-data.js'
+import sites from '@/api/websites-data.json'
+import { fetchData } from '@/api/'
+
 export default {
   name: 'websites',
   mixins: [mixin],
@@ -25,7 +27,10 @@ export default {
   },
   methods: {
   },
-  mounted () {
+  created () {
+    fetchData('/bsv/websites').then(res => {
+      this.sites = res
+    })
   }
 }
 </script>

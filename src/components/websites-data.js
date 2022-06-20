@@ -1,38 +1,24 @@
 export default {
-  社区: {
-    content: [
-      // { title: 'BitSV.club', desc: 'BitcoinSV社区', url: 'https://bitsv.club/' },
-      // { title: '骷髅会', desc: '微信群聊天记录', url: 'https://svskull.club/' },
-      // { title: 'WeiBlock', desc: '链上微博', url: 'https://weiblock.app/' },
+  'community': {
+    name: '社区',
+    list: [
       { title: 'Twetch', url: 'https://twetch.app/' },
-      // { title: '巴比特论坛', url: 'https://www.chainnode.com/forum/269' },
-      { title: 'Reddit', url: 'https://www.reddit.com/r/bitcoincashSV/' },
-      // { title: 'Memo', desc: '去中心化微博', url: 'https://sv.memo.cash/' },
-      // {
-        // title: 'Yours',
-        // desc: '能赚 BSV 的内容创作平台',
-        // url: 'https://www.yours.org/',
-      // },
-      // {
-        // title: 'Literatus',
-        // desc: '能赚 BSV 的内容创作平台',
-        // url: 'https://en.literatus.org/',
-      // },
+      { title: 'Reddit', url: 'https://www.reddit.com/r/bitcoincashSV/' }
     ],
   },
-  MetaID: {
-    content: [
+  'metaid': {
+    name: 'MetaID',
+    list: [
       { title: 'ShowBuzz', url: 'https://www.showbuzz.app/' },
       { title: 'BuzzBit', desc: '发 buzz 降费、升级体验', url: 'https://buzzbit.vercel.app/' },
-      // { title: 'MetaBuzz', url: 'https://buzz.metasv.com/metasv-buzz' },
       { title: 'MetaPhotos', url: 'https://metaphotos.top/' },
       { title: 'MetaId Scan', url: 'https://scan.metaid.io/' },
       { title: 'MetaId 开发', url: 'https://www.metaid101.com/' },
     ],
   },
-  行情: {
-    content: [
-      // { title: '币值轻快版', url: 'https://coin.bsv.oaker.bid/' },
+  'market': {
+    name: '市场',
+    list: [
       {
         title: '加密货币市值',
         desc: 'Cryptocurrency Market Capitalizations | CoinMarketCap',
@@ -40,25 +26,17 @@ export default {
       },
       { title: 'CoinDesk', desc: '', url: 'https://www.coindesk.com/price/bitcoin-sv/' },
       { title: 'CEO', desc: 'TokenSwap Market Cap', url: 'https://ceobsv.com/' },
-      // {
-        // title: '非小号',
-        // desc: '比特币行情价格_专注数字货币行业大数据分析',
-        // url: 'https://www.feixiaohao.com/',
-      // },
-      // {
-        // title: 'Bitcoin Price Prediction Tracker',
-        // url: 'https://bircoin.top/',
-      // },
     ],
   },
-  资讯: {
-    content: [
+  'news': {
+    name: '资讯',
+    list: [
       { title: 'CoinGeek', url: 'https://coingeek.com/' },
-      // { title: 'BSV Daily', url: 'https://media.bitcoinfiles.org/83264827cdc0825b40868307daec68f34a78ce5f3ac3547b1efea61b64bfe449' },
     ],
   },
-  浏览器: {
-    content: [
+  'block-browser': {
+    name: '浏览器',
+    list: [
       { title: 'WhatsOnChain', url: 'https://whatsonchain.com/' },
       { title: 'Blockchair', url: 'https://blockchair.com/bitcoin-sv' },
       // { title: '欧科云链', url: 'https://www.oklink.com/bsv' },
@@ -67,8 +45,9 @@ export default {
       // { title: 'BTC.com', url: 'https://bsv.btc.com' },
     ],
   },
-  工具: {
-    content: [
+  'tools': {
+    name: '工具',
+    list: [
       {
         title: 'Polynym',
         desc: 'Simple BSV address resolution for HandCash, RelayX and PayMail handles.',
@@ -90,8 +69,9 @@ export default {
     // content: [
     // ],
   // },
-  数据: {
-    content: [
+  'data': {
+    name: '数据',
+    list: [
       {
         title: 'BSVData',
         desc: 'An Honest Bitcoin Data Analyser',
@@ -135,8 +115,9 @@ export default {
       },
     ],
   },
-  入门: {
-    content: [
+  'learn': {
+    name: '入门',
+    list: [
       // { title: '常见问题', url: 'https://www.bitcoincash.org/zh-cn/#faq' },
       {
         title: '白皮书中文',
@@ -168,8 +149,9 @@ export default {
       },
     ],
   },
-  钱包: {
-    content: [
+  'wallet': {
+    name: '钱包',
+    list: [
       { title: '最佳实践', desc: '钱包使用最佳实践', url: 'https://aaron67.cc/2019/02/18/bitcoin-wallet-best-practice/' },
       { title: '安全指南', url: '/safe-guides' },
       { title: 'HandCash', url: 'http://www.handcash.io/' },
@@ -183,8 +165,9 @@ export default {
       { title: 'Exodus', url: 'https://www.exodus.io/' },
     ],
   },
-  交易所: {
-    content: [
+  'exchange': {
+    name: '交易所',
+    list: [
       { title: 'TokenSwap', desc: 'AMM DEX running on BSV', url: 'https://tswap.io/' },
       // { title: '币安', url: 'https://www.binance.com/' },
       { title: 'OKEx', url: 'https://www.okex.com/' },
@@ -196,8 +179,9 @@ export default {
     // content: [
     // ],
   // },
-  考古: {
-    content: [
+  'history': {
+    name: '考古',
+    list: [
       {
         title: '创世地址',
         url: `?q=1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa`,
