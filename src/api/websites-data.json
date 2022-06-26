@@ -12,6 +12,21 @@
       }
     ]
   },
+  "nft": {
+    "name": "NFT",
+    "list": [
+      {
+        "title": "恒境",
+        "desc": "艺生万象，阅无止境 - 基于区块链技术的数字商品服务平台",
+        "url": "https://www.foreverrealm.vip/"
+      },
+      {
+        "title": "若喜",
+        "desc": "",
+        "url": "https://nft.nos.art/"
+      }
+    ]
+  },
   "metaid": {
     "name": "MetaID",
     "list": [

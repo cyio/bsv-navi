@@ -110,7 +110,7 @@ export default {
     background-image: url('../assets/btc-com.png');
   }
   .wsc-com {
-    background-image: url('https://whatsonchain.com/img/logo/woc-favicon-blk.png');
+    background-image: url('https://whatsonchain.com/assets/images/logo/favicon-woc.ico');
     background-position: center;
     margin-left: 10px;
   }

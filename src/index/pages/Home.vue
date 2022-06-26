@@ -12,6 +12,9 @@ import SearchBox from '@/components/SearchBox'
 import Websites from '@/components/Websites'
 import Statistics from '@/components/Statistics'
 import { Layout, Header, Menu, MenuItem, Breadcrumb, BreadcrumbItem, Card, Footer, Icon } from 'iview'
+
+const explorer = 'https://whatsonchain.com/tx/'
+
 export default {
   name: 'Home',
   mixins: [mixin],
@@ -36,9 +39,11 @@ export default {
   },
   methods: {
     async submit (keywords) {
-      keywords = keywords.trim()
-      if (keywords.indexOf('bitcoincash:') === 0) {
-        keywords = keywords.substr(12)
+      if (keywords.length === 64) {
+        return window.open(
+          `${explorer}${keywords}`,
+          '_blank' // <- This is what makes it open in a new window.
+        );
       }
       this.go({path: `?q=${keywords}`})
     }
