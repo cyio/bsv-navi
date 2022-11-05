@@ -92,6 +92,8 @@ export default {
       pageIndex: 1,
       pageSize: 10,
       blockExplorerUrl: 'https://bsv.btc.com/',
+      cnyRatio: 7,
+      bsvCnyPrice: 0,
       tableConfig: {
         multipleSort: false,
         tableData: [],
@@ -197,17 +199,32 @@ export default {
         })
       })
     },
-    getPricesOld () {
-      const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=cny&ids=bitcoin-cash-sv`
-      return fetch(url).then(res => res.json().then(res => {
-        return res[0]
-      }).catch(err => console.error(err)))
-    },
+    /* getPricesOld () { */
+    /* const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=cny&ids=bitcoin-cash-sv` */
+    /* return fetch(url).then(res => res.json().then(res => { */
+    /* return res[0] */
+    /* }).catch(err => console.error(err))) */
+    /* }, */
+    /* getPrices2() { */
+    /* const url = 'https://api.cryptonator.com/api/full/bsv-usd' */
+    /* return fetch(url).then(res => res.json().then(res => { */
+    /* return res.ticker.price */
+    /* }).catch(err => console.error(err))) */
+    /* }, */
     getPrices() {
-      const url = 'https://api.cryptonator.com/api/full/bsv-usd'
-      return fetch(url).then(res => res.json().then(res => {
-        return res.ticker.price
-      }).catch(err => console.error(err)))
+      const url = 'https://vercel-server-bit.vercel.app/api/bsv/data'
+      return fetch(url).then(res => res.json().then(result => {
+        const { data } = result
+        let price = 0, cnyRatio = 7
+        try {
+          cnyRatio = data.usd_otc_price.toFixed(2)
+          price = Math.round(data.price)
+        } catch (e) {}
+        return {
+          price,
+          cnyRatio
+        }
+      }))
     },
     async getTableData() {
       this.tableConfig.isLoading = true
@@ -311,8 +328,9 @@ export default {
       this.submit(this.address)
     }
     this.getPrices().then(data => {
-      this.prices.cny = data * 6.3
-      this.prices.usd = data
+      const { price, cnyRatio } = data
+      this.prices.cny = price
+      this.prices.usd = price / cnyRatio
     })
   },
   mounted () {

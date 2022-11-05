@@ -23,7 +23,7 @@ const routes = [
     meta: {
       keepAlive: true,
       titles: {
-        default: '比特币导航_BSV',
+        default: '比特币导航_万链归一',
         address: 'BSV 帐户查看器'
       }
     },
