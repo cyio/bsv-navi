@@ -8,12 +8,16 @@ self.__precacheManifest = [
     "url": "/js/chunk-vendors.05de351d.js"
   },
   {
-    "revision": "7e0429c96c06630887c3",
+    "revision": "e601f62a005c8784f772",
     "url": "/css/index.5fb46b84.css"
   },
   {
-    "revision": "7e0429c96c06630887c3",
-    "url": "/js/index.b06768ab.js"
+    "revision": "e601f62a005c8784f772",
+    "url": "/js/index.9470bef4.js"
+  },
+  {
+    "revision": "2c2ae068be3b089e0a5b59abb1831550",
+    "url": "/fonts/ionicons.2c2ae068.eot"
   },
   {
     "revision": "24712f6c47821394fba7942fbb52c3b2",
@@ -22,10 +26,6 @@ self.__precacheManifest = [
   {
     "revision": "05acfdb568b3df49ad31355b19495d4a",
     "url": "/fonts/ionicons.05acfdb5.woff"
-  },
-  {
-    "revision": "2c2ae068be3b089e0a5b59abb1831550",
-    "url": "/fonts/ionicons.2c2ae068.eot"
   },
   {
     "revision": "621bd386841f74e0053cb8e67f8a0604",
@@ -56,7 +56,7 @@ self.__precacheManifest = [
     "url": "/img/bsv-bg.de504324.jpg"
   },
   {
-    "revision": "5bf9bb386a27877aff29ad3a2a18fe71",
+    "revision": "fee6171dfcb32195168752216ca1faf2",
     "url": "/index.html"
   },
   {
