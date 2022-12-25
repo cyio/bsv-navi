@@ -212,7 +212,7 @@ export default {
     /* }).catch(err => console.error(err))) */
     /* }, */
     getPrices() {
-      const url = 'https://vercel-server-bit.vercel.app/api/bsv/data'
+      const url = 'https://api.oaker.bid/api/bsv/data'
       return fetch(url).then(res => res.json().then(result => {
         const { data } = result
         let price = 0, cnyRatio = 7

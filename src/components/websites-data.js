@@ -49,6 +49,11 @@ export default {
     name: '工具',
     list: [
       {
+        title: 'Bitails Search',
+        desc: '',
+        url: 'https://search.bitails.net/',
+      },
+      {
         title: 'Polynym',
         desc: 'Simple BSV address resolution for HandCash, RelayX and PayMail handles.',
         url: 'https://polynym.io/',

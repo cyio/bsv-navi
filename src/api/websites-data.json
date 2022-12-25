@@ -95,10 +95,6 @@
         "url": "https://whatsonchain.com/"
       },
       {
-        "title": "Blockchair",
-        "url": "https://blockchair.com/bitcoin-sv"
-      },
-      {
         "title": "ViaWallet",
         "url": "https://explorer.viawallet.com/bsv"
       },
@@ -112,9 +108,19 @@
     "name": "工具",
     "list": [
       {
+        "title": "Bitails Search",
+        "desc": "",
+        "url": "https://search.bitails.net/"
+      },
+      {
         "title": "Polynym",
         "desc": "Simple BSV address resolution for HandCash, RelayX and PayMail handles.",
         "url": "https://polynym.io/"
+      },
+      {
+        "title": "Stotina Tools",
+        "desc": "Bitcoin Online Tools",
+        "url": "https://stotina.com/#/tools"
       },
       {
         "title": "Bitpaste",
@@ -164,11 +170,6 @@
         "title": "算力",
         "desc": "BSV,BCH,BTC 每日算力对比",
         "url": "https://bitinfocharts.com/comparison/hashrate-btc-bch-bsv.html#6m"
-      },
-      {
-        "title": "数据中心_QKL123",
-        "desc": "",
-        "url": "https://m.qkl123.com/data"
       },
       {
         "title": "Bitcoin Scaling",

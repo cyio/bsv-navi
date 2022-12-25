@@ -54,7 +54,7 @@ module.exports = {
     disableHostCheck: true,
     proxy: {
       '/api': {
-        target: 'https://vercel-server-bit.vercel.app',
+        target: 'https://api.oaker.bid',
         changeOrigin: true,
         pathRewrite: {
           '^/api': '' // 重写接口

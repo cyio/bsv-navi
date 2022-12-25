@@ -49,7 +49,7 @@ export default {
       }))
     },
     getMaintainData() {
-      let url = 'https://vercel-server-bit.vercel.app/api/bsv/data'
+      let url = 'https://api.oaker.bid/api/bsv/data'
       fetch(url).then(res => res.json().then(result => {
         let data = result.data
         const { percent_change_24h, circulating_supply, max_supply, change_of_60days } = data
