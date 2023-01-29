@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "70cd2bd9d26bc566b3a0",
+    "revision": "7b580d20060dd8e1892e",
     "url": "/css/chunk-vendors.89a7451d.css"
   },
   {
-    "revision": "70cd2bd9d26bc566b3a0",
-    "url": "/js/chunk-vendors-legacy.e62cb086.js"
+    "revision": "7b580d20060dd8e1892e",
+    "url": "/js/chunk-vendors.05de351d.js"
   },
   {
-    "revision": "3433141a2c1a586f0a42",
+    "revision": "0303392258df2bc4e20f",
     "url": "/css/index.1949491c.css"
   },
   {
-    "revision": "3433141a2c1a586f0a42",
-    "url": "/js/index-legacy.0695021e.js"
+    "revision": "0303392258df2bc4e20f",
+    "url": "/js/index.1b56129e.js"
   },
   {
     "revision": "2c2ae068be3b089e0a5b59abb1831550",
@@ -56,7 +56,11 @@ self.__precacheManifest = [
     "url": "/img/bsv-bg.de504324.jpg"
   },
   {
-    "revision": "5c5f2163564bf8ea798b50356e53cb41",
+    "revision": "f37911976a172603c915912ecbf4f98b",
     "url": "/index.html"
+  },
+  {
+    "revision": "2183e41bbdc4c424b140c6d9fc3368fa",
+    "url": "/safe-guides.md"
   }
 ];
