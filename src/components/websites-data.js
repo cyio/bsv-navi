@@ -10,7 +10,7 @@ export default {
     name: 'MetaID',
     list: [
       { title: 'ShowBuzz', url: 'https://www.showbuzz.app/' },
-      { title: 'BuzzBit', desc: '发 buzz 降费、升级体验', url: 'https://buzzbit.vercel.app/' },
+      { title: 'BuzzBit', desc: '发 buzz 降费、升级体验', url: 'https://buzzbit.oaker.bid/' },
       { title: 'MetaPhotos', url: 'https://metaphotos.top/' },
       { title: 'MetaId Scan', url: 'https://scan.metaid.io/' },
       { title: 'MetaId 开发', url: 'https://www.metaid101.com/' },
