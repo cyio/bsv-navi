@@ -183,7 +183,7 @@ export default {
       if (proxyHost.indexOf('lean') > -1) {
         this.checkSleep()
       }
-      const url = `https://api.whatsonchain.com/v1/bsv/main/address/${address}/balance`
+      const url = `https://api-proxy.oaker.bid/?url=https://api.whatsonchain.com/v1/bsv/main/address/${address}/balance`
       return fetchRetry(url).then(res => res.json().then(res => {
         return res
       }))
