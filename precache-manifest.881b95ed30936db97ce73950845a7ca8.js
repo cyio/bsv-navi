@@ -8,12 +8,12 @@ self.__precacheManifest = [
     "url": "/js/chunk-vendors.05de351d.js"
   },
   {
-    "revision": "0303392258df2bc4e20f",
+    "revision": "88fe84dde42109fc1661",
     "url": "/css/index.1949491c.css"
   },
   {
-    "revision": "0303392258df2bc4e20f",
-    "url": "/js/index.1b56129e.js"
+    "revision": "88fe84dde42109fc1661",
+    "url": "/js/index.8f2cf9c0.js"
   },
   {
     "revision": "2c2ae068be3b089e0a5b59abb1831550",
@@ -56,7 +56,7 @@ self.__precacheManifest = [
     "url": "/img/bsv-bg.de504324.jpg"
   },
   {
-    "revision": "f37911976a172603c915912ecbf4f98b",
+    "revision": "d9b88d7d31f0b71b95d2c8770af98a4c",
     "url": "/index.html"
   },
   {
