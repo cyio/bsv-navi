@@ -54,13 +54,13 @@ export default {
         let data = result.data
         const { percent_change_24h, circulating_supply, max_supply, change_of_60days } = data
         this.market = {
-          '最新价': `￥${Math.round(data.price)}`,
+          '最新价': `￥${Math.round(data.price)} ($${Math.round(data.price / data.usd_otc_price )})`,
           'BSV/BTC': data.bsv_btc.toFixed(4),
           'BSV/BCH': data.bsv_bch.toFixed(4),
           '已供应': formatSupply(circulating_supply, max_supply),
           // '火币USDT': data.usdt_otc_price,
           '离岸人民币': data.usd_otc_price.toFixed(2),
-          '60日累计涨幅': change_of_60days !== null && `${change_of_60days > 0 ? '+' : ''}${Math.round(change_of_60days * 100)}%`,
+          'BTC60日累计涨幅': change_of_60days !== null && `${change_of_60days > 0 ? '+' : ''}${Math.round(change_of_60days * 100)}%`,
           'OKEx活期年化': data.okex_return_rate
         }
       }))
