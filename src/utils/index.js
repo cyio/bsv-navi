@@ -43,3 +43,28 @@ export function formatPercentage (portion, total) {
 export function formatSupply (circulating_supply, max_supply) {
   return numeral(circulating_supply / (10 ** 4)).format('0,000') + '万' + ' / ' + formatPercentage(circulating_supply, max_supply)
 }
+
+export function updateDataFromServer(storageKey, fetchDataFunction, handleData) {
+  // 获取本地存储中的数据并解析为JSON对象
+  const storedData = localStorage.getItem(storageKey);
+  if (storedData) {
+    try {
+      handleData(JSON.parse(storedData));
+    } catch (error) {
+      console.error(`Error parsing stored data for key ${storageKey}:`, error);
+    }
+  }
+
+  // 从服务器获取数据并保存到本地存储（仅在本地存储与服务器数据不同时更新）
+  fetchDataFunction().then(res => {
+    try {
+      const parsedRes = res;
+      if (!storedData || storedData !== JSON.stringify(parsedRes)) {
+        handleData(parsedRes);
+        localStorage.setItem(storageKey, JSON.stringify(parsedRes));
+      }
+    } catch (error) {
+      console.error(`Error parsing or saving fetched data for key ${storageKey}:`, error);
+    }
+  });
+}

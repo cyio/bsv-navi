@@ -7,8 +7,39 @@
         "url": "https://twetch.app/"
       },
       {
+        "title": "Twitter List",
+        "url": "https://nitter.net/i/lists/1733783204069523953"
+      },
+      {
         "title": "Reddit",
         "url": "https://www.reddit.com/r/bitcoincashSV/"
+      }
+    ]
+  },
+  "ordinals": {
+    "name": "Ordinals",
+    "list": [
+      {
+        "title": "Hodlnet",
+        "url": "https://hodlnet.sh/"
+      },
+      {
+        "title": "Hodlocker",
+        "url": "https://www.hodlocker.com/"
+      },
+      {
+        "title": "Lock-to-Mint",
+        "desc": "BSV-20 Lock-to-Mint Smart Contracts",
+        "url": "https://locktomint.com/"
+      }
+    ]
+  },
+  "ai": {
+    "name": "AI",
+    "list": [
+      {
+        "title": "ChatBSV",
+        "url": "https://www.chatbsv.com/"
       }
     ]
   },
@@ -88,19 +119,16 @@
     ]
   },
   "block-browser": {
-    "name": "浏览器",
+    "name": "区块浏览器",
     "list": [
       {
         "title": "WhatsOnChain",
         "url": "https://whatsonchain.com/"
       },
       {
-        "title": "ViaWallet",
-        "url": "https://explorer.viawallet.com/bsv"
-      },
-      {
-        "title": "BitcoinFiles",
-        "url": "https://bitcoinfiles.org/"
+        "title": "Bitails",
+        "desc": "",
+        "url": "https://bitails.io/"
       }
     ]
   },
@@ -110,10 +138,10 @@
       {
         "title": "Bitails Search",
         "desc": "",
-        "url": "https://search.bitails.net/"
+        "url": "https://search.bitails.io/"
       },
       {
-        "title": "Polynym",
+        "title": "Polynym 地址转换",
         "desc": "Simple BSV address resolution for HandCash, RelayX and PayMail handles.",
         "url": "https://polynym.io/"
       },
@@ -123,14 +151,17 @@
         "url": "https://stotina.com/#/tools"
       },
       {
-        "title": "Bitpaste",
-        "desc": "On-chain text and file sharing",
-        "url": "https://www.bitpaste.app"
+        "title": "BitcoinFiles",
+        "url": "https://bitcoinfiles.org/"
       },
       {
         "title": "Bico Media",
         "url": "https://bico.media/",
         "desc": "Bitcoin sv blockchain files for content creators"
+      },
+      {
+        "title": "BSV Block to Time Converter",
+        "url": "https://plugins.whatsonchain.com/api/plugin/main/66b482f4f957a9761607963687d7798d0c38296ae095b9fb47ef7a76761d639f/0"
       }
     ]
   },
@@ -138,18 +169,18 @@
     "name": "数据",
     "list": [
       {
+        "title": "WOC Stats",
+        "desc": "Stats - WhatsOnChain.com - BSV Explorer",
+        "url": "https://whatsonchain.com/stats"
+      },
+      {
         "title": "BSVData",
         "desc": "An Honest Bitcoin Data Analyser",
         "url": "https://bsvdata.com"
       },
       {
         "title": "CoinDance",
-        "url": "https://coin.dance/"
-      },
-      {
-        "title": "BitcoinBlocks",
-        "desc": "live transactions on Bitcoin SV ",
-        "url": "https://bitcoinblocks.live/"
+        "url": "https://sv.coin.dance/"
       },
       {
         "title": "加密图表",
@@ -217,6 +248,10 @@
         "url": "/safe-guides"
       },
       {
+        "title": "Panda Wallet",
+        "url": "https://chromewebstore.google.com/detail/panda-wallet/mlbnicldlpdimbjdcncnklfempedeipj"
+      },
+      {
         "title": "HandCash",
         "url": "http://www.handcash.io/"
       },
@@ -260,13 +295,12 @@
     "name": "交易所",
     "list": [
       {
-        "title": "TokenSwap",
-        "desc": "AMM DEX running on BSV",
-        "url": "https://tswap.io/"
-      },
-      {
         "title": "OKEx",
         "url": "https://www.okex.com/"
+      },
+      {
+        "title": "DXS",
+        "url": "https://dxs.app/"
       }
     ]
   },
