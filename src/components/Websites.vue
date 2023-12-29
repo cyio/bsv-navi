@@ -12,7 +12,7 @@
 import mixin from '@/mixin.js'
 import sites from '@/api/websites-data.json'
 import { fetchData } from '@/api/'
-import { updateSitesFromServer } from '@/utils/'
+import { updateDataFromServer } from '@/utils/'
 
 export default {
   name: 'websites',
@@ -30,7 +30,7 @@ export default {
   },
   created () {
     const siteKey = '/bsv/websites';
-    updateSitesFromServer(
+    updateDataFromServer(
       siteKey,
       () => fetchData(siteKey),
       newData => {
