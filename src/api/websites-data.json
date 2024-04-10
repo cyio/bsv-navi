@@ -7,12 +7,8 @@
         "url": "https://twetch.app/"
       },
       {
-        "title": "Twitter List",
-        "url": "https://nitter.net/i/lists/1733783204069523953"
-      },
-      {
         "title": "Reddit",
-        "url": "https://www.reddit.com/r/bitcoincashSV/"
+        "url": "https://old.reddit.com/r/bitcoincashSV/"
       }
     ]
   },
@@ -40,6 +36,10 @@
       {
         "title": "ChatBSV",
         "url": "https://www.chatbsv.com/"
+      },
+      {
+        "title": "AI Portrait Matting",
+        "url": "https://removebg.oaker.bid/"
       }
     ]
   },
@@ -55,37 +55,6 @@
         "title": "若喜",
         "desc": "",
         "url": "https://nft.nos.art/"
-      }
-    ]
-  },
-  "metaid": {
-    "name": "MetaID",
-    "list": [
-      {
-        "title": "ShowBuzz",
-        "url": "https://www.showbuzz.app/"
-      },
-      {
-        "title": "BuzzBit",
-        "desc": "发 buzz 降费、升级体验",
-        "url": "https://buzzbit.oaker.bid/"
-      },
-      {
-        "title": "元网网盘",
-        "desc": "web3.0 | 链上存储 | 在线预览 | 分片、断点续传 | 文件分享",
-        "url": "https://metadisk.purem.cc/"
-      },
-      {
-        "title": "MetaPhotos",
-        "url": "https://metaphotos.top/"
-      },
-      {
-        "title": "MetaId Scan",
-        "url": "https://scan.metaid.io/"
-      },
-      {
-        "title": "MetaId 开发",
-        "url": "https://www.metaid101.com/"
       }
     ]
   },
@@ -222,7 +191,11 @@
       },
       {
         "title": "Craig Wright",
-        "url": "https://craigwright.net/"
+        "url": "https://web.archive.org/web/20240308225201/https://craigwright.net/"
+      },
+      {
+        "title": "ChatBitcoin",
+        "url": "https://chat.bitcoinsearch.xyz/"
       },
       {
         "title": "中本聪愿景",
@@ -295,8 +268,8 @@
     "name": "交易所",
     "list": [
       {
-        "title": "OKEx",
-        "url": "https://www.okex.com/"
+        "title": "OKX",
+        "url": "https://www.okx.com/"
       },
       {
         "title": "DXS",
