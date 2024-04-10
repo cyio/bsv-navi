@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "70cd2bd9d26bc566b3a0",
+    "revision": "7b580d20060dd8e1892e",
     "url": "/css/chunk-vendors.89a7451d.css"
   },
   {
-    "revision": "70cd2bd9d26bc566b3a0",
-    "url": "/js/chunk-vendors-legacy.e62cb086.js"
+    "revision": "7b580d20060dd8e1892e",
+    "url": "/js/chunk-vendors.05de351d.js"
   },
   {
-    "revision": "be4c913e97009df249f3",
+    "revision": "4f66cb6545a07f80a0d0",
     "url": "/css/index.79bc3806.css"
   },
   {
-    "revision": "be4c913e97009df249f3",
-    "url": "/js/index-legacy.e1219acd.js"
+    "revision": "4f66cb6545a07f80a0d0",
+    "url": "/js/index.518f4fbd.js"
   },
   {
     "revision": "2c2ae068be3b089e0a5b59abb1831550",
@@ -32,16 +32,16 @@ self.__precacheManifest = [
     "url": "/img/ionicons.621bd386.svg"
   },
   {
-    "revision": "fc0f6ee2d0c6d06fe9fd8d799476c3a4",
-    "url": "/fonts/fontello.fc0f6ee2.woff"
-  },
-  {
     "revision": "b6f1679049955928b19a2e0fc4f936ad",
     "url": "/fonts/fontello.b6f16790.eot"
   },
   {
     "revision": "09448c5d5407366aa74ca6db959f31e9",
     "url": "/fonts/fontello.09448c5d.ttf"
+  },
+  {
+    "revision": "fc0f6ee2d0c6d06fe9fd8d799476c3a4",
+    "url": "/fonts/fontello.fc0f6ee2.woff"
   },
   {
     "revision": "2e9dbf4de3893afb4572b7f77079dc66",
@@ -56,7 +56,11 @@ self.__precacheManifest = [
     "url": "/img/bsv-bg.de504324.jpg"
   },
   {
-    "revision": "8502b3a6ce3486809372838423d9269a",
+    "revision": "0aa75a476ebc20fe9aa91899498342f7",
     "url": "/index.html"
+  },
+  {
+    "revision": "2183e41bbdc4c424b140c6d9fc3368fa",
+    "url": "/safe-guides.md"
   }
 ];
